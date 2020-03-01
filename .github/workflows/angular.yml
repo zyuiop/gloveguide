@@ -14,3 +14,10 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: ng build --prod
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          # Artifact name
+          name: Front.zip
+          # Directory containing files to upload
+          path: frontend/dist/
