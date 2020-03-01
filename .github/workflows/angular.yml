@@ -10,12 +10,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: cd frontend
       - run: npm ci
       - run: ng build --prod
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           # Artifact name
-          name: Front.zip
+          name: Frontend
           # Directory containing files to upload
           path: frontend/dist/
