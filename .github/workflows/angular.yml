@@ -10,6 +10,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: npm i -g @angular/cli
       - run: cd frontend ; npm ci ; ng build --prod
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
