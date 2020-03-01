@@ -1,8 +1,6 @@
 name: Angular package
 
-on:
-  release:
-    types: [created]
+on: push
 
 jobs:
   build:
