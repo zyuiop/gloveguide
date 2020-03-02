@@ -11,21 +11,32 @@ import scala.jdk.CollectionConverters._
 import scala.util.Success
 
 /**
- * This service queries ProtectPo to extract its information
+ * This service queries ProtecPo to extract its information.
+ * <br>Beware, it has been observed that ProtecPo is hosted on an old and inefficient machine.
+ * <br> - Parallel requests are NOT recommended (~20 simultaneous requests are enough to CRASH the site)
+ * <br> - A special Java security file MUST be provided in order for Java to use the outdated ciphersuites
  */
 @Singleton
-class ProtectPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(implicit ec: ExecutionContext) {
+class ProtecPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(implicit ec: ExecutionContext) {
   lazy val baseUrl: String = {
-    val secure = config.get[Boolean]("protectpo.secure")
-    val domain = config.get[String]("protectpo.domain")
+    val secure = config.get[Boolean]("protecpo.secure")
+    val domain = config.get[String]("protecpo.domain")
 
     (if (secure) "https" else "http") + "://" + domain + "/"
   }
 
+  /**
+   * An object holding the Session Cookie for ProtecPo.<br>
+   * ProtecPo requires requests to be made with a session in which the non-responsibility clause has been accepted
+   */
   object SessionCookie {
     private var cookie: Option[WSCookie] = None
     private var lastRefresh: Long = 0L
 
+    /**
+     * Runs a request to validate the non-responsibility clause and to switch the site in English, then returns
+     * the new session cookie.
+     */
     private def loadSessionCookie = {
       httpClient.url(baseUrl + "servlet/ValiderClause")
         .post(Map("secteurActivite" -> Seq("0"), "tailleEntreprise" -> Seq("0")))
@@ -49,6 +60,10 @@ class ProtectPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(im
     private def isExpired = !cookie.map(c => lastRefresh + (c.maxAge.getOrElse(0L) - 30L))
       .exists(_ > System.currentTimeMillis)
 
+    /**
+     * Gets the current session cookie. If this cookie is not present or expired, it will be queried first.
+     * @return the session cookie used by ProtecPo
+     */
     def getCookie: Future[WSCookie] = {
       if (isExpired) loadSessionCookie
       else Future.successful(this.cookie.get)
@@ -122,7 +137,52 @@ class ProtectPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(im
     }
   }
 
-  // There is an opportunity to download the whole protecpo database using https://protecpo.inrs.fr/ProtecPo/jsp/RechercheParFamille.jsp?langue=EN
-  // Not sure it is moral nor legal
+  def getAllSolvents(): Future[List[Substance]] = {
+    def getSolvents(family: Int) = {
+      val url = baseUrl + s"servlet/RechercheWEB?typeRecherche=RechercheSolvantsDepuisFamille&motCle=$family&affichage=0"
+
+
+      println("--------------------------")
+      println(s"Starting search $family")
+
+      SessionCookie.getCookie flatMap { cookie =>
+        httpClient.url(url)
+          .withCookies(cookie)
+          .get()
+          // Need to fix the HTML for JSoup to see the <tr> tags
+          .map(res => Jsoup.parse("<table>" + res.body + "</table>"))
+          .map { html =>
+
+            println(s"Finished research $family")
+
+            val list = html.getElementsByTag("tr").asScala
+              .filter(row => row.childrenSize() >= 2 && row.child(0).tagName() == "td")
+              // Keep only thw first two columns: subst name, and cas number
+              .map(row =>
+                Substance(
+                  name = row.child(0).text(),
+                  casNumber = row.child(1).text()
+                ))
+              .toList
+
+            println("Extracted " + list.size + " substances")
+            list
+          }
+      }
+    }
+
+    // We want to make the requests sequential to avoid killing ProtecPro
+    def next(i: Int, result: List[Substance] = Nil): Future[List[Substance]] = {
+      if (i >= 20) Future.successful(result)
+      else getSolvents(i).flatMap(res => next(i + 1, res ::: result))
+    }
+
+    next(1)
+      .map(lst => {
+        println("Finished loading all substances.")
+        println(" -> Found " + lst.size + " substances")
+        lst
+      })
+  }
 
 }

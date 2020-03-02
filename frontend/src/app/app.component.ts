@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {SubstancesService} from './services/substances.service';
+import {Substance} from './data/substance';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontend';
+
+  selectedSubstances: Substance[] = [];
 }

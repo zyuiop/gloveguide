@@ -3,7 +3,7 @@ package controllers
 import javax.inject._
 import play.api.libs.json.Json
 import play.api.mvc._
-import services.ProtectPoAdapter
+import services.ProtecPoAdapter
 
 import scala.concurrent.ExecutionContext
 
@@ -12,7 +12,7 @@ import scala.concurrent.ExecutionContext
  * application's home page.
  */
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents, pp: ProtectPoAdapter)(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents, pp: ProtecPoAdapter)(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
   /**
    * Create an Action to render an HTML page with a welcome message.
@@ -21,7 +21,7 @@ class HomeController @Inject()(cc: ControllerComponents, pp: ProtectPoAdapter)(i
    * a path of `/`.
    */
   def index = Action.async {
-    pp.searchGloveMaterials(List(("64-17-5", 100)), 0, 0).map(res => Ok(Json.toJson(res)))
+    pp.getAllSolvents().map(res => Ok(Json.toJson(res)))
   }
 
 }

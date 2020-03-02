@@ -1,0 +1,37 @@
+<mat-form-field style="width: 100%">
+  <input type="text" matInput [matAutocomplete]="auto" placeholder="Select a substance..." [formControl]="input"
+         (keypress)="keypress($event)">
+
+  <button mat-icon-button matSuffix (click)="search()">
+    <mat-icon>{{hasSelectedSubstance ? 'add' : 'search'}}</mat-icon>
+  </button>
+
+  <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" [displayWith]="displaySubstance" (optionSelected)="select($event.option.value)">
+    <mat-option *ngFor="let option of filteredSubstances | async" [value]="option">
+      {{ option.name }}
+
+      <small class="right">{{option.casNumber}}</small>
+    </mat-option>
+  </mat-autocomplete>
+
+</mat-form-field>
+
+<ng-container *ngIf="searching">
+  <h3>Searching in progress...</h3>
+  <p>Please wait while we search for substances...</p>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</ng-container>
+
+<ng-container *ngIf="searchResults">
+  <h3>Search results</h3>
+  <p>Click on any substance below to add it to your solution.</p>
+
+  <p *ngIf="searchResults.length === 0"><b>No results found.</b> Try searching with a different query.</p>
+
+  <mat-list style="width: 100%;">
+    <mat-list-item *ngFor="let s of searchResults" style="width: 100%;" (click)="select(s)">
+      <b>{{s.name}}</b>
+      <small class="right">[{{s.casNumber}}]</small>
+    </mat-list-item>
+  </mat-list>
+</ng-container>
