@@ -1,5 +1,5 @@
 <mat-form-field style="width: 100%">
-  <input type="text" matInput [matAutocomplete]="auto" placeholder="Select a substance..." [formControl]="input"
+  <input type="text" matInput [matAutocomplete]="auto" placeholder="Search for a {{ this.allowGloves ? 'substance or glove' : 'substance'}}..." [formControl]="input"
          (keypress)="keypress($event)">
 
   <button mat-icon-button matSuffix (click)="search()">
@@ -8,9 +8,16 @@
 
   <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" [displayWith]="displaySubstance" (optionSelected)="select($event.option.value)">
     <mat-option *ngFor="let option of filteredSubstances | async" [value]="option">
-      {{ option.name }}
+      <ng-container *ngIf="option.casNumber">
+        {{ option.name }}
 
-      <small class="right">{{option.casNumber}}</small>
+        <small class="right">{{option.casNumber}}</small>
+      </ng-container>
+      <ng-container *ngIf="option.manufacturer">
+        {{ option.manufacturer.name }} {{ option.name }}
+
+        <small class="right">{{option.reference}}</small>
+      </ng-container>
     </mat-option>
   </mat-autocomplete>
 

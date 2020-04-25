@@ -1,0 +1,76 @@
+<h2>List of {{filteredTypes ? 'matching' : 'all'}} gloves</h2>
+
+<mat-accordion>
+  <mat-expansion-panel *ngIf="(gloves | async).length == 0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>No glove found</mat-panel-title>
+    </mat-expansion-panel-header>
+    <p *ngIf="filteredTypes && filteredTypes.length > 0">There is no glove found for any of these
+      materials: {{filteredTypes.join(", ")}}</p>
+    <p *ngIf="filteredTypes && filteredTypes.length == 0">There is no glove found for this search.</p>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngFor="let glove of gloves | async" #pane>
+    <mat-expansion-panel-header style="position: relative;">
+      <mat-panel-title>{{glove.manufacturer.name}} {{glove.name}}</mat-panel-title>
+      <mat-panel-description>
+        <app-rating-badge [rating]="glove.rankingCategory"></app-rating-badge>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h3>Specifications</h3>
+    <ul>
+      <li>Reference: <code>{{glove.reference}}</code></li>
+      <li>Material: {{glove.material.name}} ({{glove.material.types.join(", ")}})</li>
+      <li>Length: {{glove.length}}mm</li>
+      <li>Palm thickness: {{glove.thickness}}mm</li>
+      <li><a href="https://www.iso.org/fr/standard/66421.html">EN ISO 374-1</a>:
+        <ul>
+          <li>Type {{glove.standardType}}</li>
+          <li>Resistance {{glove.standardResistance}}</li>
+          <li>AQL {{glove.aql}}</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Ratings</h3>
+    <ul>
+      <li>Ease to wear:
+        <app-rating-badge [rating]="glove.easeToWear"></app-rating-badge>
+      </li>
+      <li>Ease to remove:
+        <app-rating-badge [rating]="glove.easeToRemove"></app-rating-badge>
+      </li>
+      <li>Glass handling:
+        <ul>
+          <li *ngFor="let pair of glove.glassHandling | keyvalue">{{pair.key}}:
+            <app-rating-badge [rating]="pair.value.glassHandling"></app-rating-badge>
+            {{pair.value.leavesMarks ? '(leaves marks)' : ''}}</li>
+        </ul>
+      </li>
+      <li>Traction resistance:
+        <ul>
+          <li *ngFor="let pair of glove.tractionResistance | keyvalue">{{pair.key}}:
+            <app-rating-badge [rating]="pair.value"></app-rating-badge>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Conclusion</h3>
+    <p>This glove is ranked <b>#{{glove.ranking}}</b>, with a
+      <app-rating-badge [rating]="glove.rankingCategory"></app-rating-badge>
+      rating.
+    </p>
+    <p><b>Recommendations: </b>{{glove.recommendations}}</p>
+
+    <h3>Specific substances rating</h3>
+    <p>According to internal tests or spec sheets.</p>
+
+    <app-resistances-table [resistances]="resistancesForGlove(glove) | async" [display]="pane.expanded"></app-resistances-table>
+
+
+    <!--
+    glassHandling: {}; // Map[String, GlassHandling]
+    tractionResistance: {}; // Map[String, Rating.Value] -->
+  </mat-expansion-panel>
+</mat-accordion>

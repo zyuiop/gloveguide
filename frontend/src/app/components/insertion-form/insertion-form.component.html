@@ -1,0 +1,26 @@
+<h2>Add substances</h2>
+
+
+<mat-form-field style="width: 100%;">
+  <label for="textarea">Copy/Paste the table from excel here: (please copy the first line for the gloves brands and the
+    first two columns for the CAS number and the tested concentration)</label>
+  <textarea id="textarea" matInput style="width: 100%;" [ngModel]="null"
+            (ngModelChange)="contentChange($event)"></textarea>
+</mat-form-field>
+
+<br>
+<ng-container *ngIf="result || errors">
+  <h3>Preview insertion</h3>
+  <p *ngIf="errors.length === 0 && result.length > 0">If this sounds good to you, click the "Insert" button down the page.</p>
+
+  <div class="alert" *ngIf="errors && errors.length > 0">
+    <b>Errors:</b>
+    <ul>
+      <li *ngFor="let error of errors">{{error}}</li>
+    </ul>
+  </div>
+
+  <app-resistances-table *ngIf="errors.length === 0" [resistances]="result"></app-resistances-table>
+
+  <button class="btn-lg btn-success" (click)="insert()" [disabled]="inserting" *ngIf="errors.length === 0 && result.length > 0">Insert</button>
+</ng-container>

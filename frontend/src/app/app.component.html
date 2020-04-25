@@ -1,13 +1,31 @@
-<div style="padding: 50px;">
-  <h1>GlovesGuide Front</h1>
+<div class="container">
 
-  <div style="width: 50%;">
-    <app-substance-selector (selectedChange)="selectedSubstances.push($event)"></app-substance-selector>
+  <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">EPFL Gloves Guide</h1>
+
+    <h2>Search for a substance or glove</h2>
+
+   <!-- <app-substance-selector (selectedChange)="onSearch($event)"></app-substance-selector> -->
+
+
+
+    <app-search-bar></app-search-bar>
+
   </div>
 
-  <h2>Selected substances</h2>
-  <ul>
-    <li *ngFor="let s of selectedSubstances">{{s.name}} - {{s.casNumber}}</li>
-  </ul>
+  <div>
+  </div>
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+    <div fxFlex>
+      <app-solution-compositor (filterGloves)="gloveTypes = $event"></app-solution-compositor>
+    </div>
 
+    <div fxFlex>
+      <app-gloves [filteredTypes]="gloveTypes"></app-gloves>
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <app-insertion-form></app-insertion-form>
 </div>

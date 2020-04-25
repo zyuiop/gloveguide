@@ -1,0 +1,24 @@
+<h2>Search a substance</h2>
+
+<app-substance-selector (selectedChange)="onSearch($event)"></app-substance-selector>
+
+<br><br>
+
+<ng-container *ngIf="selectedSubstance">
+  <h3>Selected substance <b>{{selectedSubstance.name}}</b> (CAS {{selectedSubstance.casNumber}})</h3>
+
+  <mat-spinner *ngIf="!resistances"></mat-spinner>
+
+  <app-resistances-table *ngIf="resistances" [resistances]="resistances" [transpose]="true"></app-resistances-table>
+
+</ng-container>
+<ng-container *ngIf="selectedGlove">
+  <h3>Selected glove <b>{{selectedGlove.manufacturer.name}} {{selectedGlove.name}}</b> (Ref {{selectedGlove.reference}})</h3>
+
+  <mat-spinner *ngIf="!resistances"></mat-spinner>
+
+  <app-resistances-table *ngIf="resistances" [resistances]="resistances"></app-resistances-table>
+
+</ng-container>
+
+

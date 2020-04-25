@@ -1,11 +1,12 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SubstancesService} from '../../../services/substances.service';
 import {Observable} from 'rxjs';
 import {Substance} from '../../../data/substance';
 import {FormControl} from '@angular/forms';
 import {filter, map, startWith, switchMap} from 'rxjs/operators';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
-import {MatAutocomplete} from '@angular/material/autocomplete';
+import {Glove} from '../../../data/gloves';
+import {GlovesService} from '../../../services/gloves.service';
 
 @Component({
   selector: 'app-substance-selector',
@@ -14,30 +15,40 @@ import {MatAutocomplete} from '@angular/material/autocomplete';
 })
 export class SubstanceSelectorComponent implements OnInit {
 
-  substances: Observable<Substance[]>;
-  filteredSubstances: Observable<Substance[]>;
+  @Input() allowGloves: boolean = true;
+
+  substances: Observable<(Substance | Glove)[]>;
+  filteredSubstances: Observable<(Substance | Glove)[]>;
   input = new FormControl();
   searchResults: Substance[];
   searching = false;
 
-  @Output() selectedChange = new EventEmitter<Substance>();
+  @Output() selectedChange = new EventEmitter<(Substance | Glove)>();
 
-  constructor(public substancesService: SubstancesService) {
+  constructor(public substancesService: SubstancesService, public gloves: GlovesService) {
   }
 
   get hasSelectedSubstance() {
-    return isNotNullOrUndefined(this.input.value) && typeof this.input.value === 'object' && this.input.value.casNumber;
+    return isNotNullOrUndefined(this.input.value) && typeof this.input.value === 'object' &&
+      (this.input.value.casNumber || (this.allowGloves && this.input.value.standardResistance));
   }
 
   ngOnInit(): void {
-    this.substances = this.substancesService.getCachedSubstances();
+    this.substances = this.substancesService.getCachedSubstances().pipe(
+      switchMap(substances => this.gloves.getGloves().pipe(map(gloves => {
+        const targetArray: (Substance | Glove)[] = [];
+        substances.forEach(s => targetArray.push(s));
+        gloves.forEach(g => targetArray.push(g));
+        return targetArray;
+      })))
+    );
+
     this.filteredSubstances = this.input.valueChanges
       .pipe(
         startWith(''),
         filter(v => typeof v === 'string'),
         switchMap(value => this._filter(value))
       );
-
   }
 
   displaySubstance(subst: Substance): string {
@@ -45,8 +56,8 @@ export class SubstanceSelectorComponent implements OnInit {
   }
 
   search() {
-    if (typeof this.input.value === 'object' && this.input.value.casNumber) {
-      this.selectedChange.emit(this.input.value as Substance);
+    if (this.hasSelectedSubstance) {
+      this.selectedChange.emit(this.input.value as (Substance | Glove));
       this.reset();
     } else {
       if (this.searching) {
@@ -85,13 +96,21 @@ export class SubstanceSelectorComponent implements OnInit {
     this.reset();
   }
 
-  private _filter(value: string): Observable<Substance[]> {
+  private _filter(value: string): Observable<(Substance | Glove)[]> {
     const filterValue = value.toLowerCase();
 
     return this.substances.pipe(map(substances =>
-        substances.filter(option =>
-          option.name.toLowerCase().startsWith(filterValue) || option.casNumber.toLowerCase().startsWith(filterValue)
-        )
+        substances.filter(_opt => {
+          const option = _opt as any;
+          if (option.casNumber) {
+            const opt = option as Substance;
+            return opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue);
+          } else if (option.manufacturer) {
+            const opt = option as Glove;
+            const name = opt.manufacturer.name + ' ' + opt.name;
+            return this.allowGloves && (name.toLowerCase().startsWith(filterValue) || opt.reference.startsWith(filterValue));
+          } else return false;
+        })
       ),
       map(arr => {
         if (arr.length > 50) {
