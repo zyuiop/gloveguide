@@ -12,11 +12,21 @@ class SubstancesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: Execution
   private val db = dbApi database "default"
 
   def createSubstance(substance: Substance) = Future(db.withConnection { implicit conn =>
-    insertOne("substances", substance, ignore = true, columnNaming = SubstanceColumnNaming)
+    insertOne("substances", substance, upsert = true, columnNaming = SubstanceColumnNaming, excludeColumns = Set("id"))
   })
 
   def createSubstances(substances: Iterable[Substance]) = Future(db.withConnection { implicit conn =>
+    substances.map {
+      substance =>
+        val id = insertOne("substances", substance, upsert = true, columnNaming = SubstanceColumnNaming, excludeColumns = Set("id"))
+        substance.copy(id = Some(id))
+    }
+  })
+
+  def batchCreateSubstances(substances: Iterable[Substance]) = Future(db.withConnection { implicit conn =>
     insertMultiple("substances", substances, ignore = true, columnNaming = SubstanceColumnNaming)
+
+    true
   })
 
   def getAllSubstances: Future[List[Substance]] = Future(db.withConnection { implicit conn =>
@@ -24,9 +34,9 @@ class SubstancesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: Execution
       .as(SubstanceRowParser.*)
   })
 
-  def interceptProtecPoResult[T <: Iterable[Substance]](result: T): Future[T] = {
+  def interceptProtecPoResult(result: Iterable[Substance]): Future[Iterable[Substance]] = {
     // Insert the result then return it back
-    createSubstances(result).map(_ => result)
+    createSubstances(result)
   }
 
   def getSubstanceByCasNumber(casNumber: String): Future[Option[Substance]] = Future(db.withConnection { implicit conn =>

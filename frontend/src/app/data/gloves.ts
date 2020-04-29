@@ -5,24 +5,24 @@ export class GloveResult {
   resistance: Rating;
 }
 
-export class GloveManufacturer {
-  name: string;
-  website?: string;
-}
-
 export class GloveMaterial {
   name: string;
   types: string[];
 }
 
 export class GloveGlassHandling {
+  humidifier: string;
   glassHandling: Rating;
   leavesMarks: boolean;
+}
+export class GloveTractionResistance {
+  humidifier: string;
+  tractionResistance: Rating;
 }
 
 export class Glove {
   id?: number;
-  manufacturer: GloveManufacturer;
+  brand: string;
   material: GloveMaterial;
   name: string;
   reference: string;
@@ -36,6 +36,9 @@ export class Glove {
   recommendations: string;
   ranking: number;
   rankingCategory: Rating;
-  glassHandling: Map<string, GloveGlassHandling>; // Map[String, GlassHandling]
-  tractionResistance: Map<string, Rating>; // Map[String, Rating.Value]
+  glassHandling: GloveGlassHandling[]; // Map[String, GlassHandling]
+  tractionResistance: GloveTractionResistance[]; // Map[String, Rating.Value]
+  powdered: boolean;
+  fingerTextured: boolean;
+  vulcanizationAgent?: string;
 }

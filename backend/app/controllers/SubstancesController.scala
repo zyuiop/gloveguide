@@ -34,4 +34,11 @@ class SubstancesController @Inject()(cc: ControllerComponents, pp: ProtecPoAdapt
         .map(substances => Ok(Json.toJson(substances)))
   }
 
+  def getByCas(cas: String) = Action.async {
+    subst.getSubstanceByCasNumber(cas).map {
+      case Some(s) => Ok(Json.toJson(s))
+      case None => NotFound
+    }
+  }
+
 }

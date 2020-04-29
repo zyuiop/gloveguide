@@ -5,26 +5,27 @@ import anorm.SqlParser.scalar
 import anorm.{BatchSql, NamedParameter, SQL, ToParameterList}
 
 package object models {
+
   /**
    * Inserts one item in the given table and returns its id
    *
-   * @param table  the table in which the item shall be inserted
-   * @param item   the item that shall be inserted
-   * @param ignore whether to use INSERT IGNORE instead of INSERT
+   * @param table the table in which the item shall be inserted
+   * @param item  the item that shall be inserted
    * @return the id of the inserted item
    */
-  def insertOne[T](table: String, item: T, ignore: Boolean = false, columnNaming: ColumnNaming = ColumnNaming.SnakeCase)(implicit parameterList: ToParameterList[T], conn: Connection): Int = {
+  def insertOne[T](table: String, item: T, upsert: Boolean = false, columnNaming: ColumnNaming = ColumnNaming.SnakeCase, excludeColumns: Set[String] = Set())(implicit parameterList: ToParameterList[T], conn: Connection): Int = {
     val params: Seq[NamedParameter] = parameterList(item);
-    val names: List[String] = params.map(_.name).toList
+    val names: List[String] = params.map(_.name).filterNot(excludeColumns).toList
     val colNames = names.map(columnNaming) mkString ", "
     val placeholders = names.map { n => s"{$n}" } mkString ", "
-    val command = if (ignore) "INSERT IGNORE" else "INSERT"
+    val updateData = names.map(k => columnNaming(k) + " = {" + k + "}").mkString(", ")
 
-    SQL(s"$command INTO $table ($colNames) VALUES ($placeholders)")
+    SQL("INSERT INTO " + table + "(" + colNames + ") VALUES (" + placeholders + ")" + (if (upsert) " ON DUPLICATE KEY UPDATE " + updateData else ""))
       .bind(item)
-      .executeInsert(scalar[Int].single)
+      .executeInsert(scalar[Int].singleOpt)
+      .getOrElse(0)
   }
-
+  
   /**
    * Inserts items in the given table
    *

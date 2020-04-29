@@ -1,0 +1,11 @@
+<ng-container *ngIf="selectedSubstance$ | async as selectedSubstance; else loading">
+  <h3>Selected substance <b>{{selectedSubstance.name}}</b> (CAS {{selectedSubstance.casNumber}}) <button (click)="addToSolution(selectedSubstance)" mat-stroked-button>Add to solution</button></h3>
+
+
+
+  <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances" [transpose]="true"></app-resistances-table>
+</ng-container>
+
+
+
+<ng-template #loading><mat-spinner></mat-spinner></ng-template>

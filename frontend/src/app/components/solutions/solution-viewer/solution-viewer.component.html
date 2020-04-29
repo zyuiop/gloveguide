@@ -1,0 +1,49 @@
+<table style="width: 100%;">
+  <tr *ngFor="let s of solution.substances">
+    <td>{{s.substance.name}} (CAS number: {{s.substance.casNumber}})</td>
+    <td>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="s.proportion" (ngModelChange)="onChange()">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </td>
+    <td style="width: 45px;">
+      <button mat-icon-button (click)="solution.substances.splice(solution.substances.indexOf(s)) ; onChange()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td>Water or aqueous solution</td>
+
+    <td>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="solution.water" (ngModelChange)="onChange()">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </td>
+    <td style="width: 45px;">
+      <button mat-icon-button (click)="solution.water = 0 ; onChange()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Impurities or unknown substances</td>
+
+    <td>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="solution.impurities" (ngModelChange)="onChange()">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </td>
+    <td style="width: 45px;">
+      <button mat-icon-button (click)="solution.impurities = 0 ; onChange()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+</table>

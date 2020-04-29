@@ -3,6 +3,8 @@ import {Substance} from '../data/substance';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {catchError} from 'rxjs/operators';
+import {handleError} from '../data/errors';
 
 @Injectable({providedIn: 'root'})
 export class SubstancesService {
@@ -13,11 +15,18 @@ export class SubstancesService {
   }
 
   getSubstances(): Observable<Substance[]> {
-    return this.http.get<Substance[]>(environment.backendUrl + '/substances');
+    return this.http.get<Substance[]>(environment.backendUrl + '/substances')
+      .pipe(catchError(handleError));
+  }
+
+  getSubstance(casNumber: string): Observable<Substance> {
+    return this.http.get<Substance>(environment.backendUrl + '/substances/' + casNumber)
+      .pipe(catchError(handleError));
   }
 
   searchSubstances(query: string): Observable<Substance[]> {
-    return this.http.get<Substance[]>(environment.backendUrl + '/substances/search/' + query);
+    return this.http.get<Substance[]>(environment.backendUrl + '/substances/search/' + query)
+      .pipe(catchError(handleError));
   }
 
   updateCachedSubstances() {

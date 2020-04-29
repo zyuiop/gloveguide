@@ -13,8 +13,8 @@
 
         <small class="right">{{option.casNumber}}</small>
       </ng-container>
-      <ng-container *ngIf="option.manufacturer">
-        {{ option.manufacturer.name }} {{ option.name }}
+      <ng-container *ngIf="option.brand">
+        {{ option.brand }} {{ option.name }}
 
         <small class="right">{{option.reference}}</small>
       </ng-container>
@@ -31,7 +31,6 @@
 
 <ng-container *ngIf="searchResults">
   <h3>Search results</h3>
-  <p>Click on any substance below to add it to your solution.</p>
 
   <p *ngIf="searchResults.length === 0"><b>No results found.</b> Try searching with a different query.</p>
 

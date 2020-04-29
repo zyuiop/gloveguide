@@ -18,7 +18,7 @@ export class GlovesService {
   }
 
   updateCachedGloves() {
-    this.pullGloves().subscribe(res => this.cacheSubject.next(res))
+    this.pullGloves().subscribe(res => this.cacheSubject.next(res));
   }
 
   getGloves(): Observable<Glove[]> {
@@ -27,5 +27,13 @@ export class GlovesService {
       this.updateCachedGloves();
     }
     return this.cacheSubject;
+  }
+
+  getGlove(id: number): Observable<Glove> {
+    if (this.nextRefresh < Date.now()) {
+      this.nextRefresh = Date.now() + 10 * 60 * 1000;
+      this.updateCachedGloves();
+    }
+    return this.cacheSubject.pipe(map(lst => lst.filter(g => g.id === id)[0]));
   }
 }

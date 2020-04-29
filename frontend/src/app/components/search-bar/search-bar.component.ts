@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {ResistancesService} from '../../services/resistances.service';
 import {Resistance} from '../../data/resistance';
 import {Glove} from '../../data/gloves';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -15,7 +16,7 @@ export class SearchBarComponent implements OnInit {
   selectedGlove: Glove;
   resistances: Resistance[][];
 
-  constructor(private resistancesService: ResistancesService) { }
+  constructor(private resistancesService: ResistancesService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,14 +25,12 @@ export class SearchBarComponent implements OnInit {
     this.selectedSubstance = undefined;
     this.selectedGlove = undefined;
 
-    if ($event.casNumber) {
-      this.selectedSubstance = $event;
-      this.resistances = undefined;
-      this.resistancesService.getForSubstance(this.selectedSubstance.id).subscribe(res => this.resistances = res);
-    } else if ($event.manufacturer) {
-      this.selectedGlove = $event;
-      this.resistances = undefined;
-      this.resistancesService.getForGlove(this.selectedGlove.id).subscribe(res => this.resistances = res);
+    if ($event?.casNumber) {
+      this.router.navigate(['/', 'substances', $event.casNumber], {state: {data: $event}});
+    } else if ($event?.brand) {
+      this.router.navigate(['/', 'gloves', $event.id], {state: {data: $event}});
+    } else if (!$event) {
+      this.router.navigate(['/']);
     }
   }
 }

@@ -4,6 +4,19 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET        /                                controllers.HomeController.index
-GET        /substances                      controllers.SubstancesController.getAll
-GET        /substances/search/:query        controllers.SubstancesController.search(query: String)
+GET         /                                           controllers.HomeController.index
+GET         /substances                                 controllers.SubstancesController.getAll
+GET         /substances/:cas                            controllers.SubstancesController.getByCas(cas: String)
+GET         /substances/search/:query                   controllers.SubstancesController.search(query: String)
+
+GET         /gloves                                     controllers.GlovesController.getAll
+GET         /gloves/byMaterialType/:materialType        controllers.GlovesController.getByType(materialType: String)
+
++nocsrf
+POST        /solutions/compute                          controllers.SolutionsController.findGloves
+
++nocsrf
+POST        /resistances                                controllers.ResistancesController.setResistances
+GET         /resistances                                controllers.ResistancesController.getResistances
+GET         /resistances/forGlove/:glove                controllers.ResistancesController.getResistancesForGlove(glove: Int)
+GET         /resistances/forSubstance/:substance        controllers.ResistancesController.getResistancesForSubstance(substance: Int)

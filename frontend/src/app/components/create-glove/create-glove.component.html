@@ -1,0 +1,196 @@
+<ng-container *ngIf="glove$ | async as glove; else loading">
+  <h3>{{glove.id ? 'Update' : 'Create'}} a glove</h3>
+
+  <form>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Brand name</mat-label>
+        <input type="text" name="brand" matInput [(ngModel)]="glove.brand"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline" fxFlex>
+        <mat-label>Glove name</mat-label>
+        <input type="text" name="name" matInput [(ngModel)]="glove.name"/>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Glove reference</mat-label>
+      <input type="text" name="reference" matInput [(ngModel)]="glove.reference"/>
+    </mat-form-field>
+
+    <h3>Specifications (EN ISO 374-1)</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <input type="text" name="type" matInput [(ngModel)]="glove.standardType"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Resistance</mat-label>
+      <input type="text" name="resistance" matInput [(ngModel)]="glove.standardResistance"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>AQL</mat-label>
+      <input type="number" min="0" max="1" step="0.05" name="sql" matInput [(ngModel)]="glove.aql"/>
+      <span matSuffix> mm</span>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex appearance="outline">
+        <mat-label>Length (mm)</mat-label>
+        <input type="number" min="0" max="10000" step="10" name="length" matInput [(ngModel)]="glove.length"/>
+        <span matSuffix> mm</span>
+      </mat-form-field>
+
+      <mat-form-field fxFlex appearance="outline">
+        <mat-label>Palm thickness (mm)</mat-label>
+        <input type="number" min="0" max="5" step="0.001" name="thickness" matInput [(ngModel)]="glove.reference"/>
+        <span matSuffix> mm</span>
+      </mat-form-field>
+    </div>
+
+    <h3>Ratings</h3>
+    <app-rating-selector style="width: 100%;" label="Ease to wear" name="easeToWear"
+                         [(selected)]="glove.easeToWear"></app-rating-selector>
+    <app-rating-selector style="width: 100%;" label="Ease to remove" name="easeToRemove"
+                         [(selected)]="glove.easeToRemove"></app-rating-selector>
+
+    <h3>Ranking</h3>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex="30%" appearance="outline">
+        <mat-label>Position</mat-label>
+        <input type="number" min="1" max="10000" step="1" name="position" matInput [(ngModel)]="glove.ranking"/>
+      </mat-form-field>
+      <app-rating-selector fxFlex="70%" label="Category" name="rankingCategory"
+                           [(selected)]="glove.rankingCategory"></app-rating-selector>
+
+    </div>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Recommendations</mat-label>
+      <textarea matInput name="recommendations" [(ngModel)]="glove.recommendations"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="glove.powdered">This glove is powdered</mat-checkbox>
+    <mat-checkbox [(ngModel)]="glove.fingerTextured">This glove is finger textured</mat-checkbox>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Vulcanization agent</mat-label>
+      <input type="text" name="reference" matInput [(ngModel)]="glove.vulcanizationAgent"/>
+    </mat-form-field>
+
+    <h3>Traction resistances</h3>
+
+
+    <h3></h3>
+
+    <button mat-stroked-button>Save</button>
+  </form>
+  <!--
+
+  export class Glove {
+
+    tractionResistance: Map<string, Rating>; // Map[String, Rating.Value]
+
+
+
+    material: GloveMaterial;
+    glassHandling: Map<string, GloveGlassHandling>; // Map[String, GlassHandling]
+  }
+
+
+
+
+  export class GloveMaterial {
+    name: string;
+    types: string[];
+  }
+
+  export class GloveGlassHandling {
+    glassHandling: Rating;
+    leavesMarks: boolean;
+  }
+    <h4>Ranked #{{selectedGlove.ranking}} -
+      <app-rating-badge [rating]="selectedGlove.rankingCategory"></app-rating-badge>
+    </h4>
+
+    <p><b>Recommendations: </b>{{selectedGlove.recommendations}}</p>
+    <br>
+
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Specifications</mat-panel-title>
+        </mat-expansion-panel-header>
+
+
+        <ul>
+          <li>Reference: <code>{{selectedGlove.reference}}</code></li>
+          <li>Material: {{selectedGlove.material.name}} ({{selectedGlove.material.types.join(", ")}})</li>
+          <li>Length: {{selectedGlove.length}}mm</li>
+          <li>Palm thickness: {{selectedGlove.thickness}}mm</li>
+          <li>Finger textured: {{selectedGlove.fingerTextured === true ? 'Yes' : 'No'}}</li>
+          <li>Powdered: {{selectedGlove.powdered === true ? 'Yes' : 'No'}}</li>
+          <li>Vulcanization agent(s): {{selectedGlove.vulcanizationAgent ? selectedGlove.vulcanizationAgent : 'Unknown'}}</li>
+          <li><a href="https://www.iso.org/fr/standard/66421.html">EN ISO 374-1</a>:
+            <ul>
+              <li>Type {{selectedGlove.standardType}}</li>
+              <li>Resistance {{selectedGlove.standardResistance}}</li>
+              <li>AQL {{selectedGlove.aql}}</li>
+            </ul>
+          </li>
+        </ul>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Ratings</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ul>
+          <li>Ease to wear:
+            <app-rating-badge [rating]="selectedGlove.easeToWear"></app-rating-badge>
+          </li>
+          <li>Ease to remove:
+            <app-rating-badge [rating]="selectedGlove.easeToRemove"></app-rating-badge>
+          </li>
+          <li>Glass handling:
+            <ul>
+              <li *ngFor="let pair of selectedGlove.glassHandling | keyvalue">{{pair.key}}:
+                <app-rating-badge [rating]="pair.value.glassHandling"></app-rating-badge>
+                {{pair.value.leavesMarks ? '(leaves marks)' : ''}}</li>
+            </ul>
+          </li>
+          <li>Traction resistance:
+            <ul>
+              <li *ngFor="let pair of selectedGlove.tractionResistance | keyvalue">{{pair.key}}:
+                <app-rating-badge [rating]="pair.value"></app-rating-badge>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </mat-expansion-panel>
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Substances compatibility</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <h3>Specific substances rating</h3>
+        <p>According to internal tests or spec sheets.</p>
+
+        <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances"></app-resistances-table>
+
+
+
+        glassHandling: {}; // Map[String, GlassHandling]
+        tractionResistance: {}; // Map[String, Rating.Value]
+      </mat-expansion-panel>
+    </mat-accordion>
+  -->
+
+</ng-container>
+
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -38,7 +38,4 @@ export class GlovesComponent implements OnInit, OnChanges {
     if (changes.filteredTypes) this.sub.next(this.sub.value);
   }
 
-  resistancesForGlove(glove: Glove) {
-    return this.resistances.getForGlove(glove.id);
-  }
 }

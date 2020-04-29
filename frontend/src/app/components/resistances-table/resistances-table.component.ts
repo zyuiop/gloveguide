@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Resistance, resistanceToClass, resistanceToString, sortResistances} from '../../data/resistance';
+import {Substance} from '../../data/substance';
+import {SolutionsService} from '../../services/solutions.service';
 
 @Component({
   selector: 'app-resistances-table',
@@ -9,7 +11,7 @@ import {Resistance, resistanceToClass, resistanceToString, sortResistances} from
 export class ResistancesTableComponent implements OnInit, OnChanges {
   @Input() resistances: Resistance[][] = [];
   @Input() display: boolean = true;
-  @Input() showIfEmpty: boolean = false;
+  @Input() showIfEmpty: boolean = true;
   @Input() transpose: boolean = false;
 
   resistanceToClass = resistanceToClass;
@@ -18,7 +20,7 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
   substance(row: Resistance[]) {
     return row[0]?.substance?.name + ' (CAS ' + row[0]?.substance?.casNumber + ') ' + row[0]?.concentration + '%';
   }
-  constructor() { }
+  constructor(private solution: SolutionsService) { }
 
   ngOnInit(): void {
   }
@@ -34,4 +36,7 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
     }
   }
 
+  addToSolution(substance: Substance) {
+
+  }
 }

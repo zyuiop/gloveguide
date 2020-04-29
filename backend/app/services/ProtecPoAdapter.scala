@@ -1,6 +1,6 @@
 package services
 
-import data.{Resistance, Substance}
+import data.{Rating, Substance}
 import javax.inject._
 import org.jsoup.Jsoup
 import play.api.Configuration
@@ -71,7 +71,7 @@ class ProtecPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(imp
 
   }
 
-  def searchGloveMaterials(substances: List[(String, Double)], water: Double, impurities: Double) = {
+  def searchGloveMaterials(substances: List[(String, Double)], water: Double, impurities: Double): Future[List[(data.Rating.Value, data.GloveMaterialType.Value)]] = {
     val substanceSeparator = "!!!"
     val listSeparator = "%25%25%25"
 
@@ -97,13 +97,13 @@ class ProtecPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(imp
                 val lines = rows.tail.map(tr => tr.child(0).text())
 
                 val resistance =
-                  if (top.startsWith("Strong")) Resistance.Strong
-                  else if (top.startsWith("Medium")) Resistance.Medium
-                  else if (top.startsWith("Low")) Resistance.Low
+                  if (top.startsWith("Strong")) Rating.Good
+                  else if (top.startsWith("Medium")) Rating.Medium
+                  else if (top.startsWith("Low")) Rating.Poor
                   else null
 
                 if (resistance != null) {
-                  lines.map(material => (resistance, material))
+                  lines.map(material => (resistance, data.GloveMaterialType.withName(material)))
                 } else Nil
               } else Nil
             })
@@ -129,6 +129,7 @@ class ProtecPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(imp
             // Keep only thw first two columns: subst name, and cas number
             .map(row =>
               Substance(
+                id = None,
                 name = row.child(0).text(),
                 casNumber = row.child(1).text()
               ))
@@ -160,6 +161,7 @@ class ProtecPoAdapter @Inject()(httpClient: WSClient, config: Configuration)(imp
               // Keep only thw first two columns: subst name, and cas number
               .map(row =>
                 Substance(
+                  id = None,
                   name = row.child(0).text(),
                   casNumber = row.child(1).text()
                 ))

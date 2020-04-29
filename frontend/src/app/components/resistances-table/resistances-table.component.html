@@ -2,12 +2,15 @@
   <thead class="thead-dark">
   <tr>
     <th>Substance</th>
-    <th *ngFor="let col of resistances[0]">{{col ? col.glove.manufacturer.name + ' ' + col.glove.name : ''}}</th>
+
+    <th *ngFor="let col of resistances[0]">{{col ? col.glove.brand + ' ' + col.glove.name : ''}}</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let row of resistances">
-    <td>{{substance(row)}}</td>
+    <td><a [routerLink]="['/', 'substances', row[0]?.substance?.casNumber]"
+           [state]="{data: row[0]?.substance}">{{substance(row)}}</a>
+    </td>
     <td *ngFor="let col of row" [classList]="resistanceToClass(col)">{{resistanceToString(col)}}</td>
   </tr>
   </tbody>
@@ -22,10 +25,13 @@
   </thead>
   <tbody>
   <tr *ngFor="let row of resistances[0]; index as i">
-    <td>{{row ? row.glove.manufacturer.name + ' ' + row.glove.name : ''}}</td>
+    <td><a [routerLink]="['/', 'gloves', row?.glove?.id]"
+           [state]="{data: row?.glove}">{{row ? row.glove.brand + ' ' + row.glove.name : ''}}</a></td>
     <td *ngFor="let col of resistances" [classList]="resistanceToClass(col[i])">{{resistanceToString(col[i])}}</td>
   </tr>
   </tbody>
 </table>
 
-<p *ngIf="showIfEmpty && display && resistances.length == 0">No data found.</p>
+<div *ngIf="showIfEmpty && display && resistances.length === 0" class="alert alert-warning">
+  <b>Sorry!</b> No resistance data was found for this glove or substance.
+</div>

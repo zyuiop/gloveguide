@@ -20,8 +20,8 @@ class HomeController @Inject()(cc: ControllerComponents, pp: ProtecPoAdapter)(im
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def index = Action.async {
-    pp.getAllSolvents().map(res => Ok(Json.toJson(res)))
+  def index = Action {
+    NotFound
   }
 
 }

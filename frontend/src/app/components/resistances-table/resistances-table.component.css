@@ -1,0 +1,11 @@
+.right {
+  position: absolute;
+  right: 15px;
+  line-height: unset;
+  height: unset;
+  width: unset;
+}
+
+td {
+  position: relative;
+}

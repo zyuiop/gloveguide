@@ -1,0 +1,17 @@
+.right {
+  position: absolute;
+  right: 15px;
+  max-width: 30%;
+}
+
+mat-form-field {
+  width: calc(100% - 40px); /* max size - button size */
+}
+
+mat-list-item:hover {
+  background: rgba(0,0,0,.04);
+}
+
+.popover-body {
+  max-width: content-box;
+}

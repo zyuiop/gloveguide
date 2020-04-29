@@ -7,6 +7,7 @@ import {filter, map, startWith, switchMap} from 'rxjs/operators';
 import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
 import {Glove} from '../../../data/gloves';
 import {GlovesService} from '../../../services/gloves.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-substance-selector',
@@ -25,7 +26,7 @@ export class SubstanceSelectorComponent implements OnInit {
 
   @Output() selectedChange = new EventEmitter<(Substance | Glove)>();
 
-  constructor(public substancesService: SubstancesService, public gloves: GlovesService) {
+  constructor(public substancesService: SubstancesService, public gloves: GlovesService, public snack: MatSnackBar) {
   }
 
   get hasSelectedSubstance() {
@@ -59,10 +60,12 @@ export class SubstanceSelectorComponent implements OnInit {
     if (this.hasSelectedSubstance) {
       this.selectedChange.emit(this.input.value as (Substance | Glove));
       this.reset();
-    } else {
+    } else if (this.input.value && this.input.value.length > 0) {
       if (this.searching) {
         return; // No two parallel searches
       }
+      this.selectedChange.emit(undefined);
+
       this.searching = true;
       this.input.disable();
       this.searchResults = undefined;
@@ -73,6 +76,12 @@ export class SubstanceSelectorComponent implements OnInit {
           this.searchResults = substances;
           this.searching = false;
           this.input.enable();
+        }, err => {
+          this.searching = false;
+          this.input.enable();
+          this.snack.open(err, 'Retry', {duration: 5000})
+            .onAction()
+            .subscribe(_ => this.search());
         });
       console.log('Searching ' + this.input.value);
     }
@@ -105,11 +114,13 @@ export class SubstanceSelectorComponent implements OnInit {
           if (option.casNumber) {
             const opt = option as Substance;
             return opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue);
-          } else if (option.manufacturer) {
+          } else if (option.brand) {
             const opt = option as Glove;
-            const name = opt.manufacturer.name + ' ' + opt.name;
+            const name = opt.brand + ' ' + opt.name;
             return this.allowGloves && (name.toLowerCase().startsWith(filterValue) || opt.reference.startsWith(filterValue));
-          } else return false;
+          } else {
+            return false;
+          }
         })
       ),
       map(arr => {
