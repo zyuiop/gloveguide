@@ -411,7 +411,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       <trans-unit id="5bc7d10ad71f8142df73404df38eab2fe3da3a41" datatype="html">
         <source>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
   search bar and the button "Add to solution".</source>
-        <target state="translated">Cette page vous permet de rapidement rechercher les meilleurs gants pour une solution donnée. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter à la solution"</target>
+        <target state="translated">Cette page vous permet de rapidement rechercher les meilleurs gants pour une solution donnée. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter à la solution".</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">2</context>
@@ -484,14 +484,21 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
+       <trans-unit id="ca956045445fd85db0f80c853c6ccaa96426d71e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>The rating provided here is a general rating.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is not specific to a chemical and doesn't indicate whether a particular glove will resist well to a particular chemical.</source>
+        <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>La notation indiqué dans ce tableau est une note générale.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Elle n'est pas spécifique à un produit chimique et n'indique pas si le gant va bien résister ou non à un produit chimique donné.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1488d75b77d47b52db3949b5ec57784dba042f46" datatype="html">
         <source>
     <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
     <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>list
     of all gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> for alternative options.
   </source>
-        <target state="translated"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Aucun gant trouvé :<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Il n'y a aucun gant de ce type dans la base de données. Merci de chercher dans la <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>liste de tous les gants<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> pour trouver une alternative.
-  </target>
+        <target state="translated"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Aucun gant trouvé :<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Il n'y a aucun gant de ce type dans la base de données. Merci de chercher dans la <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>liste de tous les gants<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> pour trouver une alternative.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
           <context context-type="linenumber">15</context>
@@ -554,6 +561,14 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
           <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="06b8ab3e2764d28e6c6e48e64f30ac7ae31770f1" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Tip:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> search for <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/>glove:<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/> to list gloves &amp; search only in gloves.</source>
+        <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Astuce :<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> cherchez <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/>glove:<x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/> pour lister les gants</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/search-bar/search-bar.component.html</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d309e362d73cda5cc798e127b801936ce3356209" datatype="html">
@@ -692,12 +707,21 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">51</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0d59e87be368f69385cbc08d4d34f99e83c78f98" datatype="html">
+      <trans-unit id="9c246ff00e04c9c8f8781b21624f67418c4d2644" datatype="html">
         <source>Substances compatibility</source>
         <target state="translated">Compatibilité avec les substances</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      
+      <trans-unit id="62f8e0e1b33d5d724d5d429d3197135af976980c" datatype="html">
+        <source>© 2020 - Louis Vialar &amp; contributors for EPFL / GSCP<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>This application is a free software, published under the GNU AGPL v3 license.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Source code available on GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
+        <target state="translated">© 2020 - Louis Vialar &amp; contributeurs pour le GSCP / EPFL<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Cette application est un logiciel libre publié sous licence GNU AGPL v3.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Vous pouvez obtenir une copie du code source sur GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cbf6bb27091b4001dda19f286d33b43e2e280270" datatype="html">
