@@ -1,15 +1,15 @@
 <ng-container [ngSwitch]="strToRating(rating)">
   <ng-container *ngSwitchCase="Rating.GOOD">
-    <span class="badge badge-success">Good</span>
+    <span class="badge badge-success" i18n>Good</span>
   </ng-container>
   <ng-container *ngSwitchCase="Rating.MEDIUM">
-    <span class="badge badge-acceptable">Medium</span>
+    <span class="badge badge-acceptable" i18n>Medium</span>
   </ng-container>
   <ng-container *ngSwitchCase="Rating.PASSABLE">
-    <span class="badge badge-warning">Fair</span>
+    <span class="badge badge-warning" i18n>Fair</span>
   </ng-container>
   <ng-container *ngSwitchCase="Rating.POOR">
-    <span class="badge badge-danger">Poor</span>
+    <span class="badge badge-danger" i18n>Poor</span>
   </ng-container>
   <ng-container *ngSwitchDefault>
     <span class="badge">{{rating}}</span>

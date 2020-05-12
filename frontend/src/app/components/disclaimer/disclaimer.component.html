@@ -1,14 +1,14 @@
 <div class="modal-header">
-  <h4 class="modal-title">Disclaimer</h4>
+  <h4 class="modal-title" i18n>Disclaimer</h4>
 </div>
 <div class="modal-body">
-  <p>This tool aggregates data from multiple sources to help you make the best decision when choosing which gloves to
+  <p i18n>This tool aggregates data from multiple sources to help you make the best decision when choosing which gloves to
   while handling chemicals. As with any computer program, it may have bugs or contain incorrect data. We will assume
   no liability for any damage this tool may indirectly cause.</p>
   <br>
-  <p>This site uses some data from INRS' <a href="https://protecpo.inrs.fr/ProtecPo/">ProtecPo</a>. This web software
+  <p i18n>This site uses some data from INRS' <a href="https://protecpo.inrs.fr/ProtecPo/">ProtecPo</a>. This web software
   comes with its own disclaimer, reproduced here:</p>
-  <p><b>ProtecPo Disclaimer:</b> ProtecPo is a tool helping users to select polymer materials for skin protection when
+  <p i18n><b>ProtecPo Disclaimer:</b> ProtecPo is a tool helping users to select polymer materials for skin protection when
     working with substances. ProtecPo's selection algorithm is based on robust modelling of the interactions between
     substances and polymers, it has been enriched and validated by the addition of physico-chemical and empirical data
     from several sources. <b>Nevertheless, it remains possible that the algorithm may make a selection error.</b>
@@ -17,10 +17,10 @@
     performance tests of your protective materials. ProtecPo does not take the actual conditions where substances and
     protective materials are used into account.</p>
 
-  <p><b>In all cases, you should change your protection immediately upon
+  <p i18n><b>In all cases, you should change your protection immediately upon
     contact with a chemical product, in particular when fine disposable protections are used.</b></p>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-danger" (click)="closePage()">Take me out of here</button>
-  <button type="button" class="btn btn-outline-success" (click)="activeModal.close(true)">I understand the risks</button>
+  <button type="button" class="btn btn-outline-danger" (click)="closePage()" i18n>Take me out of here</button>
+  <button type="button" class="btn btn-outline-success" (click)="activeModal.close(true)" i18n>I understand the risks</button>
 </div>

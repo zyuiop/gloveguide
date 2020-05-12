@@ -1,6 +1,6 @@
 <mat-form-field style="width: 100%">
-  <input type="text" matInput [matAutocomplete]="auto" placeholder="Search for a {{ this.allowGloves ? 'substance or glove' : 'substance'}}..." [formControl]="input"
-         (keypress)="keypress($event)">
+  <mat-label i18n>Search for a {this.allowGloves, select, true { substance or glove } false { substance }}...</mat-label>
+  <input type="text" matInput [matAutocomplete]="auto" [formControl]="input" (keypress)="keypress($event)">
 
   <button mat-icon-button matSuffix (click)="search()">
     <mat-icon>{{hasSelectedSubstance ? 'add' : 'search'}}</mat-icon>
@@ -24,15 +24,15 @@
 </mat-form-field>
 
 <ng-container *ngIf="searching">
-  <h3>Searching in progress...</h3>
-  <p>Please wait while we search for substances...</p>
+  <h3 i18n>Search in progress...</h3>
+  <p i18n>Please wait while we search for substances...</p>
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </ng-container>
 
 <ng-container *ngIf="searchResults">
-  <h3>Search results</h3>
+  <h3 i18n>Search results</h3>
 
-  <p *ngIf="searchResults.length === 0"><b>No results found.</b> Try searching with a different query.</p>
+  <p *ngIf="searchResults.length === 0" i18n><b>No results found.</b> Try searching with a different query.</p>
 
   <mat-list style="width: 100%;">
     <mat-list-item *ngFor="let s of searchResults" style="width: 100%;" (click)="select(s)">

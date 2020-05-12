@@ -1,10 +1,10 @@
 <div class="modal-header">
-  <h4 class="modal-title">Solution composition</h4>
+  <h4 class="modal-title" i18n>Solution composition</h4>
 </div>
 <div class="modal-body">
   <app-solution-viewer></app-solution-viewer>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close()">Close</button>
-  <button type="button" class="btn btn-outline-success" [routerLink]="['/', 'solution']" (click)="activeModal.close()">See results</button>
+  <button type="button" class="btn btn-outline-primary" (click)="activeModal.close()" i18n>Close</button>
+  <button type="button" class="btn btn-outline-success" [routerLink]="['/', 'solution']" (click)="activeModal.close()" i18n>See results</button>
 </div>

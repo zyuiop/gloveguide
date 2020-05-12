@@ -1,19 +1,19 @@
-<h2>Compose a solution</h2>
-<p>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
+<h2 i18n>Compose a solution</h2>
+<p i18n>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
   search bar and the button "Add to solution".</p>
 
 <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
   <div fxFlex>
 
-    <h2 class="mat-h2">Solution</h2>
+    <h2 class="mat-h2" i18n>Solution</h2>
     <app-substance-selector allowGloves="false" (selectedChange)="addSubstance($event) ; onChange()"></app-substance-selector>
     <app-solution-viewer (changes)="onChange()"></app-solution-viewer>
     <br>
-    <button mat-stroked-button (click)="reset()">Reset solution</button>
+    <button mat-stroked-button (click)="reset()" i18n>Reset solution</button>
   </div>
 
   <div fxFlex>
-    <h2 class="mat-h2">Best gloves results for this solution</h2>
+    <h2 class="mat-h2" i18n>Best gloves results for this solution</h2>
 
     <ng-container *ngIf="solution.substances.length > 0">
       <ng-container *ngIf="totalProportion === 100">
@@ -21,14 +21,14 @@
 
         <app-solution-results *ngIf="result" [result]="result"></app-solution-results>
       </ng-container>
-      <div class="alert alert-danger" *ngIf="totalProportion !== 100"><b>
+      <div class="alert alert-danger" *ngIf="totalProportion !== 100" i18n><b>
         <mat-icon>error</mat-icon>
         Calculation impossible:</b> the sum of the proportions of each substance doesn't
         make up to 100%.
       </div>
     </ng-container>
     <ng-container *ngIf="solution.substances.length == 0">
-      <p><i>Add substances to search for gloves</i></p>
+      <p i18n><i>Add substances to search for gloves</i></p>
     </ng-container>
 
   </div>

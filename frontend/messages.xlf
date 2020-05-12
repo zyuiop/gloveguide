@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="ngb.alert.close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/alert/alert.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.previous" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.carousel.next" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel.d.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.previous-month" datatype="html">
+        <source>Previous month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.next-month" datatype="html">
+        <source>Next month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation.d.ts</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-month" datatype="html">
+        <source>Select month</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.datepicker.select-year" datatype="html">
+        <source>Select year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/datepicker/datepicker-navigation-select.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first" datatype="html">
+        <source>««</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous" datatype="html">
+        <source>«</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next" datatype="html">
+        <source>»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last" datatype="html">
+        <source>»»</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.first-aria" datatype="html">
+        <source>First</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.previous-aria" datatype="html">
+        <source>Previous</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.next-aria" datatype="html">
+        <source>Next</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.pagination.last-aria" datatype="html">
+        <source>Last</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/pagination/pagination.d.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.progressbar.value" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{getPercentValue()}}"/>%</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/progressbar/progressbar.d.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-hours" datatype="html">
+        <source>Increment hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.HH" datatype="html">
+        <source>HH</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.hours" datatype="html">
+        <source>Hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-hours" datatype="html">
+        <source>Decrement hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-minutes" datatype="html">
+        <source>Increment minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.MM" datatype="html">
+        <source>MM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.minutes" datatype="html">
+        <source>Minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-minutes" datatype="html">
+        <source>Decrement minutes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.increment-seconds" datatype="html">
+        <source>Increment seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.SS" datatype="html">
+        <source>SS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.seconds" datatype="html">
+        <source>Seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.decrement-seconds" datatype="html">
+        <source>Decrement seconds</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.PM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getAfternoonPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.timepicker.AM" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ i18n.getMorningPeriod() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/timepicker/timepicker.d.ts</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ngb.toast.close-aria" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">node_modules/@ng-bootstrap/ng-bootstrap/toast/toast.d.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="634ad9d7b66735dce881cffce67d2b5d29f88af0" datatype="html">
+        <source>Disclaimer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="66ebff0d690278fd094e7455855ffbb24b52b19e" datatype="html">
+        <source>This tool aggregates data from multiple sources to help you make the best decision when choosing which gloves to
+  while handling chemicals. As with any computer program, it may have bugs or contain incorrect data. We will assume
+  no liability for any damage this tool may indirectly cause.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c253ac3d722ec25eb69d95f631ff417b008a487" datatype="html">
+        <source>This site uses some data from INRS&apos; <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. This web software
+  comes with its own disclaimer, reproduced here:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9e27e5960b8d1f3002d6ee5a31730c630aed8ca8" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>ProtecPo Disclaimer:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> ProtecPo is a tool helping users to select polymer materials for skin protection when
+    working with substances. ProtecPo&apos;s selection algorithm is based on robust modelling of the interactions between
+    substances and polymers, it has been enriched and validated by the addition of physico-chemical and empirical data
+    from several sources. <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Nevertheless, it remains possible that the algorithm may make a selection error.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>
+    ProtecPo&apos;s recommendations should be considered as a first step in the selection of polymers, helping to orient
+    your choice towards appropriate skin protection. However, they are in no way a substitute for experience with or
+    performance tests of your protective materials. ProtecPo does not take the actual conditions where substances and
+    protective materials are used into account.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ea219afd343459c18d4e60054287a286c54cbb26" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>In all cases, you should change your protection immediately upon
+    contact with a chemical product, in particular when fine disposable protections are used.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a6533d71d99f36d8b3c73ba1fbd4476d554ae5c1" datatype="html">
+        <source>Take me out of here</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="955477ec734edabaddd8c77a1e5aa3f61cd32d72" datatype="html">
+        <source>I understand the risks</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7e4c1b0f8579222c14ce982ec6d42409b8806280" datatype="html">
+        <source>EPFL Gloves Guide</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5ae114549c4f54f2d7787e649155e5fa9ce91c1d" datatype="html">
+        <source>Search for a substance or glove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c85b5fd404fb568e66115dd382fd601ec8d1bc4d" datatype="html">
+        <source>Search for a <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="21603485276402e102464fa07ccb810c5122bdcb" datatype="html">
+        <source>{VAR_SELECT, select, true {substance or glove } false {substance } }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1265dade629b76077f2ee5866dc1ed2f8cf03860" datatype="html">
+        <source>Search in progress...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cec252b9723b476c3fd086d9b33c940d86c2d4b5" datatype="html">
+        <source>Please wait while we search for substances...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="49c9ede51100b454f7841b24cd02355c6622bf44" datatype="html">
+        <source>Search results</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="81566b0474bafbb3fd8b1e7719ab32f77d50bb1a" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No results found.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Try searching with a different query.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="30e40b49e4b580de9e92de0dfae0976c0711c7a9" datatype="html">
+        <source>Compose a solution</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5bc7d10ad71f8142df73404df38eab2fe3da3a41" datatype="html">
+        <source>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
+  search bar and the button &quot;Add to solution&quot;.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="29442d33577634d5bb7a8716954281be8955ff30" datatype="html">
+        <source>Solution</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9aa2ebf914ca1bd6be8e4344707dc88a4141d952" datatype="html">
+        <source>Reset solution</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="c2d7653d8b4ee898859f9d0133ff085616f61459" datatype="html">
+        <source>Best gloves results for this solution</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8cf0d2329a6dd060f644e0e84703c53d2c0722cd" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>
+        <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+        Calculation impossible:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> the sum of the proportions of each substance doesn&apos;t
+        make up to 100%.
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7297e6bff68712754c3bbe7dc8cec046a3a8b9eb" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Add substances to search for gloves<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ba346cc3827322037aa35ea0ea0f58fb52b3ab30" datatype="html">
+        <source>List of all gloves</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c93beb25122d1d9d70181704beba38eecbdc2fd" datatype="html">
+        <source><x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Click on any glove to see its specifications and a list of tested chemicals.<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1488d75b77d47b52db3949b5ec57784dba042f46" datatype="html">
+        <source>
+    <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+    <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>list
+    of all gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> for alternative options.
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7bd34bd120146afef0e0d8fa168d9bdabd594b6a" datatype="html">
+        <source>Good</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tools/rating-badge/rating-badge.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7d9241387918beed34b73911e9f9f8ad78b2b0c6" datatype="html">
+        <source>Medium</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tools/rating-badge/rating-badge.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="04b4273eeea3b5ae19d17954cd592e8c34e3edad" datatype="html">
+        <source>Fair</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tools/rating-badge/rating-badge.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a22cbb32d31567b839c7d1418d189d9202dc96af" datatype="html">
+        <source>Poor</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/tools/rating-badge/rating-badge.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4aef408b736dea223360d64037812c24c03f94d1" datatype="html">
+        <source>Substance</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1a689bfa6ca9b295b944c111b00ec6440e26b0af" datatype="html">
+        <source>Glove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="76d144477ad3d082f881218d920dc12f94df1136" datatype="html">
+        <source>
+  <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Sorry!<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> No resistance data was found for this glove or substance.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="d309e362d73cda5cc798e127b801936ce3356209" datatype="html">
+        <source>Selected glove <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/> <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>)
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="09034a00c86c8d56ba2cf26dd0073454cff17420" datatype="html">
+        <source>Ranked #<x id="INTERPOLATION" equiv-text="{{selectedGlove.ranking}}"/> -
+    <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b381c95e5b47f90bca72aa52d21a277f9c42255d" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Recommendations: <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.recommendations}}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="24d296cde12accad8ec0ce1bff09e6aa98ff43d4" datatype="html">
+        <source>Specifications</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="851b0be76defae0c6de92a22aa032aedb7d66fdc" datatype="html">
+        <source>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Reference: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Material: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.material.name}}"/> (<x id="INTERPOLATION_2" equiv-text="{{selectedGlove.material.types.join(&quot;, &quot;)}}"/>)<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Length: <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Palm thickness: <x id="INTERPOLATION_4" equiv-text="{{selectedGlove.thickness}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Finger textured: <x id="ICU" equiv-text="{selectedGlove.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Powdered: <x id="ICU_1" equiv-text="{selectedGlove.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Vulcanization agent(s): <x id="ICU_2" equiv-text="{!selectedGlove.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>:
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Type <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Resistance <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_8" equiv-text="{{selectedGlove.aql}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f3db24ad2365371f4c362988fd78d90857b04455" datatype="html">
+        <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8a7cf89453c7c2f1c76bf41a089725ed04757ded" datatype="html">
+        <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="583af8c484e7a2ff724ed86afc4e6dea9db4859b" datatype="html">
+        <source>{VAR_SELECT, select, true {Unknown} other {<x id="INTERPOLATION" equiv-text="{{selectedGlove.vulcanizationAgent}}"/> } }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="36c043351e21ba63a3cbd0ae4cd17dbfb33634ed" datatype="html">
+        <source>Ratings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7f76ed60135148eb5224663349923dec0132836a" datatype="html">
+        <source>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Ease to wear:
+          <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Ease to remove:
+          <x id="START_TAG_APP-RATING-BADGE_1" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Glass handling:
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
+            <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="INTERPOLATION" equiv-text="{{pair.humidifier}}"/>:
+              <x id="START_TAG_APP-RATING-BADGE_2" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+              <x id="ICU" equiv-text="{pair.leavesMarks, select, true {...}}"/>
+            <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Traction resistance:
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
+            <x id="START_LIST_ITEM_2" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="INTERPOLATION" equiv-text="{{pair.humidifier}}"/>:
+              <x id="START_TAG_APP-RATING-BADGE_3" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+            <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="334ffba59fb3bf0dbf3c2fc3714ebc564fe3b971" datatype="html">
+        <source>{VAR_SELECT, select, true {(leaves marks))} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0d59e87be368f69385cbc08d4d34f99e83c78f98" datatype="html">
+        <source>Substances compatibility</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cbf6bb27091b4001dda19f286d33b43e2e280270" datatype="html">
+        <source>Specific substances rating</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="39103a5cd974bfaea7a8f2ff3db5891f7c1dce93" datatype="html">
+        <source>According to internal tests or spec sheets.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ec938fef671ed8a2ae461ae246e0770719708c59" datatype="html">
+        <source>Solution composition</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f4e529ae5ffd73001d1ff4bbdeeb0a72e342e5c8" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3ec6f4dc4f714b6cf7f62130ea05be1c913a1bdb" datatype="html">
+        <source>See results</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="038dd5124361ab1fb9ad2a8643d4ba8b0912ac59" datatype="html">
+        <source>Selected substance <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Add to solution<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-substance/display-substance.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="46c5f0196dba0f16ffeae8b022c37dd421b5f338" datatype="html">
+        <source>Welcome on EPFL Gloves Guide!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7c1e01de201783557ae9c7d9ab4bd81788b1a5aa" datatype="html">
+        <source>Use the searchbar above to search for substances and gloves. You can also compose solutions along the way - they will
+  be sent to the ProtecPo service to help you find the most suited gloves for your work.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0a1d234960704ecaee3b2b19a644a66e0c3d93d6" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>How to remove gloves?<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Here is an helpful video that demonstrates how to remove contaminated gloves safely:
+  <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>How to remove gloves?<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1a33c3c976a8039b3a7df5751f3e00144475442e" datatype="html">
+        <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>All gloves.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> You can find here a list of all the gloves we offer: <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>All gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="346ae0e81e66601621ff2be607cd525af46108b6" datatype="html">
+        <source>Insert substances</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="48d0e67a5eefa219f85072200bde5c21a6e6a443" datatype="html">
+        <source>The following results are provided by INRS&apos;s <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="730e1cc9cc1e97c0a3b69aa98cfa4dcdd3b8f328" datatype="html">
+        <source>
+  <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+  No recommendation can be made because of a too high uncertainty in the composition.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fc422bc15ac76c7ccb596bbaa3134946d655ffa5" datatype="html">
+        <source>
+  <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>warning<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+  The relevance of the recommendation below may be affected by the uncertainty with regard
+  to the composition. Thick protections should be favoured. Multi-layer laminated materials, made up of co-polymers,
+  also exist.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0628506743848272f317b81448f8f42ce59c78c3" datatype="html">
+        <source>
+  <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
+  No result could be recommended by ProtecPo for this solution.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="79585a6648acb0d2919c123285d53d25df5e9b07" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{glove.material}}"/> gloves provide
+      <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+      resistance.
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bca077a91c5ea895c6f552d4c1c77b44633197f3" datatype="html">
+        <source>Here are the corresponding gloves in our database:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="e53f217bb538c74954a8bbea3f754642b482276a" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{s.substance.name}}"/> (CAS number: <x id="INTERPOLATION_1" equiv-text="{{s.substance.casNumber}}"/>)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-viewer/solution-viewer.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="875a314cccf8b0fc9f76dc33bb902cca4399547f" datatype="html">
+        <source>Water or aqueous solution</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-viewer/solution-viewer.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b37b85f99a8f1e161c1d0ac5891358ddc5fd47c2" datatype="html">
+        <source>Impurities or unknown substances</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/solutions/solution-viewer/solution-viewer.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

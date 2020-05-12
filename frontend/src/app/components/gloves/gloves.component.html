@@ -1,6 +1,6 @@
-<h2 *ngIf="!filteredTypes">List of all gloves</h2>
+<h2 *ngIf="!filteredTypes" i18n>List of all gloves</h2>
 
-<p><i>Click on any glove to see its specifications and a list of tested chemicals.</i></p>
+<p i18n><i>Click on any glove to see its specifications and a list of tested chemicals.</i></p>
 
 <mat-nav-list *ngIf="gloves | async as list; else loading">
   <a mat-list-item *ngFor="let glove of list" [routerLink]="['/', 'gloves', glove.id]"
@@ -12,7 +12,7 @@
 
   </a>
 
-  <div class="alert alert-danger" *ngIf="list.length === 0">
+  <div class="alert alert-danger" *ngIf="list.length === 0" i18n>
     <mat-icon>error</mat-icon>
     <b>No glove found:</b> There is no glove in the database with these types. Please see the <a routerLink="/gloves">list
     of all gloves</a> for alternative options.

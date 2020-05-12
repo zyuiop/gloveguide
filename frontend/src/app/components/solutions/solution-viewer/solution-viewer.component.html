@@ -1,6 +1,6 @@
 <table style="width: 100%;">
   <tr *ngFor="let s of solution.substances">
-    <td>{{s.substance.name}} (CAS number: {{s.substance.casNumber}})</td>
+    <td i18n>{{s.substance.name}} (CAS number: {{s.substance.casNumber}})</td>
     <td>
       <mat-form-field>
         <input matInput type="number" [(ngModel)]="s.proportion" (ngModelChange)="onChange()">
@@ -16,7 +16,7 @@
 
 
   <tr>
-    <td>Water or aqueous solution</td>
+    <td i18n>Water or aqueous solution</td>
 
     <td>
       <mat-form-field>
@@ -32,7 +32,7 @@
   </tr>
 
   <tr>
-    <td>Impurities or unknown substances</td>
+    <td i18n>Impurities or unknown substances</td>
 
     <td>
       <mat-form-field>

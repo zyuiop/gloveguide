@@ -1,11 +1,11 @@
-<p>The following results are provided by INRS's <a href="https://protecpo.inrs.fr/ProtecPo/">ProtecPo</a>.</p>
+<p i18n>The following results are provided by INRS's <a href="https://protecpo.inrs.fr/ProtecPo/">ProtecPo</a>.</p>
 
 
-<div class="alert alert-danger" *ngIf="solution.impurities > 15">
+<div class="alert alert-danger" *ngIf="solution.impurities > 15" i18n>
   <mat-icon>error</mat-icon>
   No recommendation can be made because of a too high uncertainty in the composition.
 </div>
-<div class="alert alert-warning" *ngIf="solution.impurities > 5 && solution.impurities <= 15">
+<div class="alert alert-warning" *ngIf="solution.impurities > 5 && solution.impurities <= 15" i18n>
   <mat-icon>warning</mat-icon>
   The relevance of the recommendation below may be affected by the uncertainty with regard
   to the composition. Thick protections should be favoured. Multi-layer laminated materials, made up of co-polymers,
@@ -13,20 +13,20 @@
 </div>
 
 
-<div class="alert alert-danger" *ngIf="solution.impurities <= 15 && result.length == 0">
+<div class="alert alert-danger" *ngIf="solution.impurities <= 15 && result.length == 0" i18n>
   <mat-icon>error</mat-icon>
   No result could be recommended by ProtecPo for this solution.
 </div>
 
 <div *ngIf="result">
   <ul>
-    <li *ngFor="let glove of result">{{glove.material}} gloves provide
+    <li *ngFor="let glove of result" i18n>{{glove.material}} gloves provide
       <app-rating-badge [rating]="glove.resistance"></app-rating-badge>
       resistance.
     </li>
   </ul>
 
-  <br>Here are the corresponding gloves in our database:
+  <br><span i18n>Here are the corresponding gloves in our database:</span>
 
   <app-gloves [filteredTypes]="gloveTypes"></app-gloves>
 </div>
