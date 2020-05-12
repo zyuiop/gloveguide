@@ -20,6 +20,8 @@
 
 <p i18n><i>Click on any glove to see its specifications and a list of tested chemicals.</i></p>
 
+<p i18n><b>The rating provided here is a general rating.</b> It is not specific to a chemical and doesn't indicate whether a particular glove will resist well to a particular chemical.</p>
+
 <mat-nav-list *ngIf="gloves | async as list; else loading">
   <a mat-list-item *ngFor="let glove of list" [routerLink]="['/', 'gloves', glove.id]"
      [state]="{data: glove}">

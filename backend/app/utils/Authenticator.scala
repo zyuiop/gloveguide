@@ -16,8 +16,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+package utils
 
-.lang-switcher {
-  position: relative;
-  right: 20px;
+import play.api.mvc.Request
+
+trait Authenticator[UserType] {
+  def getUserSession[A](request: Request[A]): Option[UserType]
+
+  def hasValidUser[A](request: Request[A]): Boolean = getUserSession(request).nonEmpty
 }

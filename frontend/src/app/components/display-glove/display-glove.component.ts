@@ -42,6 +42,7 @@ export class DisplayGloveComponent implements OnInit {
     this.selectedGlove$ = this.route.paramMap.pipe(
       map(m => m.get('glove')),
       switchMap(gloveId => {
+        console.log(gloveId)
         // If we're here, the cas number changed!
         if (history.state.data) {
           return of(history.state.data as Glove);

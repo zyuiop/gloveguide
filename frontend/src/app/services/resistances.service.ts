@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -26,13 +26,14 @@ import {GlovesService} from './gloves.service';
 import {SubstancesService} from './substances.service';
 import {map, switchMap, tap} from 'rxjs/operators';
 import {Substance} from '../data/substance';
+import {AuthService} from './auth.service';
 
 @Injectable({providedIn: 'root'})
 export class ResistancesService {
   private nextRefresh = 0;
-  private cacheSubject = new BehaviorSubject<Resistance[][]>([]);
+  private cacheSubject = new ReplaySubject<Resistance[][]>(1);
 
-  constructor(private http: HttpClient, private gloves: GlovesService, private substances: SubstancesService) {
+  constructor(private http: HttpClient, private gloves: GlovesService, private substances: SubstancesService, private auth: AuthService) {
   }
 
   pull(): Observable<Resistance[][]> {
@@ -74,7 +75,7 @@ export class ResistancesService {
       });
 
       return {substance: r[0].substance.id, concentration: r[0].concentration, data: cols};
-    }));
+    }), {headers: {Authorization: this.auth.header}});
   }
 
   private transform(src: Observable<ResistanceRow[]>): Observable<Resistance[][]> {
@@ -89,8 +90,6 @@ export class ResistancesService {
                 map(substances => {
                   const substMap = new Map<number, Substance>();
                   substances.forEach(s => substMap.set(s.id, s));
-
-                  console.log(rows);
 
                   // Build the resistances array
                   return rows.map(row => {
@@ -111,7 +110,7 @@ export class ResistancesService {
             })
           );
         }
-      ), tap(res => console.log(res))
+      )
     );
   }
 

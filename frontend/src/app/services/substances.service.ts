@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
 import {Substance} from '../data/substance';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -27,7 +27,7 @@ import {handleError} from '../data/errors';
 @Injectable({providedIn: 'root'})
 export class SubstancesService {
   private nextRefresh = 0;
-  private cacheSubject = new BehaviorSubject<Substance[]>([]);
+  private cacheSubject = new ReplaySubject<Substance[]>(1);
 
   constructor(private http: HttpClient) {
   }

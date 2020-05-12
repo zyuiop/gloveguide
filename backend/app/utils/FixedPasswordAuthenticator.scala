@@ -16,8 +16,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+package utils
 
-.lang-switcher {
-  position: relative;
-  right: 20px;
+import play.api.Configuration
+import play.api.mvc.Request
+
+class FixedPasswordAuthenticator(config: Configuration) extends Authenticator[String] {
+  private lazy val password = config.get[String]("gloveguide.password")
+
+  override def getUserSession[A](request: Request[A]): Option[String] = {
+    println(s"Expect password '$password' and got '${request.headers.get("Authorization")}'")
+    request.headers.get("Authorization").filter(_ == password)
+  }
 }

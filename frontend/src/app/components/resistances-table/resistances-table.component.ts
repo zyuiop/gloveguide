@@ -20,6 +20,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {Resistance, resistanceToClass, resistanceToString, sortResistances} from '../../data/resistance';
 import {Substance} from '../../data/substance';
 import {SolutionsService} from '../../services/solutions.service';
+import {Glove} from '../../data/gloves';
 
 @Component({
   selector: 'app-resistances-table',
@@ -38,6 +39,7 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
   substance(row: Resistance[]) {
     return row[0]?.substance?.name + ' (CAS ' + row[0]?.substance?.casNumber + ') ' + row[0]?.concentration + '%';
   }
+
   constructor(private solution: SolutionsService) { }
 
   ngOnInit(): void {
@@ -49,12 +51,32 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
         this.resistances = this.resistances.map(r => r.sort(sortResistances));
       } else if (this.resistances.length > 0 && this.resistances[0].length === 1) {
         // Only one glove - sort!
-        this.resistances = this.resistances.sort((r1, r2) => sortResistances(r1[0], r2[0]));
+        this.resistances = this.resistances.filter(arr => arr.length > 0).sort((r1, r2) => sortResistances(r1[0], r2[0]));
       }
     }
   }
 
+  get gloves(): Glove[] {
+    const gloves = [];
+    for (const arr of this.resistances) {
+      for (const col of arr) {
+        if (gloves.indexOf(col.glove) === -1) {
+          gloves.push(col.glove);
+        }
+      }
+    }
+
+    return gloves;
+  }
+
   addToSolution(substance: Substance) {
 
+  }
+
+  /**
+   * Get the resistance value for a glove in a column
+   */
+  resistanceForGlove(col: Resistance[], glove: Glove) {
+    return col.filter(r => r.glove.id === glove.id)[0];
   }
 }

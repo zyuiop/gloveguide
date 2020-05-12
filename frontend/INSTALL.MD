@@ -9,9 +9,6 @@
 In the server configuration, make sure that all requests are redirected to index.html. In nginx, replace the `location /` block with the following one:
 
 ```
-        location / {
-                try_files $uri $uri/ /en-US/index.html;
-        }
 
         location /fr/ {
                 try_files $uri $uri/ /fr/index.html;
@@ -19,6 +16,22 @@ In the server configuration, make sure that all requests are redirected to index
 
         location /en-US/ {
                 try_files $uri $uri/ /en-US/index.html;
+        }
+
+```
+
+To enable automatic language selection based on headers, you can install `nginx-extras` and add the following block in the `server` section:
+
+```
+        location = / {
+                rewrite_by_lua '
+                        for lang in (ngx.var.http_accept_language .. ","):gmatch("([^,]*),") do
+                                if string.sub(lang, 0, 2) == "es" then
+                                        ngx.redirect("/fr/")
+                                end
+                        end
+                        ngx.redirect("/en-US/")
+                ';
         }
 
 ```

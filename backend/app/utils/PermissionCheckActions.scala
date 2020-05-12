@@ -16,8 +16,19 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+package utils
 
-.lang-switcher {
-  position: relative;
-  right: 20px;
+import javax.inject.Inject
+import play.api.mvc.{ActionBuilder, ActionFilter, AnyContent, BodyParsers, Request, Results}
+
+import scala.concurrent.{ExecutionContext, Future}
+
+class PermissionCheckActions @Inject()(val parser: BodyParsers.Default, authenticator: Authenticator[_])(implicit val executionContext: ExecutionContext) extends ActionBuilder[Request, AnyContent] with ActionFilter[Request] {
+  override def filter[A](request: Request[A]) = Future {
+    if (!authenticator.hasValidUser(request))
+      Some(Results.Forbidden)
+    else
+      Option.empty
+  }
+
 }

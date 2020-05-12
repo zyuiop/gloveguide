@@ -42,10 +42,10 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of resistances[0]; index as i">
-    <td><a [routerLink]="['/', 'gloves', row?.glove?.id]"
-           [state]="{data: row?.glove}">{{row ? row.glove.brand + ' ' + row.glove.name : ''}}</a></td>
-    <td *ngFor="let col of resistances" [classList]="resistanceToClass(col[i])">{{resistanceToString(col[i])}}</td>
+  <tr *ngFor="let glove of gloves">
+    <td><a [routerLink]="['/', 'gloves', glove.id]"
+           [state]="{data: glove}">{{ glove.brand + ' ' + glove.name }}</a></td>
+    <td *ngFor="let col of resistances" [classList]="resistanceToClass(resistanceForGlove(col, glove))">{{resistanceToString(resistanceForGlove(col, glove))}}</td>
   </tr>
   </tbody>
 </table>

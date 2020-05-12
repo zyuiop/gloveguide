@@ -23,6 +23,7 @@ import javax.inject._
 import models.{DilutionsModel, ResistancesModel}
 import play.api.libs.json.Json
 import play.api.mvc._
+import utils.PermissionCheckActions
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -30,9 +31,9 @@ import scala.concurrent.{ExecutionContext, Future}
  * This controller handles all queries to the substances database
  */
 @Singleton
-class ResistancesController @Inject()(cc: ControllerComponents, dilutions: DilutionsModel, resistances: ResistancesModel)(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class ResistancesController @Inject()(cc: ControllerComponents, dilutions: DilutionsModel, resistances: ResistancesModel, PermissionCheck: PermissionCheckActions)(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-  def setResistances: Action[List[GloveResistanceRow]] = Action.async(parse.json[List[GloveResistanceRow]]) { req =>
+  def setResistances: Action[List[GloveResistanceRow]] = PermissionCheck.async(parse.json[List[GloveResistanceRow]]) { req =>
     val futures = req.body.map { row =>
       dilutions.getOrCreateDilution(row.substance, row.concentration).flatMap { dilutionId => {
         Future.sequence(row.data.map(cell => resistances.setResistance(dilutionId, cell)))

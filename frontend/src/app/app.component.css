@@ -19,3 +19,21 @@
 .container {
   margin-top: 30px;
 }
+
+.lang-switcher {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: 20px;
+}
+
+.login-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  right: 20px;
+}
+
+.footer {
+  margin-top: 5em;
+}

@@ -1,0 +1,4 @@
+<ng-container [ngSwitch]="locale">
+  <p *ngSwitchCase="'fr'"><a href="/en-US{{router.url}}">EN</a> | <b>FR</b></p>
+  <p *ngSwitchDefault><b>EN</b> | <a href="/fr{{router.url}}">FR</a></p>
+</ng-container>

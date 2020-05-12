@@ -56,6 +56,8 @@ import { CreateGloveComponent } from './components/create-glove/create-glove.com
 import { RatingSelectorComponent } from './components/selectors/rating-selector/rating-selector.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     SolutionViewerComponent,
     SolutionModalComponent,
     CreateGloveComponent,
-    RatingSelectorComponent
+    RatingSelectorComponent,
+    LocaleSwitcherComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

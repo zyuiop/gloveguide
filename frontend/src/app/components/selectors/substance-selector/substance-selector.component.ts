@@ -34,7 +34,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class SubstanceSelectorComponent implements OnInit {
 
-  @Input() allowGloves: boolean = true;
+  @Input() allowGloves = true;
 
   substances: Observable<(Substance | Glove)[]>;
   filteredSubstances: Observable<(Substance | Glove)[]>;
@@ -124,17 +124,23 @@ export class SubstanceSelectorComponent implements OnInit {
   }
 
   private _filter(value: string): Observable<(Substance | Glove)[]> {
-    const filterValue = value.toLowerCase();
+    let filterValue = value.toLowerCase();
+    const parts = filterValue.split(':');
+    const onlyGloves = parts[0].toLowerCase() === 'gloves' || parts[0].toLowerCase() === 'glove';
+    filterValue = onlyGloves ? (parts.length > 1 ? parts[1].trim() : '') : filterValue;
+
+    console.log('Filter: ' + filterValue + ', only gloves:' + onlyGloves)
 
     return this.substances.pipe(map(substances =>
         substances.filter(_opt => {
           const option = _opt as any;
           if (option.casNumber) {
             const opt = option as Substance;
-            return opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue);
+            return !onlyGloves && (opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue));
           } else if (option.brand) {
             const opt = option as Glove;
             const name = opt.brand + ' ' + opt.name;
+            console.log('glove ' + name + ' -- ' + this.allowGloves + ' && ( ' + name.toLowerCase().startsWith(filterValue) + ' || ' + opt.reference.startsWith(filterValue) + ')');
             return this.allowGloves && (name.toLowerCase().startsWith(filterValue) || opt.reference.startsWith(filterValue));
           } else {
             return false;

@@ -16,8 +16,25 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+package controllers
 
-.lang-switcher {
-  position: relative;
-  right: 20px;
+import javax.inject.{Inject, Singleton}
+import play.api.mvc.{AbstractController, ControllerComponents}
+import services.ProtecPoAdapter
+import utils.PermissionCheckActions
+
+import scala.concurrent.ExecutionContext
+
+@Singleton
+class LoginController @Inject()(cc: ControllerComponents, PermissionCheck: PermissionCheckActions)(implicit ec: ExecutionContext) extends AbstractController(cc) {
+
+  /**
+   * This is a dummy action, as we don't do proper authentication for now but only use a hardcoded password.
+   * @return
+   */
+  def check = PermissionCheck {
+    Ok
+  }
+
 }
+

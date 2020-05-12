@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject, Subject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -26,7 +26,7 @@ import {map} from 'rxjs/operators';
 @Injectable({providedIn: 'root'})
 export class GlovesService {
   private nextRefresh = 0;
-  private cacheSubject = new BehaviorSubject<Glove[]>([]);
+  private cacheSubject = new ReplaySubject<Glove[]>(1);
 
   constructor(private http: HttpClient) {
   }

@@ -12,6 +12,8 @@ GET         /substances/search/:query                   controllers.SubstancesCo
 GET         /gloves                                     controllers.GlovesController.getAll
 GET         /gloves/byMaterialType/:materialType        controllers.GlovesController.getByType(materialType: String)
 
+GET         /login/check                                controllers.LoginController.check
+
 +nocsrf
 POST        /solutions/compute                          controllers.SolutionsController.findGloves
 

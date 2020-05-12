@@ -29,9 +29,9 @@ export class Resistance {
 }
 
 export function sortResistances(r1: Resistance, r2: Resistance) {
-  if (r1.min === undefined) {
-    return r2.min === undefined ? 0 : 1;
-  } else if (r2.min === undefined) {
+  if (r1 === undefined || r1.min === undefined) {
+    return (r2 === undefined || r2.min === undefined) ? 0 : 1;
+  } else if (r2 === undefined || r2.min === undefined) {
     return -1;
   } else {
     if (r1.min === r2.min) {
@@ -43,6 +43,10 @@ export function sortResistances(r1: Resistance, r2: Resistance) {
 }
 
 export function resistanceToString(resistance: Resistance) {
+  if (resistance === undefined) {
+    return 'No data';
+  }
+
   const min = resistance.min;
   const max = resistance.max;
 
@@ -66,6 +70,8 @@ export function resistanceToString(resistance: Resistance) {
  * @param resistance
  */
 export function resistanceToClass(resistance: Resistance) {
+  if (resistance === undefined) return [];
+
   const min = resistance.min;
   const max = resistance.max;
 

@@ -20,14 +20,15 @@
 
 
 <mat-form-field style="width: 100%;">
-  <label for="textarea">Copy/Paste the table from excel here: (please copy the first line for the gloves brands and the
-    first two columns for the CAS number and the tested concentration)</label>
+  <label for="textarea">Copy/Paste the table from excel here.<br>
+    We expect the first two columns to be the CAS number and the concentration.<br>
+    We expect the first line to be the glove reference number.</label>
   <textarea id="textarea" matInput style="width: 100%;" [ngModel]="null"
             (ngModelChange)="contentChange($event)"></textarea>
 </mat-form-field>
 
 <br>
-<ng-container *ngIf="result || errors">
+<ng-container *ngIf="(result && result.length > 0) || (errors && errors.length > 0)">
   <h3>Preview insertion</h3>
   <p *ngIf="errors.length === 0 && result.length > 0">If this sounds good to you, click the "Insert" button down the page.</p>
 
