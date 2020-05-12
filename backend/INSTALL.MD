@@ -24,9 +24,9 @@ Then, indicate the DB connection details in `/etc/gloveguide/database.conf`.
 
 You'll also need to change some parameters in the application configuration (`/etc/gloveguide/application.conf`).
 - **Mandatory** `play.http.secret.key`: set it to a random string
+- **Mandatory** `play.filters.cors.allowedOrigins`: set the URL of the frontend app here
 - `http.port`: 9000 by default, change if you want the server to listen on a different port
 - `play.filters.hosts.allowed`: change the port if you changed it in `http.port`
-- **Mandatory** `play.filters.cors.allowedOrigins`: set the URL of the frontend app here
 
 In the `/etc/nginx/sites-enabled/default` site (or any other custom site), add the following section (in the `server` section):
 
@@ -42,9 +42,6 @@ In the `/etc/nginx/sites-enabled/default` site (or any other custom site), add t
 
 The `proxy_pass` section must be adapted to the actual port chosen for the app, via the configuration parameter `http.port` in `/etc/gloveguide/application.conf`.
 
-
-
-
 # Updating
 
 ## On a debian system
@@ -54,3 +51,5 @@ You'll need to build the project using `sbt debian:packageBin`. After some time,
 Upload this file to the server, then run `dpkg -i <the package file>`.
 
 You can then restart the service using `systemctl restart gloveguide`. 
+
+> When restarting, you may need to remove the PID at `/var/run/gloveguide/play.pid`. Use the following command: `systemctl stop gloveguide ; rm /var/run/gloveguide/play.pid ; systemctl start gloveguide`.
