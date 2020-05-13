@@ -22,3 +22,7 @@ POST        /resistances                                controllers.ResistancesC
 GET         /resistances                                controllers.ResistancesController.getResistances
 GET         /resistances/forGlove/:glove                controllers.ResistancesController.getResistancesForGlove(glove: Int)
 GET         /resistances/forSubstance/:substance        controllers.ResistancesController.getResistancesForSubstance(substance: Int)
+
+GET         /files                                      controllers.FilesController.getFiles
++nocsrf
+POST        /files                                      controllers.FilesController.uploadFile

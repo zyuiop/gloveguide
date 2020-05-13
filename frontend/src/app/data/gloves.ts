@@ -59,4 +59,7 @@ export class Glove {
   powdered: boolean;
   fingerTextured: boolean;
   vulcanizationAgent?: string;
+
+  picture: string;
+  boxPicture: string;
 }

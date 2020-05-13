@@ -1,0 +1,14 @@
+<div class="border" style="padding: 5px">
+    <p class="text-disabled">Click on a picture to select it</p>
+    <img *ngFor="let img of images" [src]="img" (click)="click(img)"
+         class="img-thumbnail" [class.border-info]="selected && selected === img" width="100px"/>
+
+    <br><br>
+    <p><b>Add an image</b> PNG, JPG or BMP, max 150 KB</p>
+    <input type="file" class="form-control-file" #fu (change)="handleFileInput($event.target.files, fu)">
+    <div class="progress" *ngIf="progress >= 0">
+      <div class="progress-bar" [class.bg-success]="progress >= 1" role="progressbar"
+           [ngStyle]="{ width: (progress * 100) + '%' }"></div>
+    </div>
+</div>
+

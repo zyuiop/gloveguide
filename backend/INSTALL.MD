@@ -42,6 +42,16 @@ In the `/etc/nginx/sites-enabled/default` site (or any other custom site), add t
 
 The `proxy_pass` section must be adapted to the actual port chosen for the app, via the configuration parameter `http.port` in `/etc/gloveguide/application.conf`.
 
+TODO:
+- uploads config
+- admin password
+- 
+```
+  root@sbvm0028:~# mkdir /var/www/uploads
+  root@sbvm0028:~# chown gloveguide:gloveguide /var/www/uploads
+```
+- associated configs with uploads (nginx/server)
+
 # Updating
 
 ## On a debian system

@@ -36,6 +36,24 @@
       <input type="text" name="reference" matInput [(ngModel)]="glove.reference"/>
     </mat-form-field>
 
+
+    <h3>Glove picture</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Glove picture URL</mat-label>
+      <input type="text" name="picture" matInput [(ngModel)]="glove.picture"/>
+    </mat-form-field>
+
+    <app-uploads [(selected)]="glove.picture"></app-uploads>
+    <br>
+    <h3>Gloves box picture</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Gloves box picture URL</mat-label>
+      <input type="text" name="boxPicture" matInput [(ngModel)]="glove.boxPicture"/>
+    </mat-form-field>
+
+    <app-uploads [(selected)]="glove.boxPicture"></app-uploads>
+
+    <br>
     <h3>Specifications (EN ISO 374-1)</h3>
     <mat-form-field appearance="outline">
       <mat-label>Type</mat-label>
