@@ -1,9 +1,9 @@
 import java.sql.PreparedStatement
 
-import anorm._
-import anorm.SqlParser._
 import anorm.Macro.ColumnNaming
-import anorm.{Column, Macro, RowParser, SqlParser, ToParameterList, ToStatement}
+import anorm.SqlParser._
+import anorm.{Column, Macro, RowParser, ToParameterList, ToStatement, _}
+
 /*
  *     EPFL Gloves Guide - An application to help you choose the best gloves for a chemical work
  *     Copyright (C) 2020 - Louis Vialar & EPFL GSCP
@@ -22,7 +22,7 @@ import anorm.{Column, Macro, RowParser, SqlParser, ToParameterList, ToStatement}
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import play.api.libs.json.{Format, Json, OFormat}
+import play.api.libs.json.{Format, Json}
 
 package object data {
 
@@ -61,23 +61,33 @@ package object data {
 
   implicit val GlovesTractionResistanceFormat: Format[GlovesTractionResistance] = Json.format[GlovesTractionResistance]
   implicit val GlovesTractionResistanceRowParser: RowParser[GlovesTractionResistance] =
-    (str("gloves_traction_resistance_humidifier") ~ str("traction_resistance")).map( { case humidifier ~ resistance => GlovesTractionResistance(humidifier, Rating.withName(resistance))})
+    (str("gloves_traction_resistance_humidifier") ~ str("traction_resistance")).map({ case humidifier ~ resistance => GlovesTractionResistance(humidifier, Rating.withName(resistance)) })
   implicit val GlovesTractionResistanceParameterList: ToParameterList[GlovesTractionResistance] = Macro.toParameters[GlovesTractionResistance]()
 
+  case class GloveSpecifications(
+                                  length: Int, thickness: BigDecimal, standardType: String, standardResistance: String,
+                                  aql: BigDecimal, powdered: Boolean, fingerTextured: Boolean,
+                                  vulcanizationAgent: Option[String], disposable: Boolean
+                                )
+
+  // There is a limit of 22 fields for a method in Scala 2.13
+  // We therefore need to split this case class in two
   case class Glove(
                     id: Int,
                     brand: String,
                     materials: Set[GloveMaterialType.Value],
-                    name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String, standardResistance: String,
-                    aql: BigDecimal, easeToWear: Rating.Value, easeToRemove: Rating.Value,
+                    name: String, reference: String,
+                    specifications: GloveSpecifications,
+                    easeToWear: Rating.Value, easeToRemove: Rating.Value,
                     recommendations: String, ranking: Int, rankingCategory: Rating.Value,
 
                     glassHandling: Set[GlassHandling],
                     tractionResistance: Set[GlovesTractionResistance],
 
-                    powdered: Boolean, fingerTextured: Boolean, vulcanizationAgent: Option[String]
+                    imageUrl: Option[String], boxImageUrl: Option[String]
                   )
 
+  implicit val GloveSpecsFormat: Format[GloveSpecifications] = Json.format[GloveSpecifications]
   implicit val GloveFormat: Format[Glove] = Json.format[Glove]
 
 

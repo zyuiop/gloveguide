@@ -18,7 +18,7 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Glove, GloveGlassHandling, GloveMaterials, GloveTractionResistance} from '../../data/gloves';
+import {Glove, GloveGlassHandling, GloveMaterials, GloveSpecifications, GloveTractionResistance} from '../../data/gloves';
 import {ResistancesService} from '../../services/resistances.service';
 import {GlovesService} from '../../services/gloves.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -49,10 +49,12 @@ export class CreateGloveComponent implements OnInit {
           return this.gloves.loadGlove(Number.parseInt(gloveId, 10));
         } else {
           const glove = new Glove();
-          glove.powdered = false;
-          glove.fingerTextured = false;
+          glove.specifications = new GloveSpecifications();
+          glove.specifications.powdered = false;
+          glove.specifications.fingerTextured = false;
           glove.tractionResistance = [new GloveTractionResistance()];
           glove.glassHandling = [new GloveGlassHandling()];
+          glove.specifications.disposable = true;
           return of(glove);
         }
       })

@@ -35,17 +35,25 @@ export class GloveTractionResistance {
 
 export const GloveMaterials = ['Butyl', 'Fluoroelastomer', 'Latex', 'Neoprene', 'Nitrile'];
 
+export class GloveSpecifications {
+  length: number;
+  thickness: number;
+  standardType: string;
+  standardResistance: string;
+  aql: number;
+  powdered: boolean;
+  fingerTextured: boolean;
+  disposable: boolean;
+  vulcanizationAgent?: string;
+}
+
 export class Glove {
   id?: number;
   brand: string;
   materials: string[];
   name: string;
   reference: string;
-  length: number;
-  thickness: number;
-  standardType: string;
-  standardResistance: string;
-  aql: number;
+  specifications: GloveSpecifications;
   easeToWear: Rating;
   easeToRemove: Rating;
   recommendations: string;
@@ -53,10 +61,7 @@ export class Glove {
   rankingCategory: Rating;
   glassHandling: GloveGlassHandling[]; // Map[String, GlassHandling]
   tractionResistance: GloveTractionResistance[]; // Map[String, Rating.Value]
-  powdered: boolean;
-  fingerTextured: boolean;
-  vulcanizationAgent?: string;
 
-  picture?: string;
-  boxPicture?: string;
+  imageUrl?: string;
+  boxImageUrl?: string;
 }

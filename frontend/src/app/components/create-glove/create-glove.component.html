@@ -46,48 +46,61 @@
     <h3>Glove picture</h3>
     <mat-form-field appearance="outline">
       <mat-label>Glove picture URL</mat-label>
-      <input type="text" name="picture" matInput [(ngModel)]="glove.picture"/>
+      <input type="text" name="picture" matInput [(ngModel)]="glove.imageUrl"/>
     </mat-form-field>
 
-    <app-uploads [(selected)]="glove.picture"></app-uploads>
+    <app-uploads [(selected)]="glove.imageUrl"></app-uploads>
     <br>
     <h3>Gloves box picture</h3>
     <mat-form-field appearance="outline">
       <mat-label>Gloves box picture URL</mat-label>
-      <input type="text" name="boxPicture" matInput [(ngModel)]="glove.boxPicture"/>
+      <input type="text" name="boxPicture" matInput [(ngModel)]="glove.boxImageUrl"/>
     </mat-form-field>
 
-    <app-uploads [(selected)]="glove.boxPicture"></app-uploads>
+    <app-uploads [(selected)]="glove.boxImageUrl"></app-uploads>
 
     <br>
     <h3>Specifications (EN ISO 374-1)</h3>
     <mat-form-field appearance="outline">
       <mat-label>Type</mat-label>
-      <input type="text" name="type" matInput [(ngModel)]="glove.standardType" required />
+      <input type="text" name="type" matInput [(ngModel)]="glove.specifications.standardType" required />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Resistance</mat-label>
-      <input type="text" name="resistance" matInput [(ngModel)]="glove.standardResistance" required />
+      <input type="text" name="resistance" matInput [(ngModel)]="glove.specifications.standardResistance" required />
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>AQL</mat-label>
-      <input type="number" min="0" max="1" step="0.05" name="sql" matInput [(ngModel)]="glove.aql" required />
+      <input type="number" min="0" max="1" step="0.05" name="sql" matInput [(ngModel)]="glove.specifications.aql" required />
     </mat-form-field>
 
     <div fxLayout="row" fxLayoutGap="20px">
       <mat-form-field fxFlex appearance="outline">
         <mat-label>Length (mm)</mat-label>
-        <input type="number" min="0" max="10000" step="10" name="length" matInput [(ngModel)]="glove.length" required />
+        <input type="number" min="0" max="10000" step="10" name="length" matInput [(ngModel)]="glove.specifications.length" required />
         <span matSuffix> mm</span>
       </mat-form-field>
 
       <mat-form-field fxFlex appearance="outline">
         <mat-label>Palm thickness (mm)</mat-label>
-        <input type="number" min="0" max="5" step="0.001" name="thickness" matInput [(ngModel)]="glove.thickness" required />
+        <input type="number" min="0" max="5" step="0.001" name="thickness" matInput [(ngModel)]="glove.specifications.thickness" required />
         <span matSuffix> mm</span>
       </mat-form-field>
     </div>
+
+
+
+    <mat-checkbox [(ngModel)]="glove.specifications.powdered" name="powdered">This glove is powdered</mat-checkbox><br>
+    <mat-checkbox [(ngModel)]="glove.specifications.disposable" name="disposable">This glove is disposable</mat-checkbox><br>
+    <mat-checkbox [(ngModel)]="glove.specifications.fingerTextured" name="fingerTextured">This glove is finger textured</mat-checkbox>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Vulcanization agent</mat-label>
+      <input type="text" name="vulcanizationAgent" matInput [(ngModel)]="glove.specifications.vulcanizationAgent"/>
+    </mat-form-field>
+
 
     <h3>Ratings</h3>
     <app-rating-selector style="width: 100%;" label="Ease to wear" name="easeToWear"
@@ -113,14 +126,6 @@
       <textarea matInput name="recommendations" [(ngModel)]="glove.recommendations" required></textarea>
     </mat-form-field>
 
-    <mat-checkbox [(ngModel)]="glove.powdered" name="powdered">This glove is powdered</mat-checkbox><br>
-    <mat-checkbox [(ngModel)]="glove.fingerTextured" name="fingerTextured">This glove is finger textured</mat-checkbox>
-
-
-    <mat-form-field appearance="outline">
-      <mat-label>Vulcanization agent</mat-label>
-      <input type="text" name="vulcanizationAgent" matInput [(ngModel)]="glove.vulcanizationAgent"/>
-    </mat-form-field>
 
     <br><br>
     <h3>Traction resistances</h3>

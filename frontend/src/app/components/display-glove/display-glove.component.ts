@@ -24,6 +24,7 @@ import {map, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Glove} from '../../data/gloves';
 import {GlovesService} from '../../services/gloves.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-display-glove',
@@ -35,7 +36,7 @@ export class DisplayGloveComponent implements OnInit {
   resistances$: Observable<Resistance[][]>;
 
 
-  constructor(private resistancesService: ResistancesService, private gloves: GlovesService, private route: ActivatedRoute) {
+  constructor(private resistancesService: ResistancesService, private gloves: GlovesService, private route: ActivatedRoute, public auth: AuthService) {
   }
 
   ngOnInit(): void {

@@ -18,12 +18,16 @@
 
 <ng-container *ngIf="selectedGlove$ | async as selectedGlove; else loading">
   <h3 i18n>Selected glove <b>{{selectedGlove.brand}} {{selectedGlove.name}}</b> (Ref {{selectedGlove.reference}})
+    <button mat-raised-button color="accent" routerLink="update" *ngIf="auth.isLoggedIn()">Update this glove</button>
+
   </h3>
   <h4 i18n>Ranked #{{selectedGlove.ranking}} -
     <app-rating-badge [rating]="selectedGlove.rankingCategory"></app-rating-badge>
   </h4>
 
   <p i18n><b>Recommendations: </b>{{selectedGlove.recommendations}}</p>
+  <br>
+
   <br>
 
   <mat-accordion>
@@ -37,16 +41,17 @@
       <ul i18n>
         <li>Reference: <code>{{selectedGlove.reference}}</code></li>
         <li>Material: {{selectedGlove.materials.join(", ")}}</li>
-        <li>Length: {{selectedGlove.length}}mm</li>
-        <li>Palm thickness: {{selectedGlove.thickness}}mm</li>
-        <li>Finger textured: {selectedGlove.fingerTextured, select, true {Yes} false {No}}</li>
-        <li>Powdered: {selectedGlove.powdered, select, true {Yes} false {No}}</li>
-        <li>Vulcanization agent(s): {!selectedGlove.vulcanizationAgent, select, true {Unknown} other { {{selectedGlove.vulcanizationAgent}} } } </li>
+        <li>Length: {{selectedGlove.specifications.length}}mm</li>
+        <li *ngIf="selectedGlove.specifications.disposable">This glove is disposable.</li>
+        <li>Palm thickness: {{selectedGlove.specifications.thickness}}mm</li>
+        <li>Finger textured: {selectedGlove.specifications.fingerTextured, select, true {Yes} false {No}}</li>
+        <li>Powdered: {selectedGlove.specifications.powdered, select, true {Yes} false {No}}</li>
+        <li>Vulcanization agent(s): {!selectedGlove.specifications.vulcanizationAgent, select, true {Unknown} other { {{selectedGlove.specifications.vulcanizationAgent}} } } </li>
         <li><a href="https://www.iso.org/fr/standard/66421.html">EN ISO 374-1</a>:
           <ul>
-            <li>Type {{selectedGlove.standardType}}</li>
-            <li>Resistance {{selectedGlove.standardResistance}}</li>
-            <li>AQL {{selectedGlove.aql}}</li>
+            <li>Type {{selectedGlove.specifications.standardType}}</li>
+            <li>Resistance {{selectedGlove.specifications.standardResistance}}</li>
+            <li>AQL {{selectedGlove.specifications.aql}}</li>
           </ul>
         </li>
       </ul>

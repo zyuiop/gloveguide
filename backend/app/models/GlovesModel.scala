@@ -25,7 +25,6 @@ import anorm.SqlParser._
 import anorm._
 import data._
 import javax.inject._
-import play.api.mvc.Result
 
 import scala.collection.immutable
 import scala.concurrent.{ExecutionContext, Future}
@@ -46,14 +45,16 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
   case class DatabaseGlove(id: Option[Int], brand: String, name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String,
                            standardResistance: String, standardAql: BigDecimal, easeToWear: Rating.Value, easeToRemove: Rating.Value,
                            recommendations: String, ranking: Int, rankingCategory: Rating.Value,
-                           powdered: Boolean, fingerTextured: Boolean, vulcanizationAgent: Option[String])
+                           powdered: Boolean, fingerTextured: Boolean, vulcanizationAgent: Option[String],
+                           imageUrl: Option[String], boxImageUrl: Option[String], disposable: Boolean)
 
   private def toDatabaseGlove(glove: Glove): DatabaseGlove = {
     DatabaseGlove(
       id = (if (glove.id != 0) Some(glove.id) else None),
-      glove.brand, glove.name, glove.reference, glove.length, glove.thickness, glove.standardType, glove.standardResistance,
-      glove.aql, glove.easeToWear, glove.easeToRemove, glove.recommendations, glove.ranking, glove.rankingCategory,
-      glove.powdered, glove.fingerTextured, glove.vulcanizationAgent
+      glove.brand, glove.name, glove.reference, glove.specifications.length, glove.specifications.thickness, glove.specifications.standardType, glove.specifications.standardResistance,
+      glove.specifications.aql, glove.easeToWear, glove.easeToRemove, glove.recommendations, glove.ranking, glove.rankingCategory,
+      glove.specifications.powdered, glove.specifications.fingerTextured, glove.specifications.vulcanizationAgent,
+      glove.imageUrl, glove.boxImageUrl, glove.specifications.disposable
     )
   }
 
@@ -79,9 +80,11 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
             val tractionResistance = props.map(_._3).toSet
 
             Glove(glove.id.get, glove.brand, materialTypes,
-              glove.name, glove.reference, glove.length, glove.thickness, glove.standardType, glove.standardResistance,
-              glove.standardAql, easeToWear = glove.easeToWear, easeToRemove = glove.easeToRemove, glove.recommendations,
-              glove.ranking, glove.rankingCategory, glassHandling, tractionResistance, glove.powdered, glove.fingerTextured, glove.vulcanizationAgent)
+              glove.name, glove.reference,
+              GloveSpecifications(glove.length, glove.thickness, glove.standardType, glove.standardResistance,
+                glove.standardAql, glove.powdered, glove.fingerTextured,
+                glove.vulcanizationAgent, glove.disposable), easeToWear = glove.easeToWear, easeToRemove = glove.easeToRemove, glove.recommendations,
+              glove.ranking, glove.rankingCategory, glassHandling, tractionResistance, glove.imageUrl, glove.boxImageUrl)
         }.toList.sortBy(_.ranking)
     }
 
