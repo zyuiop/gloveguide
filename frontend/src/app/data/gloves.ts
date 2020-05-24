@@ -23,11 +23,6 @@ export class GloveResult {
   resistance: Rating;
 }
 
-export class GloveMaterial {
-  name: string;
-  types: string[];
-}
-
 export class GloveGlassHandling {
   humidifier: string;
   glassHandling: Rating;
@@ -38,10 +33,12 @@ export class GloveTractionResistance {
   tractionResistance: Rating;
 }
 
+export const GloveMaterials = ['Butyl', 'Fluoroelastomer', 'Latex', 'Neoprene', 'Nitrile'];
+
 export class Glove {
   id?: number;
   brand: string;
-  material: GloveMaterial;
+  materials: string[];
   name: string;
   reference: string;
   length: number;
@@ -60,6 +57,6 @@ export class Glove {
   fingerTextured: boolean;
   vulcanizationAgent?: string;
 
-  picture: string;
-  boxPicture: string;
+  picture?: string;
+  boxPicture?: string;
 }

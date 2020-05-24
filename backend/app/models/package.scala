@@ -43,6 +43,17 @@ package object models {
       .executeInsert(scalar[Int].singleOpt)
       .getOrElse(0)
   }
+
+  def updateOne[T](table: String, item: T, columnNaming: ColumnNaming = ColumnNaming.SnakeCase, keyFields: Set[String])(implicit parameterList: ToParameterList[T], conn: Connection): Int = {
+    val params: Seq[NamedParameter] = parameterList(item);
+    val names: List[String] = params.map(_.name).toList
+    val updateData = names.map(k => columnNaming(k) + " = {" + k + "}").mkString(", ")
+    val key = names.filter(p => keyFields(p)).map(p => columnNaming(p) + " = {" + p + "}").mkString(" AND ")
+
+    SQL("UPDATE " + table + " SET " + updateData + " WHERE " + key)
+      .bind(item)
+      .executeUpdate()
+  }
   
   /**
    * Inserts items in the given table

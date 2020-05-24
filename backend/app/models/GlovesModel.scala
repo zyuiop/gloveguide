@@ -18,11 +18,14 @@
 
 package models
 
+import java.sql.Connection
+
 import anorm.Macro.ColumnNaming
 import anorm.SqlParser._
 import anorm._
 import data._
 import javax.inject._
+import play.api.mvc.Result
 
 import scala.collection.immutable
 import scala.concurrent.{ExecutionContext, Future}
@@ -30,42 +33,52 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionContext) {
 
+
   private val db = dbApi database "default"
 
   private val glovesQuery =
     "SELECT * FROM gloves " +
-      "JOIN gloves_materials g on gloves.glove_material_id = g.gloves_material_id " +
-      "JOIN gloves_materials_types gmt on g.gloves_material_id = gmt.gloves_material_id " +
+      "JOIN glove_material_types gmt on gloves.glove_id = gmt.glove_id " +
       "JOIN gloves_glass_handling ggh on gloves.glove_id = ggh.glove_id " +
       "JOIN gloves_traction_resistance gtr on gloves.glove_id = gtr.glove_id"
 
 
-  case class DatabaseGlove(id: Int, brand: String, name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String,
+  case class DatabaseGlove(id: Option[Int], brand: String, name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String,
                            standardResistance: String, standardAql: BigDecimal, easeToWear: Rating.Value, easeToRemove: Rating.Value,
                            recommendations: String, ranking: Int, rankingCategory: Rating.Value,
                            powdered: Boolean, fingerTextured: Boolean, vulcanizationAgent: Option[String])
+
+  private def toDatabaseGlove(glove: Glove): DatabaseGlove = {
+    DatabaseGlove(
+      id = (if (glove.id != 0) Some(glove.id) else None),
+      glove.brand, glove.name, glove.reference, glove.length, glove.thickness, glove.standardType, glove.standardResistance,
+      glove.aql, glove.easeToWear, glove.easeToRemove, glove.recommendations, glove.ranking, glove.rankingCategory,
+      glove.powdered, glove.fingerTextured, glove.vulcanizationAgent
+    )
+  }
+
 
   implicit val GloveParameterList: ToParameterList[DatabaseGlove] = Macro.toParameters[DatabaseGlove]()
   implicit val GloveRowParser: RowParser[DatabaseGlove] = Macro.namedParser[DatabaseGlove]((field: String) => "glove_" + ColumnNaming.SnakeCase(field))
 
   private val glovesParser: ResultSetParser[immutable.List[Glove]] =
     (GloveRowParser ~
-      (str("gloves_material_name") ~ str("gloves_material_type").map(GloveMaterialType.withName)) ~
-       GlassHandlingRowParser ~ GlovesTractionResistanceRowParser
+      str("glove_material_type").map(GloveMaterialType.withName) ~
+      GlassHandlingRowParser ~ GlovesTractionResistanceRowParser
       ).*.map { list =>
       // We need to join the list!
       list.map {
-        case glove ~ (matName ~ matType) ~ (glassHandling) ~ (tractionResistance) =>
-          ((glove, matName), (matType, glassHandling, tractionResistance))
+        case glove ~ (matType) ~ (glassHandling) ~ (tractionResistance) =>
+          ((glove), (matType, glassHandling, tractionResistance))
       }
         .groupMap(_._1)(_._2)
         .map {
-          case ((glove, material), props) =>
+          case ((glove), props) =>
             val materialTypes: Set[data.GloveMaterialType.Value] = props.map(_._1).toSet
             val glassHandling = props.map(_._2).toSet
             val tractionResistance = props.map(_._3).toSet
 
-            Glove(glove.id, glove.brand, GloveMaterial(material, materialTypes),
+            Glove(glove.id.get, glove.brand, materialTypes,
               glove.name, glove.reference, glove.length, glove.thickness, glove.standardType, glove.standardResistance,
               glove.standardAql, easeToWear = glove.easeToWear, easeToRemove = glove.easeToRemove, glove.recommendations,
               glove.ranking, glove.rankingCategory, glassHandling, tractionResistance, glove.powdered, glove.fingerTextured, glove.vulcanizationAgent)
@@ -75,10 +88,57 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
   def getAllGloves: Future[List[Glove]] =
     Future(db.withConnection(implicit c => SQL(glovesQuery).as(glovesParser)))
 
+  def getGloveById(id: Int): Future[Option[Glove]] =
+    Future(db.withConnection(implicit c =>
+      SQL(glovesQuery + " WHERE gloves.glove_id = {id}")
+        .on("id" -> id)
+        .as(glovesParser)
+        .headOption))
+
   def getGlovesByType(material: GloveMaterialType.Value): Future[List[Glove]] =
     Future(db.withConnection(implicit c =>
       SQL(glovesQuery + " WHERE gloves_material_type = {type}")
         .on("type" -> material)
         .as(glovesParser))
     )
+
+  def createGlove(glove: Glove): Future[Glove] = Future(db.withConnection { implicit c =>
+    // DBGlove
+    val dbGlove = toDatabaseGlove(glove)
+    val id = insertOne("gloves", dbGlove, columnNaming = (field: String) => "glove_" + ColumnNaming.SnakeCase(field))
+
+    insertGloveDetails(glove, id)
+
+    glove.copy(id = id)
+  })
+
+  private def insertGloveDetails(glove: Glove, id: Int)(implicit conn: Connection): Unit = {
+    for (t <- glove.materials)
+      SQL("INSERT INTO glove_material_types(glove_id, glove_material_type) VALUES ({gid}, {gmt})")
+        .on("gid" -> id, "gmt" -> t)
+        .executeUpdate()
+
+    for (gh <- glove.glassHandling)
+      SQL("INSERT INTO gloves_glass_handling(glove_id, humidifier, glass_handling, leaves_marks) VALUES ({gid}, {humidifier}, {gh}, {lm})")
+        .on("gid" -> id, "humidifier" -> gh.humidifier, "gh" -> gh.glassHandling, "lm" -> gh.leavesMarks)
+        .executeUpdate()
+
+    for (tr <- glove.tractionResistance)
+      SQL("INSERT INTO gloves_traction_resistance(glove_id, gloves_traction_resistance_humidifier, traction_resistance) VALUES ({gid}, {humidifier}, {tr})")
+        .on("gid" -> id, "humidifier" -> tr.humidifier, "tr" -> tr.tractionResistance)
+        .executeUpdate()
+  }
+
+  def updateGlove(glove: Glove): Future[Unit] = Future(db.withConnection { implicit c =>
+    val dbGlove = toDatabaseGlove(glove)
+    updateOne("gloves", dbGlove, columnNaming = (field: String) => "glove_" + ColumnNaming.SnakeCase(field), Set("id"))
+
+    // Delete all
+    SQL("DELETE FROM glove_material_types WHERE glove_id = {gid}").on("gid" -> glove.id).execute()
+    SQL("DELETE FROM gloves_glass_handling WHERE glove_id = {gid}").on("gid" -> glove.id).execute()
+    SQL("DELETE FROM gloves_traction_resistance WHERE glove_id = {gid}").on("gid" -> glove.id).execute()
+
+    insertGloveDetails(glove, glove.id)
+  })
+
 }

@@ -1,4 +1,5 @@
 <p>
   <button mat-button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</button>
+  <button mat-button *ngIf="auth.isLoggedIn()" [routerLink]="['/', 'admin']">Admin Page</button>
   <button mat-button *ngIf="!auth.isLoggedIn()" (click)="tryLogin()">Login</button>
 </p>

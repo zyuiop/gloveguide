@@ -21,7 +21,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Glove} from '../data/gloves';
-import {map} from 'rxjs/operators';
+import {map, switchMap, tap} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class GlovesService {
@@ -35,14 +35,14 @@ export class GlovesService {
     return this.http.get<Glove[]>(environment.backendUrl + '/gloves');
   }
 
-  updateCachedGloves() {
-    this.pullGloves().subscribe(res => this.cacheSubject.next(res));
+  updateCachedGloves(): Observable<Glove[]> {
+    return this.pullGloves().pipe(tap(res => this.cacheSubject.next(res)));
   }
 
   getGloves(): Observable<Glove[]> {
     if (this.nextRefresh < Date.now()) {
       this.nextRefresh = Date.now() + 10 * 60 * 1000;
-      this.updateCachedGloves();
+      this.updateCachedGloves().subscribe();
     }
     return this.cacheSubject;
   }
@@ -50,8 +50,26 @@ export class GlovesService {
   getGlove(id: number): Observable<Glove> {
     if (this.nextRefresh < Date.now()) {
       this.nextRefresh = Date.now() + 10 * 60 * 1000;
-      this.updateCachedGloves();
+      this.updateCachedGloves().subscribe();
     }
     return this.cacheSubject.pipe(map(lst => lst.filter(g => g.id === id)[0]));
+  }
+
+  createGlove(glove: Glove): Observable<Glove> {
+    return this.http.post<Glove>(environment.backendUrl + '/gloves', glove)
+      .pipe(
+        switchMap(value => this.updateCachedGloves().pipe(map(res => value)))
+      );
+  }
+
+  updateGlove(id: number, glove: Glove): Observable<void> {
+    return this.http.put<void>(environment.backendUrl + '/gloves/' + id, glove)
+      .pipe(
+        switchMap(value => this.updateCachedGloves().pipe(map(res => value)))
+      );
+  }
+
+  loadGlove(id: number): Observable<Glove> {
+    return this.http.get<Glove>(environment.backendUrl + '/gloves/' + id);
   }
 }

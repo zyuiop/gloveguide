@@ -59,6 +59,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { LocaleSwitcherComponent } from './components/locale-switcher/locale-switcher.component';
 import { LoginComponent } from './components/login/login.component';
 import { UploadsComponent } from './components/uploads/uploads.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { UploadsComponent } from './components/uploads/uploads.component';
     RatingSelectorComponent,
     LocaleSwitcherComponent,
     LoginComponent,
-    UploadsComponent
+    UploadsComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

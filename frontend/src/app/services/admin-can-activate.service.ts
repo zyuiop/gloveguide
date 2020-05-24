@@ -16,27 +16,16 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export enum Rating {
-  GOOD = 'Good', MEDIUM = 'Medium', PASSABLE = 'Passable', POOR = 'Poor'
-}
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {AuthService} from './auth.service';
 
-export const Ratings = [Rating.GOOD, Rating.MEDIUM, Rating.PASSABLE, Rating.POOR];
+@Injectable({providedIn: 'root'})
+export class AdminCanActivate implements CanActivate {
+  constructor(private auth: AuthService) {
+  }
 
-export function strToRating(str: string | Rating): Rating {
-  if (typeof str === 'string') {
-    switch (str) {
-      case 'Good':
-        return Rating.GOOD;
-      case 'Medium':
-        return Rating.MEDIUM;
-      case 'Passable':
-        return Rating.PASSABLE;
-      case 'Poor':
-        return Rating.POOR;
-      default:
-        return undefined;
-    }
-  } else {
-    return str as Rating;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.auth.isLoggedIn();
   }
 }

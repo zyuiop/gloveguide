@@ -51,10 +51,6 @@ package object data {
   implicit val GloveMaterialTypeColumn: Column[GloveMaterialType.Value] = Column.columnToString.map(s => GloveMaterialType.withName(s))
   implicit val GloveMaterialTypeStatement: ToStatement[GloveMaterialType.Value] = (s: PreparedStatement, index: Int, v: GloveMaterialType.Value) => s.setString(index, v.toString)
 
-  case class GloveMaterial(name: String, types: Set[GloveMaterialType.Value])
-
-  implicit val GloveMaterialFormat: Format[GloveMaterial] = Json.format[GloveMaterial]
-
   case class GlassHandling(humidifier: String, glassHandling: Rating.Value, leavesMarks: Boolean)
 
   implicit val GlassHandlingFormat: Format[GlassHandling] = Json.format[GlassHandling]
@@ -71,7 +67,7 @@ package object data {
   case class Glove(
                     id: Int,
                     brand: String,
-                    material: GloveMaterial,
+                    materials: Set[GloveMaterialType.Value],
                     name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String, standardResistance: String,
                     aql: BigDecimal, easeToWear: Rating.Value, easeToRemove: Rating.Value,
                     recommendations: String, ranking: Int, rankingCategory: Rating.Value,

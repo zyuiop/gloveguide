@@ -16,11 +16,9 @@
   ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<p i18n>Welcome on EPFL Gloves Guide!</p>
-<p i18n>Use the searchbar above to search for substances and gloves. You can also compose solutions along the way - they will
-  be sent to the ProtecPo service to help you find the most suited gloves for your work.</p>
+<p i18n>Welcome on EPFL Gloves Guide! Use the searchbar above to find a glove or a substance. If you want to work with a mixture, you can also look it up using the form below.</p>
 <p i18n><b>How to remove gloves?</b> Here is an helpful video that demonstrates how to remove contaminated gloves safely:
   <a href="https://tube.switch.ch/videos/278d82bf">How to remove gloves?</a></p>
 <p i18n><b>All gloves.</b> You can find here a list of all the gloves we offer: <a routerLink="gloves">All gloves</a></p>
-<a i18n routerLink="solution">Solution</a><br>
-<a i18n routerLink="resistances/update">Insert substances</a><br>
+<br>
+<app-solution-compositor></app-solution-compositor>

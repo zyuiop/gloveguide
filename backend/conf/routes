@@ -10,7 +10,11 @@ GET         /substances/:cas                            controllers.SubstancesCo
 GET         /substances/search/:query                   controllers.SubstancesController.search(query: String)
 
 GET         /gloves                                     controllers.GlovesController.getAll
+GET         /gloves/:id                                 controllers.GlovesController.getById(id: Int)
 GET         /gloves/byMaterialType/:materialType        controllers.GlovesController.getByType(materialType: String)
+
+POST        /gloves                                     controllers.GlovesController.createGlove
+PUT         /gloves/:id                                 controllers.GlovesController.updateGlove(id: Int)
 
 GET         /login/check                                controllers.LoginController.check
 

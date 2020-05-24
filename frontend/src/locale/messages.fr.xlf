@@ -715,10 +715,10 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      
+
       <trans-unit id="62f8e0e1b33d5d724d5d429d3197135af976980c" datatype="html">
-        <source>© 2020 - Louis Vialar &amp; contributors for EPFL / GSCP<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>This application is a free software, published under the GNU AGPL v3 license.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Source code available on GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
-        <target state="translated">© 2020 - Louis Vialar &amp; contributeurs pour le GSCP / EPFL<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Cette application est un logiciel libre publié sous licence GNU AGPL v3.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Vous pouvez obtenir une copie du code source sur GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</target>
+        <source>© 2020 - Louis Vialar &amp; contributors for EPFL / ISIC-GSCP<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>This application is a free software, published under the GNU AGPL v3 license.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Source code available on GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
+        <target state="translated">© 2020 - Louis Vialar &amp; contributeurs pour le ISIC-GSCP / EPFL<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Cette application est un logiciel libre publié sous licence GNU AGPL v3.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Vous pouvez obtenir une copie du code source sur GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
           <context context-type="linenumber">45</context>
@@ -869,7 +869,7 @@ Aucun gant ne peut être recommandé par ProtecPo pour cette solution.
       <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge>"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge>"/>
       resistance.
     </source>
-        <target state="translated">Les gants en <x id="INTERPOLATION" equiv-text="{{glove.material}}"/> ont une résistance notée : 
+        <target state="translated">Les gants en <x id="INTERPOLATION" equiv-text="{{glove.material}}"/> ont une résistance notée :
       <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge>"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>

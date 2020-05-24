@@ -44,7 +44,7 @@ export class GlovesComponent implements OnInit, OnChanges {
         if (!this.filteredTypes) {
           return gloves;
         } else {
-          return gloves.filter(glove => glove.material.types.some(mat => this.filteredTypes.indexOf(mat) !== -1));
+          return gloves.filter(glove => glove.materials.some(mat => this.filteredTypes.indexOf(mat) !== -1));
         }
       })
     );

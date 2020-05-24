@@ -26,7 +26,7 @@
   <a mat-list-item *ngFor="let glove of list" [routerLink]="['/', 'gloves', glove.id]"
      [state]="{data: glove}">
 
-    <b>#{{glove.ranking}}</b>: {{glove.brand}} {{glove.name}} ({{glove.material.name}})
+    <b>#{{glove.ranking}}</b>: {{glove.brand}} {{glove.name}} ({{glove.materials.join(", ")}})
 
     <app-rating-badge style="margin-left: 10px" [rating]="glove.rankingCategory"></app-rating-badge>
 

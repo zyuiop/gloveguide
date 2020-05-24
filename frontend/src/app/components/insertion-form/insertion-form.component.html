@@ -16,13 +16,13 @@
   ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<h2>Add substances</h2>
+<h2>Insert resistances</h2>
 
-
-<mat-form-field style="width: 100%;">
-  <label for="textarea">Copy/Paste the table from excel here.<br>
-    We expect the first two columns to be the CAS number and the concentration.<br>
-    We expect the first line to be the glove reference number.</label>
+<p>Copy/Paste the table from excel here, in CSV (fields should be separated by commas)<br>
+  We expect the first two columns to be the CAS number and the concentration.<br>
+  We expect the first line to be the glove reference number.</p>
+<mat-form-field style="width: 100%;" appearance="outline">
+  <mat-label for="textarea">Copy/Paste the table from excel here.</mat-label>
   <textarea id="textarea" matInput style="width: 100%;" [ngModel]="null"
             (ngModelChange)="contentChange($event)"></textarea>
 </mat-form-field>

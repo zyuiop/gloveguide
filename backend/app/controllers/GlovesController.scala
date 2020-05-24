@@ -18,7 +18,7 @@
 
 package controllers
 
-import data.GloveMaterialType
+import data.{Glove, GloveMaterialType}
 import javax.inject._
 import models.{DilutionsModel, GlovesModel}
 import play.api.libs.json.Json
@@ -34,6 +34,25 @@ class GlovesController @Inject()(cc: ControllerComponents, gloves: GlovesModel)(
 
   def getAll: Action[AnyContent] = Action.async { implicit request =>
     gloves.getAllGloves.map(res => Ok(Json.toJson(res)))
+  }
+
+  def getById(id: Int): Action[AnyContent] = Action.async { implicit request =>
+    gloves.getGloveById(id).map {
+      case Some(res) => Ok(Json.toJson(res))
+      case None => NotFound
+    }
+  }
+
+  def createGlove: Action[Glove] = Action.async(parse.json[Glove]) { implicit request =>
+    val glove = request.body
+
+    gloves.createGlove(glove).map(g => Ok(Json.toJson(g)))
+  }
+
+  def updateGlove(id: Int): Action[Glove] = Action.async(parse.json[Glove]) { implicit request =>
+    val glove = request.body
+
+    gloves.updateGlove(glove.copy(id = id)).map(_ => Ok)
   }
 
   def getByType(materialType: String): Action[AnyContent] = Action.async { implicit request =>

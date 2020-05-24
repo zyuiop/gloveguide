@@ -61,7 +61,7 @@ export class ResistancesService {
   }
 
   getForGlove(glove: number) {
-    return this.get().pipe(map(table => table.map(row => row.filter(cell => cell.glove.id === glove))));
+    return this.get().pipe(map(table => table.map(row => row.filter(cell => cell.glove.id === glove)).filter(row => row.length > 0)));
   }
 
   getForSubstance(substance: number) {
