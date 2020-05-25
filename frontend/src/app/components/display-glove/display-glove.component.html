@@ -21,9 +21,12 @@
     <button mat-raised-button color="accent" routerLink="update" *ngIf="auth.isLoggedIn()">Update this glove</button>
 
   </h3>
+
+
   <h4 i18n>Ranked #{{selectedGlove.ranking}} -
     <app-rating-badge [rating]="selectedGlove.rankingCategory"></app-rating-badge>
   </h4>
+  <p i18n>Ranking among all gloves offered on the system - 1 being the best glove.</p>
 
   <p i18n><b>Recommendations: </b>{{selectedGlove.recommendations}}</p>
   <br>

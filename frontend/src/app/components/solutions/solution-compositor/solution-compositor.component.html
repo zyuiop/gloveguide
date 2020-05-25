@@ -17,21 +17,21 @@
   -->
 
 <h2 i18n>Compose a solution</h2>
-<p i18n>This section allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
-  search bar and the button "Add to solution".</p>
+<p i18n>This section allows you to quickly search for the best gloves given a mixture. Alternatively, you can also use the main
+  search bar and the button "Add to mixture".</p>
 
 <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
   <div fxFlex>
 
-    <h2 class="mat-h2" i18n>Solution</h2>
+    <h2 class="mat-h2" i18n>Mixture</h2>
     <app-substance-selector allowGloves="false" (selectedChange)="addSubstance($event) ; onChange()"></app-substance-selector>
     <app-solution-viewer (changes)="onChange()"></app-solution-viewer>
     <br>
-    <button mat-stroked-button (click)="reset()" i18n>Reset solution</button>
+    <button mat-stroked-button (click)="reset()" i18n>Reset mixture</button>
   </div>
 
   <div fxFlex>
-    <h2 class="mat-h2" i18n>Best gloves results for this solution</h2>
+    <h2 class="mat-h2" i18n>Best gloves results for this mixture</h2>
 
     <ng-container *ngIf="solution.substances.length > 0">
       <ng-container *ngIf="totalProportion === 100">

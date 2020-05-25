@@ -274,21 +274,21 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="66ebff0d690278fd094e7455855ffbb24b52b19e" datatype="html">
+      <trans-unit id="2cb37db61649d27b9fb64acaca34314c4a380a64" datatype="html">
         <source>This tool aggregates data from multiple sources to help you make the best decision when choosing which gloves to
   while handling chemicals. As with any computer program, it may have bugs or contain incorrect data. We will assume
   no liability for any damage this tool may indirectly cause.</source>
-        <target state="translated">Cet outil aggrège des données depuis des sources multiples pour vous aider à prendre la meilleure décision lorsque vous choisissez quels gants utiliser pour manipuler des produits chimiques.
-Comme tout programme informatique, ce guide peut contenir des bugs ou des données incorrectes. Nous ne prendrons aucune responsabilité pour tout dégat que cet outil pourrait indirectement causer.</target>
+        <target state="translated">Cet outil aggrège des données depuis des sources multiples pour vous aider à prendre la meilleure décision lors du choix des gants à utiliser pour manipuler des produits chimiques.
+Comme tout programme informatique, ce guide peut contenir des bugs ou des données incorrectes. Nous ne prendrons aucune responsabilité pour tout dégât que cet outil pourrait indirectement causer.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5c253ac3d722ec25eb69d95f631ff417b008a487" datatype="html">
+      <trans-unit id="19866da7776b3822c0f5abf666f258350b3aeb32" datatype="html">
         <source>This site uses some data from INRS' <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>. This web software
   comes with its own disclaimer, reproduced here:</source>
-        <target state="translated">Ce site utilise des données de l'outil <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> de l'INRS. Ce site web dispose de sa propre mise en garde, reproduite ici :</target>
+        <target state="translated">Ce site utilise des données de l'outil <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> de l'INRS qui dispose de sa propre mise en garde, reproduite ici :</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/disclaimer/disclaimer.component.html</context>
           <context context-type="linenumber">9</context>
@@ -402,16 +402,28 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="30e40b49e4b580de9e92de0dfae0976c0711c7a9" datatype="html">
         <source>Compose a solution</source>
-        <target state="translated">Créer une solution</target>
+        <target state="translated">Créer un mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5bc7d10ad71f8142df73404df38eab2fe3da3a41" datatype="html">
+      <trans-unit id="e58bb99067b3d753d897c08b5f69fe8fae09b4c5" datatype="html">
+        <source>
+          Permeation time in minutes (duration for a chemical to get through the glove; <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>Never use the
+          glove longer than the permeation time<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>)
+        </source>
+        <target state="translated">Temps de perméation en minutes (temps que met le chimique/mélange à traverser le gant ;
+<x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>le temps d’utilisation du gant ne doit jamais dépasser le temps de perméation<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/>)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="0147ec3575cc220e9e796f0c0f6503c9fc31efe3" datatype="html">
         <source>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
   search bar and the button "Add to solution".</source>
-        <target state="translated">Cette page vous permet de rapidement rechercher les meilleurs gants pour une solution donnée. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter à la solution".</target>
+        <target state="translated">Cette section vous permet de rapidement rechercher les meilleurs gants pour un mélange donné. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter au mélange".</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">2</context>
@@ -419,7 +431,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="29442d33577634d5bb7a8716954281be8955ff30" datatype="html">
         <source>Solution</source>
-        <target state="translated">Solution</target>
+        <target state="translated">Mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">8</context>
@@ -431,7 +443,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="9aa2ebf914ca1bd6be8e4344707dc88a4141d952" datatype="html">
         <source>Reset solution</source>
-        <target state="translated">Réinitialiser la solution</target>
+        <target state="translated">Réinitialiser le mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">12</context>
@@ -439,7 +451,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="c2d7653d8b4ee898859f9d0133ff085616f61459" datatype="html">
         <source>Best gloves results for this solution</source>
-        <target state="translated">Meilleurs gants pour cette solution</target>
+        <target state="translated">Meilleurs gants pour ce mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">16</context>
@@ -571,10 +583,10 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="d309e362d73cda5cc798e127b801936ce3356209" datatype="html">
+      <trans-unit id="5b8bf100daf251ad67d8473f572587a326b54eb6" datatype="html">
         <source>Selected glove <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/> <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>)
   </source>
-        <target state="translated">Gant sélectionné : <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/><x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>)</target>
+        <target state="translated">Gant sélectionné : <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/><x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Modifier ce gant<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">2</context>
@@ -607,7 +619,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="851b0be76defae0c6de92a22aa032aedb7d66fdc" datatype="html">
+      <trans-unit id="be973398fe4cd33d5a5f69742620d562edc0bc55" datatype="html">
         <source>
         <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Reference: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
         <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Material: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.material.name}}"/> (<x id="INTERPOLATION_2" equiv-text="{{selectedGlove.material.types.join(&quot;, &quot;)}}"/>)<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
@@ -624,14 +636,29 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
         <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
       </source>
-        <target state="translated"><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Référence : <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Matière : <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.material.name}}"/> (<x id="INTERPOLATION_2" equiv-text="{{selectedGlove.material.types.join(&quot;, &quot;)}}"/>)<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Longueur : <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Épaisseur paume : <x id="INTERPOLATION_4" equiv-text="{{selectedGlove.thickness}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Texturé au doigt : <x id="ICU" equiv-text="{selectedGlove.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Poudré : <x id="ICU_1" equiv-text="{selectedGlove.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Agent(s) de vulcanisation : <x id="ICU_2" equiv-text="{!selectedGlove.vulcanizationAgent, select, true {...} other {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>:
-          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Type <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Résistance <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>AQL <x id="INTERPOLATION_8" equiv-text="{{selectedGlove.aql}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/><x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/></target>
+        <target state="translated">
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Référence : <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Matière : <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.materials.join(&quot;, &quot;)}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Longueur : <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.specifications.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Ce gant est un gant jetable.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Épaisseur paume : <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Texturé au doigt : <x id="ICU" equiv-text="{selectedGlove.specifications.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Poudré : <x id="ICU_1" equiv-text="{selectedGlove.specifications.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Agent(s) de vulcanisation : <x id="ICU_2" equiv-text="{!selectedGlove.specifications.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+
+
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>:
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Type <x id="INTERPOLATION_5" equiv-text="{{selectedGlove.specifications.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Résistance <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.specifications.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.specifications.aql}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="f3db24ad2365371f4c362988fd78d90857b04455" datatype="html">
+      <trans-unit id="0ed23bb0783c3720b0eb8690af0792ecb6d1afd9" datatype="html">
         <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
         <target state="translated">{VAR_SELECT, select, true {Oui} false {Non} }</target>
         <context-group purpose="location">
@@ -639,7 +666,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8a7cf89453c7c2f1c76bf41a089725ed04757ded" datatype="html">
+      <trans-unit id="da62a336d9619d29384a2dac576efb3e9ff823c4" datatype="html">
         <source>{VAR_SELECT, select, true {Yes} false {No} }</source>
         <target state="translated">{VAR_SELECT, select, true {Oui} false {Non} }</target>
         <context-group purpose="location">
@@ -647,9 +674,9 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="583af8c484e7a2ff724ed86afc4e6dea9db4859b" datatype="html">
-        <source>{VAR_SELECT, select, true {Unknown} other {<x id="INTERPOLATION" equiv-text="{{selectedGlove.vulcanizationAgent}}"/> } }</source>
-        <target state="translated">{VAR_SELECT, select, true {Inconnu(s)} other {<x id="INTERPOLATION" equiv-text="{{selectedGlove.vulcanizationAgent}}"/> } }</target>
+      <trans-unit id="be565fb49fa1c4975f192819507378ead8d31e05" datatype="html">
+        <source>{VAR_SELECT, select, true {Unknown} other {<x id="INTERPOLATION" equiv-text="{{selectedGlove.specifications.vulcanizationAgent}}"/> } }</source>
+        <target state="translated">{VAR_SELECT, select, true {Inconnu(s)} other {<x id="INTERPOLATION" equiv-text="{{selectedGlove.specifications.vulcanizationAgent}}"/> } }</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">26</context>
@@ -716,7 +743,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
         </context-group>
       </trans-unit>
 
-      <trans-unit id="62f8e0e1b33d5d724d5d429d3197135af976980c" datatype="html">
+      <trans-unit id="e5df39dcb02990f8b070762cd1fb2c463a45575c" datatype="html">
         <source>© 2020 - Louis Vialar &amp; contributors for EPFL / ISIC-GSCP<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>This application is a free software, published under the GNU AGPL v3 license.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Source code available on GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
         <target state="translated">© 2020 - Louis Vialar &amp; contributeurs pour le ISIC-GSCP / EPFL<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Cette application est un logiciel libre publié sous licence GNU AGPL v3.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/>"/>Vous pouvez obtenir une copie du code source sur GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</target>
         <context-group purpose="location">
@@ -742,7 +769,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="ec938fef671ed8a2ae461ae246e0770719708c59" datatype="html">
         <source>Solution composition</source>
-        <target state="translated">Composition d'une solution</target>
+        <target state="translated">Composition d'un mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
           <context context-type="linenumber">2</context>
@@ -766,13 +793,13 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="038dd5124361ab1fb9ad2a8643d4ba8b0912ac59" datatype="html">
         <source>Selected substance <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>Add to solution<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/></source>
-        <target state="translated">Substance choisie <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>Ajouter à la solution<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/></target>
+        <target state="translated">Substance choisie <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>Ajouter au mélange<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-substance/display-substance.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="46c5f0196dba0f16ffeae8b022c37dd421b5f338" datatype="html">
+      <trans-unit id="fb34eaf920f804d575a58345c836fa79160295b6" datatype="html">
         <source>Welcome on EPFL Gloves Guide!</source>
         <target state="translated">Bienvenue sur le guide des gants EPFL !</target>
         <context-group purpose="location">
@@ -783,13 +810,13 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       <trans-unit id="7c1e01de201783557ae9c7d9ab4bd81788b1a5aa" datatype="html">
         <source>Use the searchbar above to search for substances and gloves. You can also compose solutions along the way - they will
   be sent to the ProtecPo service to help you find the most suited gloves for your work.</source>
-        <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer une solution, elle sera envoyée à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
+        <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer un mélange, il sera envoyé à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0a1d234960704ecaee3b2b19a644a66e0c3d93d6" datatype="html">
+      <trans-unit id="2e4a14e05c8781a0b52877002c2bbd06184579c7" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>How to remove gloves?<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Here is an helpful video that demonstrates how to remove contaminated gloves safely:
   <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>How to remove gloves?<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/></source>
         <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Comment retirer des gants ?<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Voici une vidéo utile qui montre comment retirer des gants contaminés facilement (en anglais) :
@@ -857,7 +884,7 @@ Attention : la pertinence de la recommandation ci-dessous est affectée compte t
   No result could be recommended by ProtecPo for this solution.
 </source>
         <target state="translated"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
-Aucun gant ne peut être recommandé par ProtecPo pour cette solution.
+Aucun gant ne peut être recommandé par ProtecPo pour ce mélange.
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
@@ -907,6 +934,14 @@ Aucun gant ne peut être recommandé par ProtecPo pour cette solution.
           <context context-type="sourcefile">src/app/components/solutions/solution-viewer/solution-viewer.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="becb894bf263cf0e1f14a1add4f89a2946ff6700" datatype="html">
+        <source>Ranking amost all gloves offered on the system - 1 being the best glove.</source>
+        <target>Classement parmi tous les gants proposés sur le système - 1 étant le meilleur gant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">29</context>
+         </context-group>
       </trans-unit>
     </body>
   </file>
