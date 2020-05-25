@@ -365,30 +365,30 @@
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0147ec3575cc220e9e796f0c0f6503c9fc31efe3" datatype="html">
-        <source>This section allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
-  search bar and the button &quot;Add to solution&quot;.</source>
+      <trans-unit id="68d52fd685257ea4523ed1a42dcbd85a1ba98800" datatype="html">
+        <source>This section allows you to quickly search for the best gloves given a mixture. Alternatively, you can also use the main
+  search bar and the button &quot;Add to mixture&quot;.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="29442d33577634d5bb7a8716954281be8955ff30" datatype="html">
-        <source>Solution</source>
+      <trans-unit id="bae19e487c196bd4e9813c62f48cbceb9d80bbb3" datatype="html">
+        <source>Mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9aa2ebf914ca1bd6be8e4344707dc88a4141d952" datatype="html">
-        <source>Reset solution</source>
+      <trans-unit id="68f170248c431a2c89204b04d8b68c2249b626d9" datatype="html">
+        <source>Reset mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c2d7653d8b4ee898859f9d0133ff085616f61459" datatype="html">
-        <source>Best gloves results for this solution</source>
+      <trans-unit id="9f41c82b1d905640d998dc0e9f232c18cb99840f" datatype="html">
+        <source>Best gloves results for this mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">34</context>
@@ -531,8 +531,8 @@
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="becb894bf263cf0e1f14a1add4f89a2946ff6700" datatype="html">
-        <source>Ranking amost all gloves offered on the system - 1 being the best glove.</source>
+      <trans-unit id="52b8728a819d2bbbf9061bd53b5b7d07e83bf72b" datatype="html">
+        <source>Ranking among all gloves offered on the system - 1 being the best glove.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">29</context>
@@ -660,8 +660,8 @@
           <context context-type="linenumber">96</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ec938fef671ed8a2ae461ae246e0770719708c59" datatype="html">
-        <source>Solution composition</source>
+      <trans-unit id="50936b763c81b7cd9d5783613bee02e30954a3a0" datatype="html">
+        <source>Mixture composition</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
           <context context-type="linenumber">20</context>
@@ -739,10 +739,10 @@
           <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0628506743848272f317b81448f8f42ce59c78c3" datatype="html">
+      <trans-unit id="389e3791e3c0997caacaed1b88e022e50d951d61" datatype="html">
         <source>
   <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
-  No result could be recommended by ProtecPo for this solution.
+  No result could be recommended by ProtecPo for this mixture.
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>

@@ -420,7 +420,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0147ec3575cc220e9e796f0c0f6503c9fc31efe3" datatype="html">
+      <trans-unit id="68d52fd685257ea4523ed1a42dcbd85a1ba98800" datatype="html">
         <source>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
   search bar and the button "Add to solution".</source>
         <target state="translated">Cette section vous permet de rapidement rechercher les meilleurs gants pour un mélange donné. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter au mélange".</target>
@@ -429,7 +429,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="29442d33577634d5bb7a8716954281be8955ff30" datatype="html">
+      <trans-unit id="bae19e487c196bd4e9813c62f48cbceb9d80bbb3" datatype="html">
         <source>Solution</source>
         <target state="translated">Mélange</target>
         <context-group purpose="location">
@@ -441,7 +441,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9aa2ebf914ca1bd6be8e4344707dc88a4141d952" datatype="html">
+      <trans-unit id="68f170248c431a2c89204b04d8b68c2249b626d9" datatype="html">
         <source>Reset solution</source>
         <target state="translated">Réinitialiser le mélange</target>
         <context-group purpose="location">
@@ -449,7 +449,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c2d7653d8b4ee898859f9d0133ff085616f61459" datatype="html">
+      <trans-unit id="9f41c82b1d905640d998dc0e9f232c18cb99840f" datatype="html">
         <source>Best gloves results for this solution</source>
         <target state="translated">Meilleurs gants pour ce mélange</target>
         <context-group purpose="location">
@@ -767,7 +767,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ec938fef671ed8a2ae461ae246e0770719708c59" datatype="html">
+      <trans-unit id="50936b763c81b7cd9d5783613bee02e30954a3a0" datatype="html">
         <source>Solution composition</source>
         <target state="translated">Composition d'un mélange</target>
         <context-group purpose="location">
@@ -807,7 +807,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7c1e01de201783557ae9c7d9ab4bd81788b1a5aa" datatype="html">
+      <trans-unit id="389e3791e3c0997caacaed1b88e022e50d951d61" datatype="html">
         <source>Use the searchbar above to search for substances and gloves. You can also compose solutions along the way - they will
   be sent to the ProtecPo service to help you find the most suited gloves for your work.</source>
         <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer un mélange, il sera envoyé à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
@@ -935,7 +935,7 @@ Aucun gant ne peut être recommandé par ProtecPo pour ce mélange.
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="becb894bf263cf0e1f14a1add4f89a2946ff6700" datatype="html">
+      <trans-unit id="52b8728a819d2bbbf9061bd53b5b7d07e83bf72b" datatype="html">
         <source>Ranking amost all gloves offered on the system - 1 being the best glove.</source>
         <target>Classement parmi tous les gants proposés sur le système - 1 étant le meilleur gant.</target>
         <context-group purpose="location">
