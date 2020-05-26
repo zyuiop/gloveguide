@@ -36,6 +36,7 @@
     </td>
     <td *ngFor="let col of row" [classList]="resistanceToClass(col)">
       <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="openResistanceModal(col)" mat-icon-button><mat-icon>edit</mat-icon></button>
+      <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="deleteResistance(col)" mat-icon-button><mat-icon>delete</mat-icon></button>
 
       {{resistanceToString(col)}}
     </td>
@@ -56,6 +57,7 @@
            [state]="{data: glove}">{{ glove.brand + ' ' + glove.name }}</a></td>
     <td *ngFor="let col of resistances" [classList]="resistanceToClass(resistanceForGlove(col, glove))">
       <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="openResistanceModal(resistanceForGlove(col, glove))" mat-icon-button><mat-icon>edit</mat-icon></button>
+      <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="deleteResistance(resistanceForGlove(col, glove))" mat-icon-button><mat-icon>delete</mat-icon></button>
 
       {{resistanceToString(resistanceForGlove(col, glove))}}
     </td>

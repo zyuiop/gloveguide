@@ -52,4 +52,13 @@ class ResistancesController @Inject()(cc: ControllerComponents, dilutions: Dilut
 
   def getResistancesForSubstance(substance: Int): Action[AnyContent] =
     Action.async(r => resistances.getResistancesForSubstance(substance).map(r => Ok(Json.toJson(r))))
+
+  def deleteResistance(glove: Int, substance: Int, concentration: Int) = PermissionCheck.async { req =>
+    val dilution = dilutions.getDilution(substance, concentration)
+
+    dilution.flatMap {
+      case Some(dilution) => resistances.deleteResistance(glove, dilution)
+      case None => Future.successful(())
+    }.map(_ => Ok)
+  }
 }

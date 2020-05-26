@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {ResistanceModalComponent} from '../resistance-modal/resistance-modal.component';
 
 @Component({
   selector: 'app-admin-home',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modal: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  resistanceModal() {
+    this.modal.open(ResistanceModalComponent, { data : {}});
+  }
 }

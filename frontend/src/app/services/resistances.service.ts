@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -24,7 +24,7 @@ import {Glove} from '../data/gloves';
 import {Resistance} from '../data/resistance';
 import {GlovesService} from './gloves.service';
 import {SubstancesService} from './substances.service';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {Substance} from '../data/substance';
 import {AuthService} from './auth.service';
 
@@ -76,6 +76,15 @@ export class ResistancesService {
 
       return {substance: r[0].substance.id, concentration: r[0].concentration, data: cols};
     }), {headers: {Authorization: this.auth.header}});
+  }
+
+  deleteResistance(resistance: Resistance) {
+    const gid = resistance.glove.id;
+    const substId = resistance.substance.id;
+    const concentration = resistance.concentration;
+
+    return this.http.delete(environment.backendUrl + '/resistances/' + gid + '/' + substId + '/' + concentration,
+      {headers: {Authorization: this.auth.header}});
   }
 
   private transform(src: Observable<ResistanceRow[]>): Observable<Resistance[][]> {

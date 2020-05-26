@@ -29,6 +29,7 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class ResistancesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionContext) {
 
+
   private val db = dbApi database "default"
 
   def setResistance(dilution: Int, cell: GloveResistanceCell) =
@@ -36,6 +37,12 @@ class ResistancesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: Executio
       SQL"INSERT INTO gloves_resistance(glove_id, dilution_id, min_resistance, max_resistance, remarks) VALUES (${cell.glove}, $dilution, ${cell.min}, ${cell.max}, ${cell.remarks}) ON DUPLICATE KEY UPDATE min_resistance = ${cell.min}, max_resistance = ${cell.max}, remarks = ${cell.remarks}"
         .execute()
     ))
+
+  def deleteResistance(glove: Int, dilution: Int): Future[Unit] =
+    Future(db.withConnection(implicit c =>
+      SQL"DELETE FROM  gloves_resistance WHERE glove_id = $glove AND dilution_id = $dilution".execute()
+    ))
+
 
   private val resistanceParser: ResultSetParser[immutable.Iterable[GloveResistanceRow]] =
     ((int("substance_id") ~ int("concentration")) ~ (int("glove_id") ~

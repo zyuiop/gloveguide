@@ -4,29 +4,31 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                                           controllers.HomeController.index
-GET         /substances                                 controllers.SubstancesController.getAll
-GET         /substances/:cas                            controllers.SubstancesController.getByCas(cas: String)
-GET         /substances/search/:query                   controllers.SubstancesController.search(query: String)
+GET           /                                                    controllers.HomeController.index
+GET           /substances                                          controllers.SubstancesController.getAll
+GET           /substances/:cas                                     controllers.SubstancesController.getByCas(cas: String)
+GET           /substances/search/:query                            controllers.SubstancesController.search(query: String)
 
-GET         /gloves                                     controllers.GlovesController.getAll
-GET         /gloves/:id                                 controllers.GlovesController.getById(id: Int)
-GET         /gloves/byMaterialType/:materialType        controllers.GlovesController.getByType(materialType: String)
+GET           /gloves                                              controllers.GlovesController.getAll
+GET           /gloves/:id                                          controllers.GlovesController.getById(id: Int)
+GET           /gloves/byMaterialType/:materialType                 controllers.GlovesController.getByType(materialType: String)
 
-POST        /gloves                                     controllers.GlovesController.createGlove
-PUT         /gloves/:id                                 controllers.GlovesController.updateGlove(id: Int)
+POST          /gloves                                              controllers.GlovesController.createGlove
+PUT           /gloves/:id                                          controllers.GlovesController.updateGlove(id: Int)
 
-GET         /login/check                                controllers.LoginController.check
-
-+nocsrf
-POST        /solutions/compute                          controllers.SolutionsController.findGloves
+GET           /login/check                                         controllers.LoginController.check
 
 +nocsrf
-POST        /resistances                                controllers.ResistancesController.setResistances
-GET         /resistances                                controllers.ResistancesController.getResistances
-GET         /resistances/forGlove/:glove                controllers.ResistancesController.getResistancesForGlove(glove: Int)
-GET         /resistances/forSubstance/:substance        controllers.ResistancesController.getResistancesForSubstance(substance: Int)
+POST          /solutions/compute                                   controllers.SolutionsController.findGloves
 
-GET         /files                                      controllers.FilesController.getFiles
 +nocsrf
-POST        /files                                      controllers.FilesController.uploadFile
+POST          /resistances                                         controllers.ResistancesController.setResistances
++nocsrf
+DELETE        /resistances/:glove/:substance/:concentration        controllers.ResistancesController.deleteResistance(glove: Int, substance: Int, concentration: Int)
+GET           /resistances                                         controllers.ResistancesController.getResistances
+GET           /resistances/forGlove/:glove                         controllers.ResistancesController.getResistancesForGlove(glove: Int)
+GET           /resistances/forSubstance/:substance                 controllers.ResistancesController.getResistancesForSubstance(substance: Int)
+
+GET           /files                                               controllers.FilesController.getFiles
++nocsrf
+POST          /files                                               controllers.FilesController.uploadFile
