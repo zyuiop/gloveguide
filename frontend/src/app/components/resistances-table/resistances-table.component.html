@@ -34,7 +34,11 @@
     <td><a [routerLink]="['/', 'substances', row[0]?.substance?.casNumber]"
            [state]="{data: row[0]?.substance}">{{substance(row)}}</a>
     </td>
-    <td *ngFor="let col of row" [classList]="resistanceToClass(col)">{{resistanceToString(col)}}</td>
+    <td *ngFor="let col of row" [classList]="resistanceToClass(col)">
+      <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="openResistanceModal(col)" mat-icon-button><mat-icon>edit</mat-icon></button>
+
+      {{resistanceToString(col)}}
+    </td>
   </tr>
   </tbody>
 </table>
@@ -50,11 +54,15 @@
   <tr *ngFor="let glove of gloves">
     <td><a [routerLink]="['/', 'gloves', glove.id]"
            [state]="{data: glove}">{{ glove.brand + ' ' + glove.name }}</a></td>
-    <td *ngFor="let col of resistances" [classList]="resistanceToClass(resistanceForGlove(col, glove))">{{resistanceToString(resistanceForGlove(col, glove))}}</td>
+    <td *ngFor="let col of resistances" [classList]="resistanceToClass(resistanceForGlove(col, glove))">
+      <button type="button" *ngIf="auth.isLoggedIn() && !isInsertion" (click)="openResistanceModal(resistanceForGlove(col, glove))" mat-icon-button><mat-icon>edit</mat-icon></button>
+
+      {{resistanceToString(resistanceForGlove(col, glove))}}
+    </td>
   </tr>
   </tbody>
 </table>
 
-<div *ngIf="showIfEmpty && display && resistances.length === 0" class="alert alert-warning" i18n>
+<div *ngIf="showIfEmpty && display && resistances.length === 0 && !isInsertion" class="alert alert-warning" i18n>
   <b>Sorry!</b> No resistance data was found for this glove or substance.
 </div>

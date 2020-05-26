@@ -24,7 +24,7 @@
   <div fxFlex>
 
     <h2 class="mat-h2" i18n>Set up the mixture</h2>
-    <app-substance-selector allowGloves="false" (selectedChange)="addSubstance($event) ; onChange()"></app-substance-selector>
+    <app-substance-glove-selector allowGloves="false" (selectedChange)="addSubstance($event) ; onChange()"></app-substance-glove-selector>
     <app-solution-viewer (changes)="onChange()"></app-solution-viewer>
     <br>
     <button mat-stroked-button (click)="reset()" i18n>Reset mixture</button>

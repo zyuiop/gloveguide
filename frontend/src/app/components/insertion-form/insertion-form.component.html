@@ -39,7 +39,7 @@
     </ul>
   </div>
 
-  <app-resistances-table *ngIf="errors.length === 0" [resistances]="result"></app-resistances-table>
+  <app-resistances-table *ngIf="errors.length === 0" [resistances]="result" [isInsertion]="true"></app-resistances-table>
 
   <button class="btn-lg btn-success" (click)="insert()" [disabled]="inserting" *ngIf="errors.length === 0 && result.length > 0">Insert</button>
 </ng-container>

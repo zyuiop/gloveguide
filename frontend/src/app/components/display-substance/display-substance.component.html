@@ -22,6 +22,8 @@
 
 
   <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances" [transpose]="true"></app-resistances-table>
+  <button mat-raised-button color="accent" (click)="openResistanceModal(selectedSubstance)" *ngIf="auth.isLoggedIn()">Add permeability information</button>
+
 </ng-container>
 
 

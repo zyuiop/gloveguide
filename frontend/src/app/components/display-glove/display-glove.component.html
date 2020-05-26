@@ -89,7 +89,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel expanded="true">
       <mat-expansion-panel-header>
-        <mat-panel-title i18n> Substances compatibility</mat-panel-title>
+        <mat-panel-title i18n> Substances resistance</mat-panel-title>
       </mat-expansion-panel-header>
 
       <h3 i18n>Specific substances rating</h3>
@@ -97,7 +97,8 @@
 
       <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances"></app-resistances-table>
 
-
+      <br>
+      <button mat-raised-button color="accent" (click)="openResistanceModal(selectedGlove)" *ngIf="auth.isLoggedIn()">Add permeability information</button>
       <!--
       glassHandling: {}; // Map[String, GlassHandling]
       tractionResistance: {}; // Map[String, Rating.Value] -->

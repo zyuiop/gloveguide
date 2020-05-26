@@ -783,7 +783,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="50936b763c81b7cd9d5783613bee02e30954a3a0" datatype="html">
         <source>Solution composition</source>
-        <target state="translated">Composition d'un mélange</target>
+        <target state="translated">Composition du mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-modal/solution-modal.component.html</context>
           <context context-type="linenumber">2</context>
@@ -813,21 +813,12 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="47c55a2249cff737025daa54ddd0fc3738eb2eba" datatype="html">
+      <trans-unit id="be1860eb1efc1d9738239d5fabbc08c9a66a53a1" datatype="html">
         <source>Welcome on EPFL Gloves Guide!</source>
-        <target state="translated">Bienvenue sur le guide des gants EPFL ! Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer un mélange, il sera envoyé à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
+        <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Si vous avez besoin de protection contre un mélange de substances, vous pouvez utiliser le formulaire <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Protection contre les mélanges<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> suivant.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">1</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="389e3791e3c0997caacaed1b88e022e50d951d61" datatype="html">
-        <source>Use the searchbar above to search for substances and gloves. You can also compose solutions along the way - they will
-  be sent to the ProtecPo service to help you find the most suited gloves for your work.</source>
-        <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer un mélange, il sera envoyé à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/home/home.component.html</context>
-          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2e4a14e05c8781a0b52877002c2bbd06184579c7" datatype="html">

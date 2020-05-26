@@ -22,7 +22,7 @@ import {Substance} from '../../data/substance';
 import {SubstancesService} from '../../services/substances.service';
 import {Glove} from '../../data/gloves';
 import {GlovesService} from '../../services/gloves.service';
-import {Resistance} from '../../data/resistance';
+import {parseResistance, Resistance} from '../../data/resistance';
 import {ResistancesService} from '../../services/resistances.service';
 import Swal from 'sweetalert2'
 
@@ -94,7 +94,7 @@ export class InsertionFormComponent implements OnInit {
         console.log(line);
 
         for (let i = 2; i < line.length; ++i) {
-          const minMax = this.parseResistance(line[i]);
+          const minMax = parseResistance(line[i]);
 
           if (!minMax) this.errors.push('Line ' + (index + 1) + ', col ' + (i + 1) + ': cannot parse resistance "' + line[i] + '"');
           res.push({glove: gloves[i], concentration, substance, min: minMax[0], max: minMax[1]});
@@ -105,29 +105,6 @@ export class InsertionFormComponent implements OnInit {
     }
   }
 
-  private parseResistance(_resistance: string): number[] {
-    const resistance = _resistance.trim().replace(' ', '');
-    const ht = />([0-9]+)'?/.exec(resistance);
-    const lt = /<([0-9]+)'?/.exec(resistance);
-    const interval = /([0-9]+)'?-([0-9]+)'?/.exec(resistance);
-    const fixed = /([0-9]+)'?/.exec(resistance);
-
-    if (ht) {
-      return [Number.parseInt(ht[1], 10), 0];
-    } else if (lt) {
-      return [0, Number.parseInt(lt[1], 10)];
-    } else if (interval) {
-      return [Number.parseInt(interval[1], 10), Number.parseInt(interval[2], 10)];
-    } else if (fixed) {
-      return [Number.parseInt(fixed[1], 10), Number.parseInt(fixed[1], 10)];
-    } else if (resistance === '' || resistance === '/') {
-      return [null, null];
-    } else if (resistance.startsWith('Retrait') || resistance.startsWith('Immediate')) {
-      return [0, -1]; // "imminent retreat"
-    } else {
-      return undefined;
-    }
-  }
 
   insert() {
     if (this.inserting || this.errors.length > 0 || this.result.length < 1) {

@@ -695,8 +695,8 @@
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="47c55a2249cff737025daa54ddd0fc3738eb2eba" datatype="html">
-        <source>Welcome on EPFL Gloves Guide! Use the searchbar above to find a substance or a glove. If you need protection against a mixture, you can use the <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Set up a Mixture<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> form below to find the most suited gloves.</source>
+      <trans-unit id="be1860eb1efc1d9738239d5fabbc08c9a66a53a1" datatype="html">
+        <source>Welcome on EPFL Gloves Guide! Use the searchbar above to find a substance or a glove. If you need protection against a mixture, you can use the <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Protection against a mixture<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> form below to find the most suited gloves.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">19</context>

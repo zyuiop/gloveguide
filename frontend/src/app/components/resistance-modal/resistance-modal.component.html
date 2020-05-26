@@ -1,0 +1,36 @@
+<h2 matDialogTitle>Insert resistance data</h2>
+<mat-dialog-content>
+  <form>
+    <p><b>Pro tip:</b> if you select a (glove + substance + concentration) tuple that already exists,<br> you will update the existing one and not create a new one! </p>
+
+    <app-substance-glove-selector label="Select a glove" [allowSubstances]="false"
+                                  (selectedChange)="glove = $event" [selected]="data.glove" selectionMode="true"
+                                  [disabled]="data.glove !== undefined"></app-substance-glove-selector>
+
+
+    <app-substance-glove-selector label="Select a substance" [allowGloves]="false"
+                                  (selectedChange)="substance = $event" [selected]="data.substance" selectionMode="true"
+                                  [disabled]="data.substance !== undefined"></app-substance-glove-selector>
+
+
+    <mat-form-field style="width: 100%;">
+      <mat-label>Concentration of the substance (in % of total volume)</mat-label>
+      <input matInput type="number" max="100" min="0" name="concentration" [(ngModel)]="concentration"
+             [disabled]="data.concentration !== undefined" required>
+    </mat-form-field>
+
+
+    <mat-form-field style="width: 100%;">
+      <mat-label>Permeation time</mat-label>
+      <input matInput name="permTime" [(ngModel)]="resistance" required>
+    </mat-form-field>
+
+    <ng-container *ngIf="resistanceObject">
+      <h3>Preview</h3>
+      <app-resistances-table [resistances]="resistanceArray" [isInsertion]="true"></app-resistances-table>
+    </ng-container>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button [disabled]="!resistance || inserting" mat-stroked-button (click)="submit()">Save</button>
+</mat-dialog-actions>

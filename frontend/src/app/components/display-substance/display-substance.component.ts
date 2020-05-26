@@ -27,6 +27,10 @@ import {Observable, of} from 'rxjs';
 import {SolutionsService} from '../../services/solutions.service';
 import {SolutionModalComponent} from '../solutions/solution-modal/solution-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Glove} from '../../data/gloves';
+import {ResistanceModalComponent, ResistanceModalData} from '../resistance-modal/resistance-modal.component';
+import {AuthService} from '../../services/auth.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-display-substance',
@@ -38,7 +42,7 @@ export class DisplaySubstanceComponent implements OnInit {
   resistances$: Observable<Resistance[][]>;
 
   constructor(private resistancesService: ResistancesService, private substances: SubstancesService, private route: ActivatedRoute,
-              private solutions: SolutionsService, private modal: NgbModal) {
+              private solutions: SolutionsService, private modal: NgbModal, public auth: AuthService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -60,5 +64,11 @@ export class DisplaySubstanceComponent implements OnInit {
   addToSolution(s: Substance) {
     this.solutions.addSubstance(s);
     this.modal.open(SolutionModalComponent, {size: 'xl', centered: true});
+  }
+
+  openResistanceModal(substance: Substance) {
+    const data = new ResistanceModalData();
+    data.substance = substance;
+    this.dialog.open(ResistanceModalComponent, {data});
   }
 }

@@ -25,6 +25,8 @@ import {Observable, of} from 'rxjs';
 import {Glove} from '../../data/gloves';
 import {GlovesService} from '../../services/gloves.service';
 import {AuthService} from '../../services/auth.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ResistanceModalComponent} from '../resistance-modal/resistance-modal.component';
 
 @Component({
   selector: 'app-display-glove',
@@ -36,7 +38,8 @@ export class DisplayGloveComponent implements OnInit {
   resistances$: Observable<Resistance[][]>;
 
 
-  constructor(private resistancesService: ResistancesService, private gloves: GlovesService, private route: ActivatedRoute, public auth: AuthService) {
+  constructor(private resistancesService: ResistancesService, private gloves: GlovesService, private route: ActivatedRoute, public auth: AuthService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -56,4 +59,7 @@ export class DisplayGloveComponent implements OnInit {
     this.resistances$ = this.selectedGlove$.pipe(switchMap(r => this.resistancesService.getForGlove(r.id)));
   }
 
+  openResistanceModal(glove: Glove) {
+    this.dialog.open(ResistanceModalComponent, {data: { glove }});
+  }
 }

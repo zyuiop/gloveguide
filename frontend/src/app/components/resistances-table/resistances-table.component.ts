@@ -21,6 +21,9 @@ import {Resistance, resistanceToClass, resistanceToString, sortResistances} from
 import {Substance} from '../../data/substance';
 import {SolutionsService} from '../../services/solutions.service';
 import {Glove} from '../../data/gloves';
+import {AuthService} from '../../services/auth.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ResistanceModalComponent} from '../resistance-modal/resistance-modal.component';
 
 @Component({
   selector: 'app-resistances-table',
@@ -33,6 +36,8 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
   @Input() showIfEmpty: boolean = true;
   @Input() transpose: boolean = false;
 
+  @Input() isInsertion: boolean = false;
+
   resistanceToClass = resistanceToClass;
   resistanceToString = resistanceToString;
 
@@ -40,7 +45,7 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
     return row[0]?.substance?.name + ' (CAS ' + row[0]?.substance?.casNumber + ') ' + row[0]?.concentration + '%';
   }
 
-  constructor(private solution: SolutionsService) { }
+  constructor(private solution: SolutionsService, public auth: AuthService, private modal: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -71,6 +76,10 @@ export class ResistancesTableComponent implements OnInit, OnChanges {
 
   addToSolution(substance: Substance) {
 
+  }
+
+  openResistanceModal(res: Resistance) {
+    this.modal.open(ResistanceModalComponent, {data: {glove: res.glove, substance: res.substance, concentration: res.concentration, resistance: resistanceToString(res)}});
   }
 
   /**

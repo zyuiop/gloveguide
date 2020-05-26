@@ -17,14 +17,15 @@
   -->
 
 <mat-form-field style="width: 100%">
-  <mat-label i18n>Search for a {this.allowGloves, select, true { substance or glove } false { substance }}...</mat-label>
+  <mat-label i18n *ngIf="!label">Search for a {this.allowGloves, select, true { {this.allowSubstances, select, true { substance or glove } false { glove }} } false { substance }}...</mat-label>
+  <mat-label *ngIf="label">{{label}}</mat-label>
   <input type="text" matInput [matAutocomplete]="auto" [formControl]="input" (keypress)="keypress($event)">
 
-  <button mat-icon-button matSuffix (click)="search()">
-    <mat-icon>{{hasSelectedSubstance ? 'add' : 'search'}}</mat-icon>
+  <button mat-icon-button matSuffix type="button" (click)="search()" *ngIf="!disabled">
+    <mat-icon>search</mat-icon>
   </button>
 
-  <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" [displayWith]="displaySubstance" (optionSelected)="select($event.option.value)">
+  <mat-autocomplete #auto="matAutocomplete" [autoActiveFirstOption]="true" [displayWith]="displaySelected" (optionSelected)="select($event.option.value)">
     <mat-option *ngFor="let option of filteredSubstances | async" [value]="option">
       <ng-container *ngIf="option.casNumber">
         {{ option.name }}

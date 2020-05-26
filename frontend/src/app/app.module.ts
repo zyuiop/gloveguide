@@ -21,7 +21,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SubstanceSelectorComponent} from './components/selectors/substance-selector/substance-selector.component';
+import {SubstanceGloveSelectorComponent} from './components/selectors/substance-glove-selector/substance-glove-selector.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
@@ -60,11 +60,12 @@ import { LocaleSwitcherComponent } from './components/locale-switcher/locale-swi
 import { LoginComponent } from './components/login/login.component';
 import { UploadsComponent } from './components/uploads/uploads.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ResistanceModalComponent } from './components/resistance-modal/resistance-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubstanceSelectorComponent,
+    SubstanceGloveSelectorComponent,
     SolutionCompositorComponent,
     GlovesComponent,
     RatingBadgeComponent,
@@ -83,7 +84,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
     LocaleSwitcherComponent,
     LoginComponent,
     UploadsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    ResistanceModalComponent
   ],
   imports: [
     BrowserModule,

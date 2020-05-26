@@ -16,7 +16,7 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {SubstancesService} from '../../../services/substances.service';
 import {Observable} from 'rxjs';
 import {Substance} from '../../../data/substance';
@@ -28,13 +28,17 @@ import {GlovesService} from '../../../services/gloves.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-substance-selector',
-  templateUrl: './substance-selector.component.html',
-  styleUrls: ['./substance-selector.component.css']
+  selector: 'app-substance-glove-selector',
+  templateUrl: './substance-glove-selector.component.html',
+  styleUrls: ['./substance-glove-selector.component.css']
 })
-export class SubstanceSelectorComponent implements OnInit {
+export class SubstanceGloveSelectorComponent implements OnInit, OnChanges {
 
   @Input() allowGloves = true;
+  @Input() allowSubstances = true;
+  @Input() label;
+  @Input() selectionMode = false;
+  @Input() disabled = false;
 
   substances: Observable<(Substance | Glove)[]>;
   filteredSubstances: Observable<(Substance | Glove)[]>;
@@ -42,6 +46,7 @@ export class SubstanceSelectorComponent implements OnInit {
   searchResults: Substance[];
   searching = false;
 
+  @Input() selected;
   @Output() selectedChange = new EventEmitter<(Substance | Glove)>();
 
   constructor(public substancesService: SubstancesService, public gloves: GlovesService, public snack: MatSnackBar) {
@@ -49,7 +54,7 @@ export class SubstanceSelectorComponent implements OnInit {
 
   get hasSelectedSubstance() {
     return isNotNullOrUndefined(this.input.value) && typeof this.input.value === 'object' &&
-      (this.input.value.casNumber || (this.allowGloves && this.input.value.standardResistance));
+      ((this.allowSubstances && this.input.value.casNumber) || (this.allowGloves && this.input.value.specifications));
   }
 
   ngOnInit(): void {
@@ -68,17 +73,37 @@ export class SubstanceSelectorComponent implements OnInit {
         filter(v => typeof v === 'string'),
         switchMap(value => this._filter(value))
       );
+
+    if (this.disabled) {
+      this.input.disable();
+    }
   }
 
-  displaySubstance(subst: Substance): string {
-    return subst && subst.casNumber && subst.name ? subst.name + ' [' + subst.casNumber + ']' : '';
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.selected) {
+      this.input.setValue(this.selected);
+    }
+  }
+
+  displaySelected(selected: any): string {
+    if (!selected) {
+      return '';
+    } else if (selected.casNumber) {
+      const subst = selected as Substance;
+      return subst.name + ' [' + subst.casNumber + ']';
+    } else if (selected.specifications) {
+      const glove = selected as Glove;
+      return glove.brand + ' ' + glove.name;
+    } else {
+      return '';
+    }
   }
 
   search() {
     if (this.hasSelectedSubstance) {
       this.selectedChange.emit(this.input.value as (Substance | Glove));
       this.reset();
-    } else if (this.input.value && this.input.value.length > 0) {
+    } else if (this.input.value && this.input.value.length > 0 && this.allowSubstances) {
       if (this.searching) {
         return; // No two parallel searches
       }
@@ -93,10 +118,14 @@ export class SubstanceSelectorComponent implements OnInit {
         .subscribe(substances => {
           this.searchResults = substances;
           this.searching = false;
-          this.input.enable();
+          if (!this.disabled) {
+            this.input.enable();
+          }
         }, err => {
           this.searching = false;
-          this.input.enable();
+          if (!this.disabled) {
+            this.input.enable();
+          }
           this.snack.open(err, 'Retry', {duration: 5000})
             .onAction()
             .subscribe(_ => this.search());
@@ -112,8 +141,12 @@ export class SubstanceSelectorComponent implements OnInit {
   }
 
   reset() {
-    this.input.setValue('');
-    this.input.enable();
+    if (!this.selectionMode) {
+      this.input.setValue('');
+    }
+    if (!this.disabled) {
+      this.input.enable();
+    }
     this.searching = false;
     this.searchResults = undefined;
   }
@@ -129,14 +162,14 @@ export class SubstanceSelectorComponent implements OnInit {
     const onlyGloves = parts[0].toLowerCase() === 'gloves' || parts[0].toLowerCase() === 'glove';
     filterValue = onlyGloves ? (parts.length > 1 ? parts[1].trim() : '') : filterValue;
 
-    console.log('Filter: ' + filterValue + ', only gloves:' + onlyGloves)
+    console.log('Filter: ' + filterValue + ', only gloves:' + onlyGloves);
 
     return this.substances.pipe(map(substances =>
         substances.filter(_opt => {
           const option = _opt as any;
           if (option.casNumber) {
             const opt = option as Substance;
-            return !onlyGloves && (opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue));
+            return !onlyGloves && this.allowSubstances && (opt.name.toLowerCase().startsWith(filterValue) || opt.casNumber.toLowerCase().startsWith(filterValue));
           } else if (option.brand) {
             const opt = option as Glove;
             const name = opt.brand + ' ' + opt.name;

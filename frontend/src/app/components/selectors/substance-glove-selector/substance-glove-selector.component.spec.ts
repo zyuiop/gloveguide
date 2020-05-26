@@ -18,21 +18,21 @@
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SubstanceSelectorComponent } from './substance-selector.component';
+import { SubstanceGloveSelectorComponent } from './substance-glove-selector.component';
 
 describe('SubstanceSelectorComponent', () => {
-  let component: SubstanceSelectorComponent;
-  let fixture: ComponentFixture<SubstanceSelectorComponent>;
+  let component: SubstanceGloveSelectorComponent;
+  let fixture: ComponentFixture<SubstanceGloveSelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubstanceSelectorComponent ]
+      declarations: [ SubstanceGloveSelectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SubstanceSelectorComponent);
+    fixture = TestBed.createComponent(SubstanceGloveSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
