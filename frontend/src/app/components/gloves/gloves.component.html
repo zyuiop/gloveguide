@@ -34,8 +34,15 @@
 
   <div class="alert alert-danger" *ngIf="list.length === 0" i18n>
     <mat-icon>error</mat-icon>
-    <b>No glove found:</b> There is no glove in the database with these types. Please see the <a routerLink="/gloves">list
-    of all gloves</a> for alternative options.
+    <ng-container *ngIf="filteredTypes">
+      <b>No glove found:</b> Presently, this database is unable to recommend disposable (thin) gloves for this type of mixture. Please consider using re-usable (thick) gloves available from your EPFL store.
+    </ng-container>
+
+    <ng-container *ngIf="!filteredTypes">
+      <b>No glove found:</b> There is no glove in the database with these types. Please see the <a routerLink="/gloves">list
+      of all gloves</a> for alternative options.
+    </ng-container>
+
   </div>
 </mat-nav-list>
 

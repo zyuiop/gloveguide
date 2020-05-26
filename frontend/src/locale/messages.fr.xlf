@@ -400,9 +400,9 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="30e40b49e4b580de9e92de0dfae0976c0711c7a9" datatype="html">
+      <trans-unit id="57bb8039dcd7b7a7e03aa17cfd0287916300acbc" datatype="html">
         <source>Compose a solution</source>
-        <target state="translated">Créer un mélange</target>
+        <target state="translated">Protection contre les mélanges</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">1</context>
@@ -420,18 +420,18 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="68d52fd685257ea4523ed1a42dcbd85a1ba98800" datatype="html">
+      <trans-unit id="930b294204d497aa59000f4b2cd1a067d21ba459" datatype="html">
         <source>This page allows you to quickly search for the best gloves given a solution. Alternatively, you can also use the main
   search bar and the button "Add to solution".</source>
-        <target state="translated">Cette section vous permet de rapidement rechercher les meilleurs gants pour un mélange donné. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter au mélange".</target>
+        <target state="translated">Cette section vous permet de rapidement trouver les gants recommandés pour votre mélange de substances. Alternativement, vous pouvez aussi utiliser la barre de recherche principale et le bouton "Ajouter au mélange".</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bae19e487c196bd4e9813c62f48cbceb9d80bbb3" datatype="html">
+      <trans-unit id="b89e9086781add998721a9c83c968f5f356d45ae" datatype="html">
         <source>Solution</source>
-        <target state="translated">Mélange</target>
+        <target state="translated">Composition du mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">8</context>
@@ -449,9 +449,9 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9f41c82b1d905640d998dc0e9f232c18cb99840f" datatype="html">
+      <trans-unit id="4a4e200611e5ae10bcf73457097027a33c544e72" datatype="html">
         <source>Best gloves results for this solution</source>
-        <target state="translated">Meilleurs gants pour ce mélange</target>
+        <target state="translated">Recommendations de gants pour ce mélange</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">16</context>
@@ -504,13 +504,27 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1488d75b77d47b52db3949b5ec57784dba042f46" datatype="html">
+      <trans-unit id="585809d575c2520470451d27163b5f298068b1c7" datatype="html">
         <source>
     <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
     <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>list
     of all gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> for alternative options.
   </source>
-        <target state="translated"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Aucun gant trouvé :<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Il n'y a aucun gant de ce type dans la base de données. Merci de chercher dans la <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>liste de tous les gants<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> pour trouver une alternative.</target>
+        <target state="translated"><x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
+
+
+	<x id="START_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;ng-container&gt;"/>
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Actuellement, cette base de données ne permet pas une recommandation de gants jetables (fins) pour ce type de mélange. Merci de considérer les gants réutilisables (épais) à disposition dans votre magasin à l’EPFL.
+    <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container&gt;"/>
+
+    <x id="START_TAG_NG-CONTAINER_1" ctype="x-ng-container" equiv-text="&lt;ng-container&gt;"/>
+        <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Aucun gant trouvé :<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Il n'y a aucun gant de ce type dans la base de données. Merci de chercher dans la <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>liste de tous les gants<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> pour trouver une alternative.
+    <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container&gt;"/>
+
+
+
+
+    </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
           <context context-type="linenumber">15</context>
@@ -791,7 +805,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="038dd5124361ab1fb9ad2a8643d4ba8b0912ac59" datatype="html">
+      <trans-unit id="e5bf1b9bd22ac9394d055882698ed8e33f717b20" datatype="html">
         <source>Selected substance <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>Add to solution<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/></source>
         <target state="translated">Substance choisie <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button>"/>Ajouter au mélange<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button>"/></target>
         <context-group purpose="location">
@@ -799,9 +813,9 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fb34eaf920f804d575a58345c836fa79160295b6" datatype="html">
+      <trans-unit id="47c55a2249cff737025daa54ddd0fc3738eb2eba" datatype="html">
         <source>Welcome on EPFL Gloves Guide!</source>
-        <target state="translated">Bienvenue sur le guide des gants EPFL !</target>
+        <target state="translated">Bienvenue sur le guide des gants EPFL ! Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Vous pouvez aussi créer un mélange, il sera envoyé à ProtecPo pour vous aider à trouver les meilleurs gants pour votre travail.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">1</context>
@@ -842,7 +856,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="48d0e67a5eefa219f85072200bde5c21a6e6a443" datatype="html">
+      <trans-unit id="d4ce2ca39c3b0d04bb77be01cb42bfb68de3e7a3" datatype="html">
         <source>The following results are provided by INRS's <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>.</source>
         <target state="translated">Les résultats suivants sont fournis par le service <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/> de l'INRS.</target>
         <context-group purpose="location">
@@ -878,7 +892,7 @@ Attention : la pertinence de la recommandation ci-dessous est affectée compte t
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0628506743848272f317b81448f8f42ce59c78c3" datatype="html">
+      <trans-unit id="389e3791e3c0997caacaed1b88e022e50d951d61" datatype="html">
         <source>
   <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
   No result could be recommended by ProtecPo for this solution.

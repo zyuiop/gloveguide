@@ -21,7 +21,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Glove} from '../data/gloves';
-import {map, switchMap, tap} from 'rxjs/operators';
+import {catchError, delay, map, retryWhen, switchMap, tap} from 'rxjs/operators';
+import {tryCatch} from 'rxjs/internal-compatibility';
 
 @Injectable({providedIn: 'root'})
 export class GlovesService {
@@ -36,12 +37,13 @@ export class GlovesService {
   }
 
   updateCachedGloves(): Observable<Glove[]> {
-    return this.pullGloves().pipe(tap(res => this.cacheSubject.next(res)));
+    this.nextRefresh = Date.now() + 10 * 60 * 1000;
+
+    return this.pullGloves().pipe(tap(res => this.cacheSubject.next(res)), retryWhen(err => err.pipe(delay(1000))));
   }
 
   getGloves(): Observable<Glove[]> {
     if (this.nextRefresh < Date.now()) {
-      this.nextRefresh = Date.now() + 10 * 60 * 1000;
       this.updateCachedGloves().subscribe();
     }
     return this.cacheSubject;
@@ -49,7 +51,6 @@ export class GlovesService {
 
   getGlove(id: number): Observable<Glove> {
     if (this.nextRefresh < Date.now()) {
-      this.nextRefresh = Date.now() + 10 * 60 * 1000;
       this.updateCachedGloves().subscribe();
     }
     return this.cacheSubject.pipe(map(lst => lst.filter(g => g.id === id)[0]));

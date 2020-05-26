@@ -34,7 +34,7 @@
       <ng-container *ngIf="option.brand">
         {{ option.brand }} {{ option.name }}
 
-        <small class="right">{{option.reference}}</small>
+        <small class="right">{{option.materials.join(", ")}} [Ref: {{option.reference}}]</small>
       </ng-container>
     </mat-option>
   </mat-autocomplete>
@@ -55,7 +55,7 @@
   <mat-list style="width: 100%;">
     <mat-list-item *ngFor="let s of searchResults" style="width: 100%;" (click)="select(s)">
       <b>{{s.name}}</b>
-      <small class="right">[{{s.casNumber}}]</small>
+      <small class="right">[CAS {{s.casNumber}}]</small>
     </mat-list-item>
   </mat-list>
 </ng-container>

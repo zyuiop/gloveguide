@@ -299,21 +299,21 @@
         <source>EPFL Gloves Guide</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5ae114549c4f54f2d7787e649155e5fa9ce91c1d" datatype="html">
         <source>Search for a substance or glove</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e5df39dcb02990f8b070762cd1fb2c463a45575c" datatype="html">
         <source>© 2020 - Louis Vialar &amp; contributors for EPFL / ISIC-GSCP<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>This application is a free software, published under the GNU AGPL v3 license.<x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br/&gt;"/>Source code available on GitHub <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>zyuiop/gloveguide<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="c85b5fd404fb568e66115dd382fd601ec8d1bc4d" datatype="html">
@@ -358,23 +358,23 @@
           <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="30e40b49e4b580de9e92de0dfae0976c0711c7a9" datatype="html">
-        <source>Compose a solution</source>
+      <trans-unit id="57bb8039dcd7b7a7e03aa17cfd0287916300acbc" datatype="html">
+        <source>Protection against a mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="68d52fd685257ea4523ed1a42dcbd85a1ba98800" datatype="html">
-        <source>This section allows you to quickly search for the best gloves given a mixture. Alternatively, you can also use the main
-  search bar and the button &quot;Add to mixture&quot;.</source>
+      <trans-unit id="930b294204d497aa59000f4b2cd1a067d21ba459" datatype="html">
+        <source>This section allows finding the recommended gloves for a given mixture of chemicals. Alternatively, you can also use the main
+  search bar and the button &quot;Add to the mixture&quot;.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="bae19e487c196bd4e9813c62f48cbceb9d80bbb3" datatype="html">
-        <source>Mixture</source>
+      <trans-unit id="b89e9086781add998721a9c83c968f5f356d45ae" datatype="html">
+        <source>Set up the mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">26</context>
@@ -387,8 +387,8 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9f41c82b1d905640d998dc0e9f232c18cb99840f" datatype="html">
-        <source>Best gloves results for this mixture</source>
+      <trans-unit id="4a4e200611e5ae10bcf73457097027a33c544e72" datatype="html">
+        <source>Glove recommendations for this mixture</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-compositor/solution-compositor.component.html</context>
           <context context-type="linenumber">34</context>
@@ -433,11 +433,18 @@
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1488d75b77d47b52db3949b5ec57784dba042f46" datatype="html">
+      <trans-unit id="585809d575c2520470451d27163b5f298068b1c7" datatype="html">
         <source>
     <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon&gt;"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon&gt;"/>
-    <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>list
-    of all gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> for alternative options.
+    <x id="START_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;ng-container&gt;"/>
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Presently, this database is unable to recommend disposable (thin) gloves for this type of mixture. Please consider using re-usable (thick) gloves available from your EPFL store.
+    <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container&gt;"/>
+
+    <x id="START_TAG_NG-CONTAINER_1" ctype="x-ng-container" equiv-text="&lt;ng-container&gt;"/>
+      <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>list
+      of all gloves<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> for alternative options.
+    <x id="CLOSE_TAG_NG-CONTAINER" ctype="x-ng-container" equiv-text="&lt;/ng-container&gt;"/>
+
   </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
@@ -681,15 +688,15 @@
           <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="038dd5124361ab1fb9ad2a8643d4ba8b0912ac59" datatype="html">
-        <source>Selected substance <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Add to solution<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+      <trans-unit id="e5bf1b9bd22ac9394d055882698ed8e33f717b20" datatype="html">
+        <source>Selected substance <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedSubstance.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> (CAS <x id="INTERPOLATION_1" equiv-text="{{selectedSubstance.casNumber}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Add to the mixture<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-substance/display-substance.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="fb34eaf920f804d575a58345c836fa79160295b6" datatype="html">
-        <source>Welcome on EPFL Gloves Guide! Use the searchbar above to find a glove or a substance. If you want to work with a mixture, you can also look it up using the form below.</source>
+      <trans-unit id="47c55a2249cff737025daa54ddd0fc3738eb2eba" datatype="html">
+        <source>Welcome on EPFL Gloves Guide! Use the searchbar above to find a substance or a glove. If you need protection against a mixture, you can use the <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Set up a Mixture<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> form below to find the most suited gloves.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">19</context>
@@ -710,8 +717,8 @@
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="48d0e67a5eefa219f85072200bde5c21a6e6a443" datatype="html">
-        <source>The following results are provided by INRS&apos;s <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+      <trans-unit id="d4ce2ca39c3b0d04bb77be01cb42bfb68de3e7a3" datatype="html">
+        <source>The following results are provided by INRS&apos; <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>ProtecPo<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/solutions/solution-results/solution-results.component.html</context>
           <context context-type="linenumber">19</context>

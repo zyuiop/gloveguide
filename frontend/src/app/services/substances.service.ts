@@ -21,7 +21,7 @@ import {Substance} from '../data/substance';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {catchError} from 'rxjs/operators';
+import {catchError, delay, retry, retryWhen} from 'rxjs/operators';
 import {handleError} from '../data/errors';
 
 @Injectable({providedIn: 'root'})
@@ -48,7 +48,7 @@ export class SubstancesService {
   }
 
   updateCachedSubstances() {
-    this.getSubstances().subscribe(res => this.cacheSubject.next(res));
+    this.getSubstances().pipe(retryWhen(err => err.pipe(delay(1000)))).subscribe(res => this.cacheSubject.next(res), err => this.nextRefresh = 0);
   }
 
   getCachedSubstances(): Observable<Substance[]> {

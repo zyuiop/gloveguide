@@ -16,14 +16,14 @@
   ~     along with this program.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<h2 i18n>Compose a solution</h2>
-<p i18n>This section allows you to quickly search for the best gloves given a mixture. Alternatively, you can also use the main
-  search bar and the button "Add to mixture".</p>
+<h2 i18n>Protection against a mixture</h2>
+<p i18n>This section allows finding the recommended gloves for a given mixture of chemicals. Alternatively, you can also use the main
+  search bar and the button "Add to the mixture".</p>
 
 <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
   <div fxFlex>
 
-    <h2 class="mat-h2" i18n>Mixture</h2>
+    <h2 class="mat-h2" i18n>Set up the mixture</h2>
     <app-substance-selector allowGloves="false" (selectedChange)="addSubstance($event) ; onChange()"></app-substance-selector>
     <app-solution-viewer (changes)="onChange()"></app-solution-viewer>
     <br>
@@ -31,7 +31,7 @@
   </div>
 
   <div fxFlex>
-    <h2 class="mat-h2" i18n>Best gloves results for this mixture</h2>
+    <h2 class="mat-h2" i18n>Glove recommendations for this mixture</h2>
 
     <ng-container *ngIf="solution.substances.length > 0">
       <ng-container *ngIf="totalProportion === 100">

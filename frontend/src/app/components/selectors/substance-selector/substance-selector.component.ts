@@ -140,8 +140,7 @@ export class SubstanceSelectorComponent implements OnInit {
           } else if (option.brand) {
             const opt = option as Glove;
             const name = opt.brand + ' ' + opt.name;
-            console.log('glove ' + name + ' -- ' + this.allowGloves + ' && ( ' + name.toLowerCase().startsWith(filterValue) + ' || ' + opt.reference.startsWith(filterValue) + ')');
-            return this.allowGloves && (name.toLowerCase().startsWith(filterValue) || opt.reference.startsWith(filterValue));
+            return this.allowGloves && (name.toLowerCase().startsWith(filterValue) || opt.reference.startsWith(filterValue) || opt.materials.filter(e => e.toLowerCase().startsWith(filterValue)).length > 0);
           } else {
             return false;
           }

@@ -17,7 +17,7 @@
   -->
 
 <ng-container *ngIf="selectedSubstance$ | async as selectedSubstance; else loading">
-  <h3 i18n>Selected substance <b>{{selectedSubstance.name}}</b> (CAS {{selectedSubstance.casNumber}}) <button (click)="addToSolution(selectedSubstance)" mat-stroked-button>Add to solution</button></h3>
+  <h3 i18n>Selected substance <b>{{selectedSubstance.name}}</b> (CAS {{selectedSubstance.casNumber}}) <button (click)="addToSolution(selectedSubstance)" mat-stroked-button>Add to the mixture</button></h3>
 
 
 

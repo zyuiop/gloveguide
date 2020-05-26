@@ -16,6 +16,12 @@
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+.logo {
+  float: left;
+  position: absolute;
+  top: 0;
+}
+
 .container {
   margin-top: 30px;
 }
