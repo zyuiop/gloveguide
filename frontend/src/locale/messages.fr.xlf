@@ -352,7 +352,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c85b5fd404fb568e66115dd382fd601ec8d1bc4d" datatype="html">
+      <trans-unit id="f494fd9cd98c9bfbeedea7ed1f3e315f006d0351" datatype="html">
         <source>Search for a <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</source>
         <target state="translated">Rechercher <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</target>
         <context-group purpose="location">
@@ -360,9 +360,9 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="21603485276402e102464fa07ccb810c5122bdcb" datatype="html">
-        <source>{VAR_SELECT, select, true {substance or glove } false {substance } }</source>
-        <target state="translated">{VAR_SELECT, select, true {une substance ou un gant} false {une substance } }</target>
+      <trans-unit id="95727af52215a490126a36c67ceb68164e4a54ea" datatype="html">
+        <source>{VAR_SELECT_1, select, true {{VAR_SELECT, select, true {substance or glove } false {glove } } } false {substance } }</source>
+        <target state="translated">{VAR_SELECT_1, select, true {{VAR_SELECT, select, true {une substance ou un gant } false {un gant } } } false {une substance } }</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
           <context context-type="linenumber">2</context>
@@ -750,7 +750,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="9c246ff00e04c9c8f8781b21624f67418c4d2644" datatype="html">
         <source>Substances compatibility</source>
-        <target state="translated">Compatibilité avec les substances</target>
+        <target state="translated">Résistance contre les substances</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">66</context>

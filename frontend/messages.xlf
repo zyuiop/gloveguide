@@ -316,46 +316,46 @@
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="c85b5fd404fb568e66115dd382fd601ec8d1bc4d" datatype="html">
+      <trans-unit id="f494fd9cd98c9bfbeedea7ed1f3e315f006d0351" datatype="html">
         <source>Search for a <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="21603485276402e102464fa07ccb810c5122bdcb" datatype="html">
-        <source>{VAR_SELECT, select, true {substance or glove } false {substance } }</source>
+      <trans-unit id="95727af52215a490126a36c67ceb68164e4a54ea" datatype="html">
+        <source>{VAR_SELECT_1, select, true {{VAR_SELECT, select, true {substance or glove } false {glove } } } false {substance } }</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
           <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1265dade629b76077f2ee5866dc1ed2f8cf03860" datatype="html">
         <source>Search in progress...</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
+          <context context-type="linenumber">46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cec252b9723b476c3fd086d9b33c940d86c2d4b5" datatype="html">
         <source>Please wait while we search for substances...</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="49c9ede51100b454f7841b24cd02355c6622bf44" datatype="html">
         <source>Search results</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="81566b0474bafbb3fd8b1e7719ab32f77d50bb1a" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>No results found.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> Try searching with a different query.</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/selectors/substance-selector/substance-selector.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="sourcefile">src/app/components/selectors/substance-glove-selector/substance-glove-selector.component.html</context>
+          <context context-type="linenumber">54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="57bb8039dcd7b7a7e03aa17cfd0287916300acbc" datatype="html">
@@ -500,7 +500,7 @@
         <source>Glove</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="76d144477ad3d082f881218d920dc12f94df1136" datatype="html">
@@ -509,7 +509,7 @@
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/resistances-table/resistances-table.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="06b8ab3e2764d28e6c6e48e64f30ac7ae31770f1" datatype="html">
@@ -646,8 +646,8 @@
           <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="9c246ff00e04c9c8f8781b21624f67418c4d2644" datatype="html">
-        <source> Substances compatibility</source>
+      <trans-unit id="bf7802bca16da6f7dd3ad9d058916fc3c654bae1" datatype="html">
+        <source> Substances resistance</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">92</context>
