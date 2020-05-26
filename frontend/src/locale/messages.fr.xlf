@@ -765,6 +765,16 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
+
+      <trans-unit id="bf7802bca16da6f7dd3ad9d058916fc3c654bae1" datatype="html">
+        <source> Substances resistance</source>
+		<target state="translated">Résistance aux substances</target>
+
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="cbf6bb27091b4001dda19f286d33b43e2e280270" datatype="html">
         <source>Specific substances rating</source>
         <target state="translated">Résistance aux substances</target>
@@ -815,7 +825,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="be1860eb1efc1d9738239d5fabbc08c9a66a53a1" datatype="html">
         <source>Welcome on EPFL Gloves Guide!</source>
-        <target state="translated">Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Si vous avez besoin de protection contre un mélange de substances, vous pouvez utiliser le formulaire <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Protection contre les mélanges<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> suivant.</target>
+        <target state="translated">Bienvenue sur le guide des gants EPFL ! Utilisez la barre de recherche ci dessus pour trouver des substances ou gants. Si vous avez besoin de protection contre un mélange de substances, vous pouvez utiliser le formulaire <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>Protection contre les mélanges<x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/> suivant.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/home/home.component.html</context>
           <context context-type="linenumber">1</context>

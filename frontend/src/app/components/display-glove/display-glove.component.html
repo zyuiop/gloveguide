@@ -92,7 +92,6 @@
         <mat-panel-title i18n> Substances resistance</mat-panel-title>
       </mat-expansion-panel-header>
 
-      <h3 i18n>Specific substances rating</h3>
       <p i18n>According to internal tests or spec sheets.</p>
 
       <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances"></app-resistances-table>
