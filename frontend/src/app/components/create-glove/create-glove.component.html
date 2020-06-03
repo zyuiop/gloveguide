@@ -24,16 +24,16 @@
     <div fxLayout="row" fxLayoutGap="20px">
       <mat-form-field appearance="outline" fxFlex>
         <mat-label>Brand name</mat-label>
-        <input type="text" name="brand" matInput [(ngModel)]="glove.brand" required />
+        <input type="text" name="brand" matInput [(ngModel)]="glove.brand" required/>
       </mat-form-field>
       <mat-form-field appearance="outline" fxFlex>
         <mat-label>Glove name</mat-label>
-        <input type="text" name="name" matInput [(ngModel)]="glove.name" required />
+        <input type="text" name="name" matInput [(ngModel)]="glove.name" required/>
       </mat-form-field>
     </div>
     <mat-form-field appearance="outline">
       <mat-label>Glove reference</mat-label>
-      <input type="text" name="reference" matInput [(ngModel)]="glove.reference" required />
+      <input type="text" name="reference" matInput [(ngModel)]="glove.reference" required/>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Materials</mat-label>
@@ -41,6 +41,8 @@
         <mat-option *ngFor="let mat of GloveMaterials" [value]="mat">{{mat}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-checkbox [(ngModel)]="glove.disposable" name="disposable">This glove is disposable</mat-checkbox>
+    <br>
 
 
     <h3>Glove picture</h3>
@@ -63,110 +65,131 @@
     <h3>Specifications (EN ISO 374-1)</h3>
     <mat-form-field appearance="outline">
       <mat-label>Type</mat-label>
-      <input type="text" name="type" matInput [(ngModel)]="glove.specifications.standardType" required />
+      <mat-select name="type" [(ngModel)]="glove.specifications.standardType" required>
+        <mat-option value="A">A</mat-option>
+        <mat-option value="B">B</mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Resistance</mat-label>
-      <input type="text" name="resistance" matInput [(ngModel)]="glove.specifications.standardResistance" required />
+      <input type="text" name="resistance" matInput [(ngModel)]="glove.specifications.standardResistance" required/>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>AQL</mat-label>
-      <input type="number" min="0" max="1" step="0.05" name="sql" matInput [(ngModel)]="glove.specifications.aql" required />
+      <input type="number" min="0" max="1" step="0.05" name="sql" matInput [(ngModel)]="glove.specifications.aql"/>
     </mat-form-field>
 
     <div fxLayout="row" fxLayoutGap="20px">
       <mat-form-field fxFlex appearance="outline">
         <mat-label>Length (mm)</mat-label>
-        <input type="number" min="0" max="10000" step="10" name="length" matInput [(ngModel)]="glove.specifications.length" required />
+        <input type="number" min="0" max="10000" step="10" name="length" matInput
+               [(ngModel)]="glove.specifications.length" required/>
         <span matSuffix> mm</span>
       </mat-form-field>
 
       <mat-form-field fxFlex appearance="outline">
         <mat-label>Palm thickness (mm)</mat-label>
-        <input type="number" min="0" max="5" step="0.001" name="thickness" matInput [(ngModel)]="glove.specifications.thickness" required />
+        <input type="number" min="0" max="5" step="0.001" name="thickness" matInput
+               [(ngModel)]="glove.specifications.thickness"/>
         <span matSuffix> mm</span>
       </mat-form-field>
     </div>
 
 
-
-    <mat-checkbox [(ngModel)]="glove.specifications.powdered" name="powdered">This glove is powdered</mat-checkbox><br>
-    <mat-checkbox [(ngModel)]="glove.specifications.disposable" name="disposable">This glove is disposable</mat-checkbox><br>
-    <mat-checkbox [(ngModel)]="glove.specifications.fingerTextured" name="fingerTextured">This glove is finger textured</mat-checkbox>
+    <mat-checkbox *ngIf="glove.disposable" [(ngModel)]="glove.specifications.powdered" name="powdered">This glove is
+      powdered
+    </mat-checkbox>
+    <br>
+    <mat-checkbox *ngIf="glove.disposable" [(ngModel)]="glove.specifications.fingerTextured" name="fingerTextured">This
+      glove is finger textured
+    </mat-checkbox>
 
 
     <mat-form-field appearance="outline">
-      <mat-label>Vulcanization agent</mat-label>
+      <mat-label>Vulcanization agent(s)</mat-label>
       <input type="text" name="vulcanizationAgent" matInput [(ngModel)]="glove.specifications.vulcanizationAgent"/>
     </mat-form-field>
 
 
-    <h3>Ratings</h3>
-    <app-rating-selector style="width: 100%;" label="Ease to wear" name="easeToWear"
-                         [(selected)]="glove.easeToWear"></app-rating-selector>
-    <app-rating-selector style="width: 100%;" label="Ease to remove" name="easeToRemove"
-                         [(selected)]="glove.easeToRemove"></app-rating-selector>
+    <ng-container *ngIf="glove.disposable">
+      <h3>Ratings</h3>
+      <app-rating-selector style="width: 100%;" label="Ease to wear" name="easeToWear"
+                           [(selected)]="glove.ratings.easeToWear"></app-rating-selector>
+      <app-rating-selector style="width: 100%;" label="Ease to remove" name="easeToRemove"
+                           [(selected)]="glove.ratings.easeToRemove"></app-rating-selector>
 
-    <h3>Ranking</h3>
+      <h3>Ranking</h3>
 
-    <div fxLayout="row" fxLayoutGap="20px">
-      <mat-form-field fxFlex="30%" appearance="outline">
-        <mat-label>Position</mat-label>
-        <input type="number" min="1" max="10000" step="1" name="position" matInput [(ngModel)]="glove.ranking" required />
-      </mat-form-field>
-      <app-rating-selector fxFlex="70%" label="Category" name="rankingCategory"
-                           [(selected)]="glove.rankingCategory"></app-rating-selector>
-
-    </div>
-
-
-    <mat-form-field appearance="outline">
-      <mat-label>Recommendations</mat-label>
-      <textarea matInput name="recommendations" [(ngModel)]="glove.recommendations" required></textarea>
-    </mat-form-field>
-
-
-    <br><br>
-    <h3>Traction resistances</h3>
-
-    <div fxLayout="row" fxLayoutGap="20px" *ngFor="let res of glove.tractionResistance ; index as i">
-      <mat-form-field fxFlex appearance="outline">
-        <mat-label>Humidifier</mat-label>
-        <input type="text" placeholder="Water" name="{{i}}humidifier" matInput [(ngModel)]="res.humidifier" />
-      </mat-form-field>
-
-      <app-rating-selector fxFlex label="Traction resistance" name="{{i}}tractionResistance"
-                           [(selected)]="res.tractionResistance"></app-rating-selector>
-
-      <button mat-icon-button (click)="deleteTractionResistance(glove, res)"><mat-icon>delete</mat-icon></button>
-    </div>
-
-    <button mat-raised-button type="button" (click)="addTractionResistance(glove)"><mat-icon>add</mat-icon> Add</button>
-
-    <br><br>
-    <h3>Glass Handling</h3>
-
-    <div *ngFor="let res of glove.glassHandling ; index as i">
-      <div fxLayout="row" fxLayoutGap="20px" >
-        <mat-form-field fxFlex appearance="outline">
-          <mat-label>Humidifier</mat-label>
-          <input type="text" placeholder="Water" name="{{i}}gh_humidifier" matInput [(ngModel)]="res.humidifier" />
+      <div fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field fxFlex="30%" appearance="outline">
+          <mat-label>Position</mat-label>
+          <input type="number" min="1" max="10000" step="1" name="position" matInput [(ngModel)]="glove.ranking"
+                 required/>
         </mat-form-field>
-
-        <app-rating-selector fxFlex label="Glass Handling" name="{{i}}glassHandling"
-                             [(selected)]="res.glassHandling"></app-rating-selector>
-        <button mat-icon-button (click)="deleteGlassHandling(glove, res)"><mat-icon>delete</mat-icon></button>
+        <app-rating-selector fxFlex="70%" label="Category" name="rankingCategory"
+                             [(selected)]="glove.ranking.rankingCategory"></app-rating-selector>
 
       </div>
 
-      <mat-checkbox [(ngModel)]="res.leavesMarks" name="{{i}}leavesMarks">Leaves marks</mat-checkbox><br>
-      <br>
-    </div>
 
-    <br>
-    <button mat-raised-button type="button" (click)="addGlassHandling(glove)"><mat-icon>add</mat-icon> Add
-    </button>
+      <mat-form-field appearance="outline">
+        <mat-label>Recommendations</mat-label>
+        <textarea matInput name="recommendations" [(ngModel)]="glove.ranking.recommendations" required></textarea>
+      </mat-form-field>
+
+
+      <br><br>
+      <h3>Traction resistances</h3>
+
+      <div fxLayout="row" fxLayoutGap="20px" *ngFor="let res of glove.ratings.tractionResistance ; index as i">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Humidifier</mat-label>
+          <input type="text" placeholder="Water" name="{{i}}humidifier" matInput [(ngModel)]="res.humidifier"/>
+        </mat-form-field>
+
+        <app-rating-selector fxFlex label="Traction resistance" name="{{i}}tractionResistance"
+                             [(selected)]="res.tractionResistance"></app-rating-selector>
+
+        <button mat-icon-button (click)="deleteTractionResistance(glove, res)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+      <button mat-raised-button type="button" (click)="addTractionResistance(glove)">
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+
+      <br><br>
+      <h3>Glass Handling</h3>
+
+      <div *ngFor="let res of glove.ratings.glassHandling ; index as i">
+        <div fxLayout="row" fxLayoutGap="20px">
+          <mat-form-field fxFlex appearance="outline">
+            <mat-label>Humidifier</mat-label>
+            <input type="text" placeholder="Water" name="{{i}}gh_humidifier" matInput [(ngModel)]="res.humidifier"/>
+          </mat-form-field>
+
+          <app-rating-selector fxFlex label="Glass Handling" name="{{i}}glassHandling"
+                               [(selected)]="res.glassHandling"></app-rating-selector>
+          <button mat-icon-button (click)="deleteGlassHandling(glove, res)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </div>
+
+        <mat-checkbox [(ngModel)]="res.leavesMarks" name="{{i}}leavesMarks">Leaves marks</mat-checkbox>
+        <br>
+        <br>
+      </div>
+
+      <br>
+      <button mat-raised-button type="button" (click)="addGlassHandling(glove)">
+        <mat-icon>add</mat-icon>
+        Add
+      </button>
+    </ng-container>
     <br><br>
     <hr>
     <button mat-raised-button color="accent" [disabled]="saving" type="submit">Save

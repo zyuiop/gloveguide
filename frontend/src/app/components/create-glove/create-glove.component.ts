@@ -18,7 +18,15 @@
 
 import {Component, OnInit} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Glove, GloveGlassHandling, GloveMaterials, GloveSpecifications, GloveTractionResistance} from '../../data/gloves';
+import {
+  Glove,
+  GloveGlassHandling,
+  GloveMaterials,
+  GloveRanking,
+  GloveRatings,
+  GloveSpecifications,
+  GloveTractionResistance
+} from '../../data/gloves';
 import {ResistancesService} from '../../services/resistances.service';
 import {GlovesService} from '../../services/gloves.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -50,11 +58,13 @@ export class CreateGloveComponent implements OnInit {
         } else {
           const glove = new Glove();
           glove.specifications = new GloveSpecifications();
+          glove.ratings = new GloveRatings();
+          glove.ranking = new GloveRanking();
           glove.specifications.powdered = false;
           glove.specifications.fingerTextured = false;
-          glove.tractionResistance = [new GloveTractionResistance()];
-          glove.glassHandling = [new GloveGlassHandling()];
-          glove.specifications.disposable = true;
+          glove.ratings.tractionResistance = [new GloveTractionResistance()];
+          glove.ratings.glassHandling = [new GloveGlassHandling()];
+          glove.disposable = true;
           return of(glove);
         }
       })
@@ -68,6 +78,11 @@ export class CreateGloveComponent implements OnInit {
     }
     this.saving = true;
 
+    if (!glove.disposable) {
+      glove.ranking = undefined;
+      glove.ratings = undefined;
+    }
+
     if (glove.id && glove.id !== 0) {
       this.gloves.updateGlove(glove.id, glove).subscribe(result => {
         this.toast.open('Glove updated!', undefined, {duration: 2000});
@@ -75,6 +90,11 @@ export class CreateGloveComponent implements OnInit {
       }, err => {
         this.toast.open('An error occured, please retry.', undefined, {duration: 2000});
         this.saving = false;
+
+        if (!glove.disposable) {
+          glove.ranking = new GloveRanking();
+          glove.ratings = new GloveRatings();
+        }
       });
     } else {
       glove.id = 0;
@@ -85,23 +105,28 @@ export class CreateGloveComponent implements OnInit {
         this.toast.open('An error occured, please retry.', undefined, {duration: 2000});
         glove.id = undefined;
         this.saving = false;
+
+        if (!glove.disposable) {
+          glove.ranking = new GloveRanking();
+          glove.ratings = new GloveRatings();
+        }
       });
     }
   }
 
   addTractionResistance(glove: Glove) {
-    glove.tractionResistance.push(new GloveTractionResistance());
+    glove.ratings.tractionResistance.push(new GloveTractionResistance());
   }
 
   addGlassHandling(glove: Glove) {
-    glove.glassHandling.push(new GloveGlassHandling());
+    glove.ratings.glassHandling.push(new GloveGlassHandling());
   }
 
   deleteTractionResistance(glove: Glove, res: GloveTractionResistance) {
-    glove.tractionResistance.splice(glove.tractionResistance.indexOf(res), 1);
+    glove.ratings.tractionResistance.splice(glove.ratings.tractionResistance.indexOf(res), 1);
   }
 
   deleteGlassHandling(glove: Glove, res: GloveGlassHandling) {
-    glove.glassHandling.splice(glove.glassHandling.indexOf(res), 1);
+    glove.ratings.glassHandling.splice(glove.ratings.glassHandling.indexOf(res), 1);
   }
 }

@@ -13,8 +13,12 @@ GET           /gloves                                              controllers.G
 GET           /gloves/:id                                          controllers.GlovesController.getById(id: Int)
 GET           /gloves/byMaterialType/:materialType                 controllers.GlovesController.getByType(materialType: String)
 
++nocsrf
 POST          /gloves                                              controllers.GlovesController.createGlove
++nocsrf
 PUT           /gloves/:id                                          controllers.GlovesController.updateGlove(id: Int)
++nocsrf
+DELETE        /gloves/:id                                          controllers.GlovesController.deleteGlove(id: Int)
 
 GET           /login/check                                         controllers.LoginController.check
 

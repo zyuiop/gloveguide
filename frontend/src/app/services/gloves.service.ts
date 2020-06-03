@@ -23,13 +23,14 @@ import {environment} from '../../environments/environment';
 import {Glove} from '../data/gloves';
 import {catchError, delay, map, retryWhen, switchMap, tap} from 'rxjs/operators';
 import {tryCatch} from 'rxjs/internal-compatibility';
+import {AuthService} from './auth.service';
 
 @Injectable({providedIn: 'root'})
 export class GlovesService {
   private nextRefresh = 0;
   private cacheSubject = new ReplaySubject<Glove[]>(1);
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
   }
 
   pullGloves(): Observable<Glove[]> {
@@ -57,14 +58,21 @@ export class GlovesService {
   }
 
   createGlove(glove: Glove): Observable<Glove> {
-    return this.http.post<Glove>(environment.backendUrl + '/gloves', glove)
+    return this.http.post<Glove>(environment.backendUrl + '/gloves', glove, {headers: {Authorization: this.auth.header}})
+      .pipe(
+        switchMap(value => this.updateCachedGloves().pipe(map(res => value)))
+      );
+  }
+
+  deleteGlove(glove: number): Observable<void> {
+    return this.http.delete<void>(environment.backendUrl + '/gloves/' + glove, {headers: {Authorization: this.auth.header}})
       .pipe(
         switchMap(value => this.updateCachedGloves().pipe(map(res => value)))
       );
   }
 
   updateGlove(id: number, glove: Glove): Observable<void> {
-    return this.http.put<void>(environment.backendUrl + '/gloves/' + id, glove)
+    return this.http.put<void>(environment.backendUrl + '/gloves/' + id, glove, {headers: {Authorization: this.auth.header}})
       .pipe(
         switchMap(value => this.updateCachedGloves().pipe(map(res => value)))
       );

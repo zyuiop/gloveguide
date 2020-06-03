@@ -36,25 +36,24 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
   private val db = dbApi database "default"
 
   private val glovesQuery =
-    "SELECT * FROM gloves " +
+    "SELECT gloves.*, gmt.glove_material_type, ggh.humidifier, ggh.glass_handling, ggh.leaves_marks, gtr.gloves_traction_resistance_humidifier, gtr.traction_resistance FROM gloves " +
       "JOIN glove_material_types gmt on gloves.glove_id = gmt.glove_id " +
-      "JOIN gloves_glass_handling ggh on gloves.glove_id = ggh.glove_id " +
-      "JOIN gloves_traction_resistance gtr on gloves.glove_id = gtr.glove_id"
+      "LEFT JOIN gloves_glass_handling ggh on gloves.glove_id = ggh.glove_id " +
+      "LEFT JOIN gloves_traction_resistance gtr on gloves.glove_id = gtr.glove_id"
 
-
-  case class DatabaseGlove(id: Option[Int], brand: String, name: String, reference: String, length: Int, thickness: BigDecimal, standardType: String,
-                           standardResistance: String, standardAql: BigDecimal, easeToWear: Rating.Value, easeToRemove: Rating.Value,
-                           recommendations: String, ranking: Int, rankingCategory: Rating.Value,
-                           powdered: Boolean, fingerTextured: Boolean, vulcanizationAgent: Option[String],
+  case class DatabaseGlove(id: Option[Int], brand: String, name: String, reference: String, length: Int, thickness: Option[BigDecimal], standardType: String,
+                           standardResistance: String, standardAql: Option[BigDecimal], easeToWear: Option[Rating.Value], easeToRemove: Option[Rating.Value],
+                           recommendations: Option[String], ranking: Option[Int], rankingCategory: Option[Rating.Value],
+                           powdered: Option[Boolean], fingerTextured: Option[Boolean], vulcanizationAgent: Option[String],
                            imageUrl: Option[String], boxImageUrl: Option[String], disposable: Boolean)
 
   private def toDatabaseGlove(glove: Glove): DatabaseGlove = {
     DatabaseGlove(
       id = (if (glove.id != 0) Some(glove.id) else None),
       glove.brand, glove.name, glove.reference, glove.specifications.length, glove.specifications.thickness, glove.specifications.standardType, glove.specifications.standardResistance,
-      glove.specifications.aql, glove.easeToWear, glove.easeToRemove, glove.recommendations, glove.ranking, glove.rankingCategory,
+      glove.specifications.aql, glove.ratings.map(_.easeToWear), glove.ratings.map(_.easeToRemove), glove.ranking.map(_.recommendations), glove.ranking.map(_.ranking), glove.ranking.map(_.rankingCategory),
       glove.specifications.powdered, glove.specifications.fingerTextured, glove.specifications.vulcanizationAgent,
-      glove.imageUrl, glove.boxImageUrl, glove.specifications.disposable
+      glove.imageUrl, glove.boxImageUrl, glove.disposable
     )
   }
 
@@ -65,7 +64,7 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
   private val glovesParser: ResultSetParser[immutable.List[Glove]] =
     (GloveRowParser ~
       str("glove_material_type").map(GloveMaterialType.withName) ~
-      GlassHandlingRowParser ~ GlovesTractionResistanceRowParser
+      GlassHandlingRowParser.? ~ GlovesTractionResistanceRowParser.?
       ).*.map { list =>
       // We need to join the list!
       list.map {
@@ -76,16 +75,18 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
         .map {
           case ((glove), props) =>
             val materialTypes: Set[data.GloveMaterialType.Value] = props.map(_._1).toSet
-            val glassHandling = props.map(_._2).toSet
-            val tractionResistance = props.map(_._3).toSet
+            val glassHandling = props.flatMap(_._2).toSet
+            val tractionResistance = props.flatMap(_._3).toSet
 
             Glove(glove.id.get, glove.brand, materialTypes,
-              glove.name, glove.reference,
+              glove.name, glove.reference, glove.disposable,
               GloveSpecifications(glove.length, glove.thickness, glove.standardType, glove.standardResistance,
                 glove.standardAql, glove.powdered, glove.fingerTextured,
-                glove.vulcanizationAgent, glove.disposable), easeToWear = glove.easeToWear, easeToRemove = glove.easeToRemove, glove.recommendations,
-              glove.ranking, glove.rankingCategory, glassHandling, tractionResistance, glove.imageUrl, glove.boxImageUrl)
-        }.toList.sortBy(_.ranking)
+                glove.vulcanizationAgent),
+              if (!glove.disposable) None else Some(GloveRanking(glove.recommendations.get, glove.ranking.get, glove.rankingCategory.get)),
+              if (!glove.disposable) None else Some(GloveRatings(glove.easeToWear.get, glove.easeToRemove.get, glassHandling, tractionResistance)),
+              glove.imageUrl, glove.boxImageUrl)
+        }.toList.sortBy(_.ranking.map(_.ranking).getOrElse(Int.MaxValue))
     }
 
   def getAllGloves: Future[List[Glove]] =
@@ -121,16 +122,25 @@ class GlovesModel @Inject()(dbApi: play.api.db.DBApi)(implicit ec: ExecutionCont
         .on("gid" -> id, "gmt" -> t)
         .executeUpdate()
 
-    for (gh <- glove.glassHandling)
-      SQL("INSERT INTO gloves_glass_handling(glove_id, humidifier, glass_handling, leaves_marks) VALUES ({gid}, {humidifier}, {gh}, {lm})")
-        .on("gid" -> id, "humidifier" -> gh.humidifier, "gh" -> gh.glassHandling, "lm" -> gh.leavesMarks)
-        .executeUpdate()
+    if (glove.ratings.nonEmpty) {
+      for (gh <- glove.ratings.get.glassHandling)
+        SQL("INSERT INTO gloves_glass_handling(glove_id, humidifier, glass_handling, leaves_marks) VALUES ({gid}, {humidifier}, {gh}, {lm})")
+          .on("gid" -> id, "humidifier" -> gh.humidifier, "gh" -> gh.glassHandling, "lm" -> gh.leavesMarks)
+          .executeUpdate()
 
-    for (tr <- glove.tractionResistance)
-      SQL("INSERT INTO gloves_traction_resistance(glove_id, gloves_traction_resistance_humidifier, traction_resistance) VALUES ({gid}, {humidifier}, {tr})")
-        .on("gid" -> id, "humidifier" -> tr.humidifier, "tr" -> tr.tractionResistance)
-        .executeUpdate()
+      for (tr <- glove.ratings.get.tractionResistance)
+        SQL("INSERT INTO gloves_traction_resistance(glove_id, gloves_traction_resistance_humidifier, traction_resistance) VALUES ({gid}, {humidifier}, {tr})")
+          .on("gid" -> id, "humidifier" -> tr.humidifier, "tr" -> tr.tractionResistance)
+          .executeUpdate()
+    }
   }
+
+  def deleteGlove(glove: Int): Future[Unit] = Future(db.withConnection { implicit c =>
+    SQL("DELETE FROM glove_material_types WHERE glove_id = {gid}").on("gid" -> glove).execute()
+    SQL("DELETE FROM gloves_glass_handling WHERE glove_id = {gid}").on("gid" -> glove).execute()
+    SQL("DELETE FROM gloves_traction_resistance WHERE glove_id = {gid}").on("gid" -> glove).execute()
+    SQL("DELETE FROM gloves WHERE glove_id = {gid}").on("gid" -> glove).execute()
+  })
 
   def updateGlove(glove: Glove): Future[Unit] = Future(db.withConnection { implicit c =>
     val dbGlove = toDatabaseGlove(glove)

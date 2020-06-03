@@ -19,7 +19,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Resistance} from '../../data/resistance';
 import {ResistancesService} from '../../services/resistances.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {map, switchMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Glove} from '../../data/gloves';
@@ -27,6 +27,8 @@ import {GlovesService} from '../../services/gloves.service';
 import {AuthService} from '../../services/auth.service';
 import {MatDialog} from '@angular/material/dialog';
 import {ResistanceModalComponent} from '../resistance-modal/resistance-modal.component';
+import Swal from 'sweetalert2';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-display-glove',
@@ -39,14 +41,14 @@ export class DisplayGloveComponent implements OnInit {
 
 
   constructor(private resistancesService: ResistancesService, private gloves: GlovesService, private route: ActivatedRoute, public auth: AuthService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog, private snack: MatSnackBar, private router: Router) {
   }
 
   ngOnInit(): void {
     this.selectedGlove$ = this.route.paramMap.pipe(
       map(m => m.get('glove')),
       switchMap(gloveId => {
-        console.log(gloveId)
+        console.log(gloveId);
         // If we're here, the cas number changed!
         if (history.state.data) {
           return of(history.state.data as Glove);
@@ -60,6 +62,32 @@ export class DisplayGloveComponent implements OnInit {
   }
 
   openResistanceModal(glove: Glove) {
-    this.dialog.open(ResistanceModalComponent, {data: { glove }});
+    this.dialog.open(ResistanceModalComponent, {data: {glove}});
+  }
+
+  deleteGlove(glove: Glove) {
+    const name = glove.reference;
+
+    Swal.fire({
+      input: 'text',
+      inputValidator: (inputValue: string) => {
+        return (!inputValue || inputValue !== name) && 'Please type in the required text';
+      },
+      titleText: 'Confirm this action',
+      html: 'You are about to delete this glove with all its resistance data. If that is indeed what you want to do, ' +
+        'type <b>' + name + '</b> in the box below.',
+      showConfirmButton: true,
+      showCancelButton: true
+    }).then(result => {
+      if (result && result.value && result.value === name) {
+        this.gloves.deleteGlove(glove.id).subscribe(res => {
+          this.snack.open('Glove deleted successfully.', 'Ok');
+          this.router.navigate(['/']);
+        }, err => {
+          console.log(err);
+          this.snack.open('An error occured while deleting. Please try again later.', 'Ok');
+        });
+      }
+    });
   }
 }

@@ -19,16 +19,27 @@
 <ng-container *ngIf="selectedGlove$ | async as selectedGlove; else loading">
   <h3 i18n>Selected glove <b>{{selectedGlove.brand}} {{selectedGlove.name}}</b> (Ref {{selectedGlove.reference}})
     <button mat-raised-button color="accent" routerLink="update" *ngIf="auth.isLoggedIn()">Update this glove</button>
+    <button mat-raised-button color="warn" (click)="deleteGlove(selectedGlove)" *ngIf="auth.isLoggedIn()">Delete this glove</button>
 
   </h3>
 
+  <ng-container *ngIf="selectedGlove.ranking ; else notRanked">
 
-  <h4 i18n>Ranked #{{selectedGlove.ranking}} -
-    <app-rating-badge [rating]="selectedGlove.rankingCategory"></app-rating-badge>
-  </h4>
-  <p i18n>Ranking among all gloves offered on the system - 1 being the best glove.</p>
+    <h4 i18n>Ranked #{{selectedGlove.ranking.ranking}} -
+      <app-rating-badge [rating]="selectedGlove.ranking.rankingCategory"></app-rating-badge>
+    </h4>
+    <p i18n>Ranking among all disposable gloves offered on the system, based on chemical resistance and objects handling
+      - 1 being the best glove.</p>
 
-  <p i18n><b>Recommendations: </b>{{selectedGlove.recommendations}}</p>
+    <p i18n><b>Recommendations: </b>{{selectedGlove.ranking.recommendations}}</p>
+  </ng-container>
+  <ng-template #notRanked>
+    <h4 i18n>Non disposable glove
+      <app-rating-badge></app-rating-badge>
+    </h4>
+    <p i18n>Only disposable gloves were ranked in this system. Please contact your local inventory to get this
+      glove.</p>
+  </ng-template>
   <br>
 
   <br>
@@ -41,38 +52,59 @@
       </mat-expansion-panel-header>
 
 
+      <div class="card-group float-right" style="max-width: 60%;">
+        <div class="card" style="width: 50%;" *ngIf="selectedGlove.imageUrl">
+          <img [src]="selectedGlove.imageUrl" class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">Glove image</p>
+          </div>
+        </div>
+        <div class="card" style="width: 50%;" *ngIf="selectedGlove.boxImageUrl">
+          <img [src]="selectedGlove.boxImageUrl" class="card-img-top">
+          <div class="card-body">
+            <p class="card-text">Glove box image</p>
+          </div>
+        </div>
+      </div>
+
       <ul i18n>
         <li>Reference: <code>{{selectedGlove.reference}}</code></li>
         <li>Material: {{selectedGlove.materials.join(", ")}}</li>
         <li>Length: {{selectedGlove.specifications.length}}mm</li>
-        <li *ngIf="selectedGlove.specifications.disposable">This glove is disposable.</li>
-        <li>Palm thickness: {{selectedGlove.specifications.thickness}}mm</li>
-        <li>Finger textured: {selectedGlove.specifications.fingerTextured, select, true {Yes} false {No}}</li>
-        <li>Powdered: {selectedGlove.specifications.powdered, select, true {Yes} false {No}}</li>
-        <li>Vulcanization agent(s): {!selectedGlove.specifications.vulcanizationAgent, select, true {Unknown} other { {{selectedGlove.specifications.vulcanizationAgent}} } } </li>
+        <li *ngIf="selectedGlove.disposable">This glove is disposable.</li>
+        <li>Palm
+          thickness: {{selectedGlove.specifications.thickness ? selectedGlove.specifications.thickness : 'N/A'}}mm
+        </li>
+        <li *ngIf="selectedGlove.disposable">Finger
+          textured: {selectedGlove.specifications.fingerTextured, select, true {Yes} false {No}}</li>
+        <li *ngIf="selectedGlove.disposable">
+          Powdered: {selectedGlove.specifications.powdered, select, true {Yes} false {No}}</li>
+        <li>Vulcanization
+          agent(s): {!selectedGlove.specifications.vulcanizationAgent, select, true {Unknown} other { {{selectedGlove.specifications.vulcanizationAgent}} } } </li>
         <li><a href="https://www.iso.org/fr/standard/66421.html">EN ISO 374-1</a>:
           <ul>
             <li>Type {{selectedGlove.specifications.standardType}}</li>
             <li>Resistance {{selectedGlove.specifications.standardResistance}}</li>
-            <li>AQL {{selectedGlove.specifications.aql}}</li>
+            <li>AQL {{selectedGlove.specifications.aql ? selectedGlove.specifications.aql : 'N/A'}}</li>
           </ul>
         </li>
       </ul>
+
     </mat-expansion-panel>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngIf="selectedGlove.ratings">
       <mat-expansion-panel-header>
         <mat-panel-title i18n>Ratings</mat-panel-title>
       </mat-expansion-panel-header>
       <ul i18n>
         <li>Ease to wear:
-          <app-rating-badge [rating]="selectedGlove.easeToWear"></app-rating-badge>
+          <app-rating-badge [rating]="selectedGlove.ratings.easeToWear"></app-rating-badge>
         </li>
         <li>Ease to remove:
-          <app-rating-badge [rating]="selectedGlove.easeToRemove"></app-rating-badge>
+          <app-rating-badge [rating]="selectedGlove.ratings.easeToRemove"></app-rating-badge>
         </li>
         <li>Glass handling:
           <ul>
-            <li *ngFor="let pair of selectedGlove.glassHandling">{{pair.humidifier}}:
+            <li *ngFor="let pair of selectedGlove.ratings.glassHandling">{{pair.humidifier}}:
               <app-rating-badge [rating]="pair.glassHandling"></app-rating-badge>
               {pair.leavesMarks, select, true {(leaves marks))}}
             </li>
@@ -80,7 +112,7 @@
         </li>
         <li>Traction resistance:
           <ul>
-            <li *ngFor="let pair of selectedGlove.tractionResistance">{{pair.humidifier}}:
+            <li *ngFor="let pair of selectedGlove.ratings.tractionResistance">{{pair.humidifier}}:
               <app-rating-badge [rating]="pair.tractionResistance"></app-rating-badge>
             </li>
           </ul>
@@ -94,10 +126,13 @@
 
       <p i18n>According to internal tests or spec sheets.</p>
 
-      <app-resistances-table *ngIf="resistances$ | async as resistances; else loading" [resistances]="resistances"></app-resistances-table>
+      <app-resistances-table *ngIf="resistances$ | async as resistances; else loading"
+                             [resistances]="resistances"></app-resistances-table>
 
       <br>
-      <button mat-raised-button color="accent" (click)="openResistanceModal(selectedGlove)" *ngIf="auth.isLoggedIn()">Add permeability information</button>
+      <button mat-raised-button color="accent" (click)="openResistanceModal(selectedGlove)" *ngIf="auth.isLoggedIn()">
+        Add permeability information
+      </button>
       <!--
       glassHandling: {}; // Map[String, GlassHandling]
       tractionResistance: {}; // Map[String, Rating.Value] -->

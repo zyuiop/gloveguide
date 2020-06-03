@@ -23,6 +23,7 @@ import javax.inject._
 import models.{DilutionsModel, GlovesModel}
 import play.api.libs.json.Json
 import play.api.mvc._
+import utils.PermissionCheckActions
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -30,7 +31,7 @@ import scala.concurrent.{ExecutionContext, Future}
  * This controller handles all queries to the substances database
  */
 @Singleton
-class GlovesController @Inject()(cc: ControllerComponents, gloves: GlovesModel)(implicit ec: ExecutionContext) extends AbstractController(cc) {
+class GlovesController @Inject()(cc: ControllerComponents, gloves: GlovesModel, PermissionCheck: PermissionCheckActions)(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
   def getAll: Action[AnyContent] = Action.async { implicit request =>
     gloves.getAllGloves.map(res => Ok(Json.toJson(res)))
@@ -43,16 +44,26 @@ class GlovesController @Inject()(cc: ControllerComponents, gloves: GlovesModel)(
     }
   }
 
-  def createGlove: Action[Glove] = Action.async(parse.json[Glove]) { implicit request =>
+  def createGlove: Action[Glove] = PermissionCheck.async(parse.json[Glove]) { implicit request =>
     val glove = request.body
 
-    gloves.createGlove(glove).map(g => Ok(Json.toJson(g)))
+    if (glove.disposable && (glove.ratings.isEmpty || glove.ranking.isEmpty))
+      Future.successful(BadRequest("Disposable gloves must have rating and ranking information."))
+    else
+      gloves.createGlove(glove).map(g => Ok(Json.toJson(g)))
   }
 
-  def updateGlove(id: Int): Action[Glove] = Action.async(parse.json[Glove]) { implicit request =>
+  def updateGlove(id: Int): Action[Glove] = PermissionCheck.async(parse.json[Glove]) { implicit request =>
     val glove = request.body
 
-    gloves.updateGlove(glove.copy(id = id)).map(_ => Ok)
+    if (glove.disposable && (glove.ratings.isEmpty || glove.ranking.isEmpty))
+      Future.successful(BadRequest("Disposable gloves must have rating and ranking information."))
+    else
+      gloves.updateGlove(glove.copy(id = id)).map(_ => Ok)
+  }
+
+  def deleteGlove(id: Int): Action[AnyContent] = PermissionCheck.async { implicit request =>
+    gloves.deleteGlove(id).map(_ => Ok)
   }
 
   def getByType(materialType: String): Action[AnyContent] = Action.async { implicit request =>

@@ -1,4 +1,4 @@
-import java.sql.PreparedStatement
+import java.sql.{PreparedStatement, Types}
 
 import anorm.Macro.ColumnNaming
 import anorm.SqlParser._
@@ -35,7 +35,7 @@ package object data {
 
   object GloveMaterialType extends Enumeration {
     type Rating = Value
-    val Butyl, Fluoroelastomer, Latex, Neoprene, Nitrile = Value
+    val Butyl, Fluoroelastomer, Latex, Neoprene, Nitrile, Vinyl, PVC, PVA = Value
   }
 
   implicit val SubstanceFormat: Format[Substance] = Json.format[Substance]
@@ -44,8 +44,13 @@ package object data {
   implicit val SubstanceRowParser: RowParser[Substance] = Macro.namedParser[Substance](SubstanceColumnNaming)
 
   implicit val RatingFormat: Format[Rating.Value] = Json.formatEnum(Rating)
-  implicit val RatingColumn: Column[Rating.Value] = Column.columnToString.map(s => Rating.withName(s))
+  implicit val RatingColumn: Column[Option[Rating.Value]] = Column.columnToOption[String].map(s => s.map(str => Rating.withName(str)))
+  implicit val OptRatingColumn: Column[Rating.Value] = Column.columnToString.map(s => Rating.withName(s))
   implicit val RatingStatement: ToStatement[Rating.Value] = (s: PreparedStatement, index: Int, v: Rating.Value) => s.setString(index, v.toString)
+  implicit val OptRatingStatement: ToStatement[Option[Rating.Value]] = (s: PreparedStatement, index: Int, v: Option[Rating.Value]) => v match {
+    case Some(str) => s.setString(index, str.toString)
+    case None => s.setNull(index, Types.VARCHAR)
+  }
 
   implicit val GloveMaterialTypeFormat: Format[GloveMaterialType.Value] = Json.formatEnum(GloveMaterialType)
   implicit val GloveMaterialTypeColumn: Column[GloveMaterialType.Value] = Column.columnToString.map(s => GloveMaterialType.withName(s))
@@ -65,29 +70,37 @@ package object data {
   implicit val GlovesTractionResistanceParameterList: ToParameterList[GlovesTractionResistance] = Macro.toParameters[GlovesTractionResistance]()
 
   case class GloveSpecifications(
-                                  length: Int, thickness: BigDecimal, standardType: String, standardResistance: String,
-                                  aql: BigDecimal, powdered: Boolean, fingerTextured: Boolean,
-                                  vulcanizationAgent: Option[String], disposable: Boolean
+                                  length: Int, thickness: Option[BigDecimal], standardType: String, standardResistance: String,
+                                  aql: Option[BigDecimal],
+                                  powdered: Option[Boolean],
+                                  fingerTextured: Option[Boolean],
+                                  vulcanizationAgent: Option[String]
                                 )
 
-  // There is a limit of 22 fields for a method in Scala 2.13
-  // We therefore need to split this case class in two
+  case class GloveRanking(recommendations: String, ranking: Int, rankingCategory: Rating.Value)
+
+  case class GloveRatings(easeToWear: Rating.Value, easeToRemove: Rating.Value,
+                          glassHandling: Set[GlassHandling],
+                          tractionResistance: Set[GlovesTractionResistance])
+
   case class Glove(
                     id: Int,
                     brand: String,
                     materials: Set[GloveMaterialType.Value],
-                    name: String, reference: String,
-                    specifications: GloveSpecifications,
-                    easeToWear: Rating.Value, easeToRemove: Rating.Value,
-                    recommendations: String, ranking: Int, rankingCategory: Rating.Value,
+                    name: String,
+                    reference: String,
+                    disposable: Boolean,
 
-                    glassHandling: Set[GlassHandling],
-                    tractionResistance: Set[GlovesTractionResistance],
+                    specifications: GloveSpecifications,
+                    ranking: Option[GloveRanking],
+                    ratings: Option[GloveRatings],
 
                     imageUrl: Option[String], boxImageUrl: Option[String]
                   )
 
   implicit val GloveSpecsFormat: Format[GloveSpecifications] = Json.format[GloveSpecifications]
+  implicit val GloveRankingFormat: Format[GloveRanking] = Json.format[GloveRanking]
+  implicit val GloveRatingsFormat: Format[GloveRatings] = Json.format[GloveRatings]
   implicit val GloveFormat: Format[Glove] = Json.format[Glove]
 
 
