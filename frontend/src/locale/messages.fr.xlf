@@ -344,14 +344,6 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5ae114549c4f54f2d7787e649155e5fa9ce91c1d" datatype="html">
-        <source>Search for a substance or glove</source>
-        <target state="translated">Rechercher une substance ou un gant</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="f494fd9cd98c9bfbeedea7ed1f3e315f006d0351" datatype="html">
         <source>Search for a <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</source>
         <target state="translated">Rechercher <x id="ICU" equiv-text="{this.allowGloves, select, true {...} false {...}}"/>...</target>
@@ -496,15 +488,23 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-       <trans-unit id="ca956045445fd85db0f80c853c6ccaa96426d71e" datatype="html">
+       <trans-unit id="fe7573767837438dbd7419d9b5b208ea6a8002bc" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>The rating provided here is a general rating.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> It is not specific to a chemical and doesn't indicate whether a particular glove will resist well to a particular chemical.</source>
-        <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>La notation indiqué dans ce tableau est une note générale.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Elle n'est pas spécifique à un produit chimique et n'indique pas si le gant va bien résister ou non à un produit chimique donné.</target>
+        <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>La notation indiquée ici est une note générale basée sur la résistance chimique et la prise en main d'objets.<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> Elle n'est pas spécifique à un produit chimique et n'indique pas si le gant va bien résister ou non à un produit chimique donné. Cliquez sur un gant pour en savoir plus sur sa notation et obtenir des recommendations.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="585809d575c2520470451d27163b5f298068b1c7" datatype="html">
+      <trans-unit id="0cd2888c23126d588f3c4fdb2a49c306800d2415" datatype="html">
+        <source>Reusable Glove</source>
+        <target>Gant réutilisable</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/gloves/gloves.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="421529cf4e1c1f2e4a3748bc4ec29e3d21cadc3b" datatype="html">
         <source>
     <x id="START_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;mat-icon>"/>error<x id="CLOSE_TAG_MAT-ICON" ctype="x-mat-icon" equiv-text="&lt;/mat-icon>"/>
     <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>No glove found:<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> There is no glove in the database with these types. Please see the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>list
@@ -597,27 +597,57 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5b8bf100daf251ad67d8473f572587a326b54eb6" datatype="html">
+      <trans-unit id="0271809b234c1a040daa41df566162babee3e2b2" datatype="html">
         <source>Selected glove <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/> <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>)
   </source>
-        <target state="translated">Gant sélectionné : <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/><x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Modifier ce gant<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></target>
+        <target state="translated">Gant sélectionné : <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.brand}}"/><x id="INTERPOLATION_1" equiv-text="{{selectedGlove.name}}"/><x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/> (Ref <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.reference}}"/>) <x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button&gt;"/>Modifier ce gant<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/>
+    <x id="START_TAG_BUTTON_1" ctype="x-button" equiv-text="&lt;button&gt;"/>Supprimer ce gant<x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="09034a00c86c8d56ba2cf26dd0073454cff17420" datatype="html">
+      <trans-unit id="6cdaf08b797e6028a0bae69702d6903d51763a38" datatype="html">
         <source>Ranked #<x id="INTERPOLATION" equiv-text="{{selectedGlove.ranking}}"/> -
     <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge>"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge>"/>
   </source>
-        <target state="translated">Classé #<x id="INTERPOLATION" equiv-text="{{selectedGlove.ranking}}"/> -
+        <target state="translated">Classé #<x id="INTERPOLATION" equiv-text="{{selectedGlove.ranking.ranking}}"/> -
     <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge>"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b381c95e5b47f90bca72aa52d21a277f9c42255d" datatype="html">
+      <trans-unit id="b094b022412958009630c7e39f1005a026a02cd6" datatype="html">
+        <source>Ranking among all disposable gloves offered on the system, based on chemical resistance and objects handling
+      - 1 being the best glove.</source>
+      <target>Classement parmi tous les gants réutilisables proposés sur le service, basé sur la résistance aux chimiques et la prise en main d'objets.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6fe06bdfaa8a70d62e563ea0f9f810f4e44cfdd2" datatype="html">
+        <source>Non disposable glove
+      <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+    </source>
+        <target>Gant réutilisable
+      <x id="START_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;app-rating-badge&gt;"/><x id="CLOSE_TAG_APP-RATING-BADGE" ctype="x-app-rating-badge" equiv-text="&lt;/app-rating-badge&gt;"/>
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3a7849e481e72fbf06f52cc5550eecea7078dad5" datatype="html">
+      	<source>whatever</source>
+        <target>Seuls les gants à usage unique ont été notés sur ce service. Merci de contacter votre inventaire pour obtenir ce gant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faa8a17bbc0a48a7b50d72d1ebcd6f1be71ac4e3" datatype="html">
         <source><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Recommendations: <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.recommendations}}"/></source>
         <target state="translated"><x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b>"/>Recommendations : <x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.recommendations}}"/></target>
         <context-group purpose="location">
@@ -633,7 +663,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">15</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="be973398fe4cd33d5a5f69742620d562edc0bc55" datatype="html">
+      <trans-unit id="cfbe5268b91002637440485e6f2b289d81227616" datatype="html">
         <source>
         <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Reference: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
         <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Material: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.material.name}}"/> (<x id="INTERPOLATION_2" equiv-text="{{selectedGlove.material.types.join(&quot;, &quot;)}}"/>)<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
@@ -655,7 +685,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Matière : <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.materials.join(&quot;, &quot;)}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Longueur : <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.specifications.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Ce gant est un gant jetable.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Épaisseur paume : <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Épaisseur paume : <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness ? selectedGlove.specifications.thickness : &apos;N/A&apos;}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Texturé au doigt : <x id="ICU" equiv-text="{selectedGlove.specifications.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Poudré : <x id="ICU_1" equiv-text="{selectedGlove.specifications.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Agent(s) de vulcanisation : <x id="ICU_2" equiv-text="{!selectedGlove.specifications.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
@@ -665,7 +695,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
             <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Type <x id="INTERPOLATION_5" equiv-text="{{selectedGlove.specifications.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
             <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Résistance <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.specifications.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.specifications.aql}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.specifications.aql ? selectedGlove.specifications.aql : &apos;N/A&apos;}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
@@ -775,14 +805,7 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
           <context context-type="linenumber">92</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cbf6bb27091b4001dda19f286d33b43e2e280270" datatype="html">
-        <source>Specific substances rating</source>
-        <target state="translated">Résistance aux substances</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
-          <context context-type="linenumber">69</context>
-        </context-group>
-      </trans-unit>
+
       <trans-unit id="39103a5cd974bfaea7a8f2ff3db5891f7c1dce93" datatype="html">
         <source>According to internal tests or spec sheets.</source>
         <target state="translated">D'après des tests internes ou les feuilles de spécifications du fabricant.</target>
@@ -949,14 +972,6 @@ Aucun gant ne peut être recommandé par ProtecPo pour ce mélange.
           <context context-type="sourcefile">src/app/components/solutions/solution-viewer/solution-viewer.component.html</context>
           <context context-type="linenumber">35</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="52b8728a819d2bbbf9061bd53b5b7d07e83bf72b" datatype="html">
-        <source>Ranking amost all gloves offered on the system - 1 being the best glove.</source>
-        <target>Classement parmi tous les gants proposés sur le système - 1 étant le meilleur gant.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
-          <context context-type="linenumber">29</context>
-         </context-group>
       </trans-unit>
     </body>
   </file>
