@@ -665,38 +665,49 @@ Les recommandations de ProtecPo sont à considérer comme une première sélecti
       </trans-unit>
       <trans-unit id="cfbe5268b91002637440485e6f2b289d81227616" datatype="html">
         <source>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Reference: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Material: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.material.name}}"/> (<x id="INTERPOLATION_2" equiv-text="{{selectedGlove.material.types.join(&quot;, &quot;)}}"/>)<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Length: <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Palm thickness: <x id="INTERPOLATION_4" equiv-text="{{selectedGlove.thickness}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Finger textured: <x id="ICU" equiv-text="{selectedGlove.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Powdered: <x id="ICU_1" equiv-text="{selectedGlove.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Vulcanization agent(s): <x id="ICU_2" equiv-text="{!selectedGlove.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-        <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>:
-          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
-            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Type <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Resistance <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-            <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>AQL <x id="INTERPOLATION_8" equiv-text="{{selectedGlove.aql}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/>
-        <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Reference: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Material: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.materials.join(&quot;, &quot;)}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Length: <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.specifications.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>This glove is disposable.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Palm
+          thickness: <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness ? selectedGlove.specifications.thickness : &apos;N/A&apos;}}"/>mm
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Finger
+          textured: <x id="ICU" equiv-text="{selectedGlove.specifications.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          Powdered: <x id="ICU_1" equiv-text="{selectedGlove.specifications.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Vulcanization
+          agent(s): <x id="ICU_2" equiv-text="{!selectedGlove.specifications.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>:
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Type <x id="INTERPOLATION_5" equiv-text="{{selectedGlove.specifications.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Resistance <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.specifications.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.specifications.aql ? selectedGlove.specifications.aql : &apos;N/A&apos;}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
       </source>
         <target state="translated">
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/>Référence : <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code>"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Matière : <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.materials.join(&quot;, &quot;)}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Longueur : <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.specifications.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Référence: <x id="START_TAG_CODE" ctype="x-code" equiv-text="&lt;code&gt;"/><x id="INTERPOLATION" equiv-text="{{selectedGlove.reference}}"/><x id="CLOSE_TAG_CODE" ctype="x-code" equiv-text="&lt;/code&gt;"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Matière: <x id="INTERPOLATION_1" equiv-text="{{selectedGlove.materials.join(&quot;, &quot;)}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Longueur: <x id="INTERPOLATION_2" equiv-text="{{selectedGlove.specifications.length}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
           <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Ce gant est un gant jetable.<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Épaisseur paume : <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness ? selectedGlove.specifications.thickness : &apos;N/A&apos;}}"/>mm<x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Texturé au doigt : <x id="ICU" equiv-text="{selectedGlove.specifications.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Poudré : <x id="ICU_1" equiv-text="{selectedGlove.specifications.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Agent(s) de vulcanisation : <x id="ICU_2" equiv-text="{!selectedGlove.specifications.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-
-
-          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li>"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a>"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a>"/>:
-          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul>"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Épaisseur paume :
+            <x id="INTERPOLATION_3" equiv-text="{{selectedGlove.specifications.thickness ? selectedGlove.specifications.thickness : &apos;N/A&apos;}}"/>mm
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Texturé au doigt :
+            <x id="ICU" equiv-text="{selectedGlove.specifications.fingerTextured, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM_1" ctype="x-li" equiv-text="&lt;li&gt;"/>Poudré :
+            <x id="ICU_1" equiv-text="{selectedGlove.specifications.powdered, select, true {...} false {...}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Agent(s) de vulcanisation :
+            <x id="ICU_2" equiv-text="{!selectedGlove.specifications.vulcanizationAgent, select, true {...} other {...}}"/> <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/><x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>EN ISO 374-1<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/> :
+          <x id="START_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;ul&gt;"/>
             <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Type <x id="INTERPOLATION_5" equiv-text="{{selectedGlove.specifications.standardType}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
             <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>Résistance <x id="INTERPOLATION_6" equiv-text="{{selectedGlove.specifications.standardResistance}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
             <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>AQL <x id="INTERPOLATION_7" equiv-text="{{selectedGlove.specifications.aql ? selectedGlove.specifications.aql : &apos;N/A&apos;}}"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
-          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul>"/><x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li>"/></target>
+          <x id="CLOSE_UNORDERED_LIST" ctype="x-ul" equiv-text="&lt;/ul&gt;"/>
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/components/display-glove/display-glove.component.html</context>
           <context context-type="linenumber">19</context>

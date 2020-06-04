@@ -63,6 +63,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "fr": {
+              "localize": ["fr"]
             }
           }
         },
@@ -74,6 +77,9 @@
           "configurations": {
             "production": {
               "browserTarget": "frontend:build:production"
+            },
+            "fr": {
+              "browserTarget": "frontend:build:fr"
             }
           }
         },
